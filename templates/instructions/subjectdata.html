@@ -1,0 +1,61 @@
+<div id="container-instructions">
+
+	<h1>Instructions</h1>
+
+	<hr>
+
+	<div class="instructions well">
+
+        <h3>Welcome to our face experiment!</h3>
+        <h3>First we'd like to know something about you...</h3>
+
+        <div class="row qustion">
+            <div class="col-md-8">
+                Your gender is:
+            </div>
+            <div class="col-md-4">
+                <select id="gender" name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row qustion">
+            <div class="col-md-8">
+                Your age is:
+            </div>
+            <div class="col-md-4">
+                <select id="orientation" name="orientation">
+                    <option value="lessthan20"> &lt; 20 </option>
+                    <option value="20to40"> 20 - 40 </option>
+                    <option value="largerthan40"> &gt; 40 </option>
+                </select>
+            </div>
+        </div>
+
+	    <script type="text/javascript">
+	    //console.log(psiTurk.getInstructionIndicator())
+	    </script>
+
+	</div>
+
+	<hr>
+
+
+    <div class="instructionsnav">
+        <div class="row">
+            <div class="col-xs-2">
+            	<!-- no previous button on first screen -->
+            </div>
+            <div class="col-xs-8">
+            </div>
+            <div class="col-xs-2">
+                <button type="button" id="next" value="next" class="btn btn-primary btn-lg continue">
+                Continue <span class="glyphicon glyphicon-arrow-right"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
