@@ -8,7 +8,7 @@ var SOA = 1000;
 var TIMEOUT_ALERT = 3000;
 var DURATION_ALERT = 3000;
 var DURATION_BREAK = 60000;
-var DELAY_QUERY = 700;
+var DELAY_QUERY = 500;
 
 // Initalize psiturk object
 var psiTurk = new PsiTurk(uniqueId, adServerLoc, mode);
@@ -80,7 +80,7 @@ var Experiment1 = function() {
 			progress = progress + 1;
 			timeoutvar = setTimeout(function(){
 				alertFunc(stim);
-			}, SOA + TIMEOUT_ALERT);
+			}, SOA + TIMEOUT_ALERT + DELAY_QUERY);
 			listening = true;
 		}
 	};
