@@ -40,16 +40,7 @@ var instructionPages = [ // add as a list as many pages as you like
 	"instructions/instruct-ready.html"
 ];
 
-var Experiment1 = function() {
-	var Mlinklist = []
-	var Flinklist = []
-	imgFolderPath = '/static/images/EclipseFace/'
-	for (i = 1; i < 4; ++i){
-		Flinklist.push(imgFolderPath + 'F' + i + '.png')
-	}	
-	for (i = 1; i < 165; ++i){
-		Mlinklist.push(imgFolderPath + 'M' + i + '.png')
-	}
+var DoubletExp = function(stims, callbackfunc) {
 	var progress = 1;
 
 	var wordon, // time word is presented
@@ -57,15 +48,8 @@ var Experiment1 = function() {
 	var istimedout = false;
 
 	// Stimuli for a basic Stroop experiment
-	var stims = [];
-	for (i = 0; i < Flinklist.length; ++i){
-		for (j = 0; j < Flinklist.length; ++j){
-			stims.push([Flinklist[i], Flinklist[j]])
-		}
-	}
 	var numsets = stims.length;
 
-	stims = _.shuffle(stims);
 	var timeoutvar;
 	var next = function() {
 		if (stims.length===0) {
@@ -73,7 +57,7 @@ var Experiment1 = function() {
 		}
 		else {
 			$('#blank').show();
-			$('#blank').delay(SOA).fadeOut();
+			$('#blank').delay(SOA).hide(0);
 			stim = stims.shift();
 			show_image(stim[0], stim[1]);
 			wordon = new Date().getTime();
@@ -133,12 +117,13 @@ var Experiment1 = function() {
 		$('#blank').show();
 		d3.select("#blank").append("h3").attr("id", "slowalert-1").style("color", "red").style("text-align", "center").html("Timeout!!");
 		d3.select("#blank").append("h3").attr("id", "slowalert-2").style("color", "red").style("text-align", "center").html("Respond faster!");
-		$('#blank').delay(DURATION_ALERT).fadeOut();
+		$('#blank').delay(DURATION_ALERT).hide(0);
 	}
 
 	var finish = function() {
 	    $("body").unbind("keydown", response_handler); // Unbind keys
-	    currentview = new ExperimentBreak(DURATION_BREAK);
+	    //currentview = new ExperimentBreak(DURATION_BREAK);
+	    callbackfunc();
 	};
 
 	var show_image = function(imgAlink, imgBlink) {
@@ -152,7 +137,7 @@ var Experiment1 = function() {
 			.attr("src", imgBlink)
 			.attr("id", "rightimg")
 			.attr("class", "rightimg");
-		$('#query').delay(SOA + DELAY_QUERY).fadeIn();
+		$('#query').delay(SOA + DELAY_QUERY).show();
 		$('#progress').html("Progress: (" + progress + " /" + numsets + ")");
 	}
 
@@ -184,16 +169,7 @@ var Experiment1 = function() {
 	next();
 };
 
-var Experiment2 = function() {
-	var Mlinklist = []
-	var Flinklist = []
-	imgFolderPath = '/static/images/EclipseFace/'
-	for (i = 1; i < 4; ++i){
-		Flinklist.push(imgFolderPath + 'F' + i + '.png')
-	}	
-	for (i = 1; i < 165; ++i){
-		Mlinklist.push(imgFolderPath + 'M' + i + '.png')
-	}
+var TripletExp = function(stims, callbackfunc) {
 
 	var progress = 1;
 
@@ -202,26 +178,18 @@ var Experiment2 = function() {
 	var istimedout = false;
 
 	// Stimuli for a basic Stroop experiment
-	var stims = [];
-	for (i = 0; i < Flinklist.length; ++i){
-		for (j = 0; j < Flinklist.length; ++j){
-			if (j == i) continue;
-			for (k = 0; k < Flinklist.length; ++k){
-				if (k == j || k == i) continue;
-				stims.push([Flinklist[i], Flinklist[j], Flinklist[k]]);
-			}
-		}
-	}
 	var numsets = stims.length;
 
-	stims = _.shuffle(stims);
 	var timeoutvar1;
 	var timeoutvar2;
 	var timeoutvar3;
 	var next = function() {
-		var donext = function(){
+		if (stims.length===0) {
+			finish();
+		}
+		else {
 			$('#blank').show();
-			$('#blank').delay(SOA).fadeOut();
+			$('#blank').delay(SOA).hide(0);
 			stim = stims.shift();
 			show_image(stim[0], stim[1], stim[2]);
 			wordon = new Date().getTime();
@@ -236,37 +204,6 @@ var Experiment2 = function() {
 				$("#rightbutton").click(response_handler);				
 			}, SOA + DELAY_QUERY);
 			listening = true;
-		};
-
-		if (stims.length===0) {
-			finish();
-		}
-		else {
-			if (stims.length == numsets / 2){
-				progress = 1;
-				$('#blank').show();
-				$('#break-instruction').show();
-				$('#continue').show();
-				timeoutvar3 = setTimeout(function(){
-					if ($('#blank').is(":visible")){
-						$('#blank').fadeOut();
-						d3.select('#break-instruction').remove();
-						$('#continue').hide();
-						donext();
-					}
-				}, DURATION_BREAK);
-				$('#continue').click(function(){
-					if ($('#blank').is(":visible")){
-						$('#blank').fadeOut();
-						d3.select('#break-instruction').remove();
-						clearTimeout(timeoutvar3);
-						$('#continue').hide();
-						donext();
-					}
-				});
-			} else {
-				donext();
-			}
 		}
 	};
 
@@ -317,12 +254,12 @@ var Experiment2 = function() {
 		$('#blank').show();
 		d3.select("#blank").append("h3").attr("id", "slowalert-1").style("color", "red").style("text-align", "center").html("Timeout!!");
 		d3.select("#blank").append("h3").attr("id", "slowalert-2").style("color", "red").style("text-align", "center").html("Respond faster!");
-		$('#blank').delay(DURATION_ALERT).fadeOut();
+		$('#blank').delay(DURATION_ALERT).hide(0);
 	}
 
 	var finish = function() {
 	    $("body").unbind("keydown", response_handler); // Unbind keys
-	    currentview = new Questionnaire();
+	    callbackfunc();
 	};
 
 	var show_image = function(topimglink, leftimglink, rightimglink) {
@@ -357,7 +294,7 @@ var Experiment2 = function() {
 		$("#leftbutton").html("Left");
 		$("#rightbutton").html("Right");
 
-		$('#progress').html("Progress: (" + progress + " /" + numsets / 2 + ")");
+		$('#progress').html("Progress: (" + progress + " /" + numsets + ")");
 	}
 
 	var remove_image = function() {
@@ -401,10 +338,11 @@ var BasicInfo = function() {
 
 };
 
-var ExperimentBreak = function(interval){
+var ExperimentBreak = function(callbackfunc, interval){
 	psiTurk.showPage('expbreak.html');
 	var finish = function(){
-		currentview = new Experiment2();
+		//currentview = new Experiment2();
+		callbackfunc();
 	};
 	var cont = function(){
 		timeoutvar = setTimeout(function(){
@@ -421,7 +359,7 @@ var ExperimentBreak = function(interval){
 * Questionnaire *
 ****************/
 
-var Questionnaire = function() {
+var AfterExp = function() {
 
 	var error_message = "<h1>Oops!</h1><p>Something went wrong submitting your HIT. This might happen if you lose your internet connection. Press the button to resubmit.</p><button id='resubmit'>Resubmit</button>";
 
@@ -472,8 +410,38 @@ var Questionnaire = function() {
 	});
 };
 
-// Task object to keep track of the current phase
 var currentview;
+
+var prepareStims = function(arg, numimgs){
+	var Flinklist = [];
+	imgFolderPath = '/static/images/EclipseFace/';
+	var stims = [];
+	for (i = 1; i < numimgs; ++i){
+		Flinklist.push(imgFolderPath + 'F' + i + '.png')
+	}
+
+	if (arg == 'triplet'){
+		for (i = 0; i < Flinklist.length; ++i){
+			for (j = 0; j < Flinklist.length; ++j){
+				if (j == i) continue;
+				for (k = 0; k < Flinklist.length; ++k){
+					if (k == j || k == i) continue;
+					stims.push([Flinklist[i], Flinklist[j], Flinklist[k]]);
+				}
+			}
+		}
+	} else if (arg == 'doublet'){
+		for (i = 0; i < Flinklist.length; ++i){
+			for (j = 0; j < Flinklist.length; ++j){
+				stims.push([Flinklist[i], Flinklist[j]])
+			}
+		}
+	}
+	stims = _.shuffle(stims);
+	return stims;
+};
+
+// Task object to keep track of the current phase
 
 /*******************
  * Run Task
@@ -482,7 +450,27 @@ $(window).load( function(){
     psiTurk.doInstructions(
     	instructionPages, // a list of pages you want to display in sequence
     	function() {
-    		currentview = new Experiment1();
+
+			stims_doublet = prepareStims('doublet', 3);
+			stims_triplet = prepareStims('triplet', 4);
+			stims_triplet_1 = stims_triplet.slice(0, stims_triplet.length / 2);
+			stims_triplet_2 = stims_triplet.slice(stims_triplet.length / 2);
+			var continueToTriplet = function(){
+				currentview = new TripletExp(stims_triplet_2, function(){
+					currentview = new AfterExp();
+				});
+			};
+
+			var continueToDoublet = function(){
+				currentview = new DoubletExp(stims_doublet, function(){
+					currentview = new ExperimentBreak(continueToTriplet, DURATION_BREAK);
+				});
+			};
+
+		    currentview = new TripletExp(stims_triplet_1, function(){
+		    	currentview = new ExperimentBreak(continueToDoublet, DURATION_BREAK);
+		    });
+    		//currentview = new ExperimentBreak();
     		//currentview = new Experiment2();
     	} // what you want to do when you are done with instructions
     );
