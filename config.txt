@@ -13,7 +13,7 @@ browser_exclude_rule = MSIE, mobile, tablet
 
 [Database Parameters]
 database_url = sqlite:///participants.db
-table_name = xiaodi3
+table_name = turkdemo
 
 [Server Parameters]
 host = 0.0.0.0

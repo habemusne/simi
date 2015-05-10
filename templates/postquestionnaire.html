@@ -8,53 +8,56 @@
     <div class="instructions well">
 
         <form id="postquiz" action="debrief" method="post">
-
-
-            <!-- beginning of a question -->
-            <div class="row question">
-                <div class="col-md-8">
-                    On a scale of 1-10 (where 10 is the most engaging), please rate how <b>ENGAGING</b> you found the learning task:
+            <div class="row qustion">
+                <div class="    col-md-8">
+                    Your gender is:
                 </div>
                 <div class="col-md-4">
-                    <select id="engagement" name="engagement">
-                        <option value="10">10 - Very engaging</option>
-                        <option value="9">9</option>
-                        <option value="8">8</option>
-                        <option value="7">7</option>
-                        <option value="6">6</option>
-                        <option value="5" SELECTED>5 - Moderately engaging</option>
-                        <option value="4">4</option>
-                        <option value="3">3</option>
-                        <option value="2">2</option>
-                        <option value="1">1</option>
-                        <option value="0">0 - Not engaging</option>
+                    <select id="gender" name="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                     </select>
                 </div>
             </div>
-            <!-- end of a question -->
 
-
-            <!-- beginning of a question -->
-            <div class="row question">
+            <div class="row qustion">
                 <div class="col-md-8">
-                    On a scale of 1-10 (where 10 is the most difficult), please rate how <b>DIFFICULT</b> you found the learning task:
+                    Please enter your age
                 </div>
                 <div class="col-md-4">
-                    <select id="difficulty" name="difficulty">
-                        <option value="10">10 - Very difficult</option>
-                        <option value="9">9</option>
-                        <option value="8">8</option>
-                        <option value="7">7</option>
-                        <option value="6">6</option>
-                        <option value="5" SELECTED>5 - Moderately difficult</option>
-                        <option value="4">4</option>
-                        <option value="3">3</option>
-                        <option value="2">2</option>
-                        <option value="1">1</option>
-                        <option value="0">0 - Not difficult at all</option>
+                    <input id="age" name="age" style="height:20px;margin-top:3px;font-size:12px;"/>
+                </div>
+            </div>
+            
+            <div class="row qustion">
+                <div class="col-md-8">
+                    Please specify your ethnicity
+                </div>
+                <div class="col-md-4">
+                    <select id="demographic" name="demographic">
+                        <option value="white"> White</option>
+                        <option value="hispanic"> Hispanic or Latino</option>
+                        <option value="african"> Black or African American</option>
+                        <option value="indian"> Native American or American Indian</option>
+                        <option value="asian"> Asian / Pacific Islander</option>
+                        <option value="other"> Other</option>
                     </select>
                 </div>
             </div>
+
+           <div class="row qustion">
+                <div class="col-md-8">
+                    Indicate your handedness
+                </div>
+                <div class="col-md-4">
+                    <select id="handedness" name="handedness">
+                        <option value="right"> Right-handedness</option>
+                        <option value="left"> Left-handedness</option>
+                        <option value="mixed"> Mixed-handedness</option>
+                    </select>
+                </div>
+            </div>
+
             <!-- end of a question -->
         </form>
     </div>

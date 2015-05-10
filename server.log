@@ -2514,3 +2514,380 @@ OperationalError: cannot rollback - no transaction is active
 2015-05-10 19:21:56,761 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
 2015-05-10 19:21:56,769 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
 2015-05-10 19:21:56,792 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:27:59,730 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:27:59,917 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:27:59,983 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:28:00,087 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:28:00,112 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:28:00,120 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:28:00,127 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:28:00,127 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:28:00,161 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:31:24,193 Exception on /sync/debugO1H6IV:debugKNSCER [PUT]
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/2.7/site-packages/psiturk/experiment.py", line 522, in update
+    db_session.commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/session.py", line 790, in commit
+    self.transaction.commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/session.py", line 396, in commit
+    t[1].commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1560, in commit
+    self._do_commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1591, in _do_commit
+    self.connection._commit_impl()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 690, in _commit_impl
+    self._handle_dbapi_exception(e, None, None, None, None)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1332, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Python/2.7/site-packages/sqlalchemy/util/compat.py", line 199, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 688, in _commit_impl
+    self.engine.dialect.do_commit(self.connection)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 415, in do_commit
+    dbapi_connection.commit()
+OperationalError: (sqlite3.OperationalError) disk I/O error
+2015-05-10 12:31:24,204 Exception during reset or similar
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/sqlalchemy/pool.py", line 567, in _finalize_fairy
+    fairy._reset(pool)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/pool.py", line 701, in _reset
+    pool._dialect.do_rollback(self)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 412, in do_rollback
+    dbapi_connection.rollback()
+OperationalError: cannot rollback - no transaction is active
+2015-05-10 12:50:48,167 DB error: Unique user not found.
+2015-05-10 12:50:48,168 Exception during reset or similar
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/sqlalchemy/pool.py", line 567, in _finalize_fairy
+    fairy._reset(pool)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/pool.py", line 701, in _reset
+    pool._dialect.do_rollback(self)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 412, in do_rollback
+    dbapi_connection.rollback()
+OperationalError: cannot rollback - no transaction is active
+[2015-05-10 12:55:59 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2613)
+[2015-05-10 12:55:59 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2614)
+[2015-05-10 12:55:59 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2615)
+[2015-05-10 12:55:59 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2616)
+[2015-05-10 12:55:59 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2617)
+[2015-05-10 12:55:59 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2618)
+[2015-05-10 12:55:59 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2619)
+[2015-05-10 12:55:59 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2620)
+[2015-05-10 12:55:59 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2621)
+2015-05-10 12:56:01,228 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:56:01,238 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:56:01,241 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:56:01,260 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:56:01,260 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:56:01,277 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:56:01,291 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:56:01,400 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 12:56:01,404 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 13:19:53,651 DB error: Unique user not found.
+2015-05-10 13:19:53,652 Exception during reset or similar
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/sqlalchemy/pool.py", line 567, in _finalize_fairy
+    fairy._reset(pool)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/pool.py", line 701, in _reset
+    pool._dialect.do_rollback(self)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 412, in do_rollback
+    dbapi_connection.rollback()
+OperationalError: cannot rollback - no transaction is active
+2015-05-10 13:37:10,887 Exception on /sync/debugJR47AR:debug5DB3WR [PUT]
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/2.7/site-packages/psiturk/experiment.py", line 522, in update
+    db_session.commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/session.py", line 790, in commit
+    self.transaction.commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/session.py", line 396, in commit
+    t[1].commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1560, in commit
+    self._do_commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1591, in _do_commit
+    self.connection._commit_impl()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 690, in _commit_impl
+    self._handle_dbapi_exception(e, None, None, None, None)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1332, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Python/2.7/site-packages/sqlalchemy/util/compat.py", line 199, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 688, in _commit_impl
+    self.engine.dialect.do_commit(self.connection)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 415, in do_commit
+    dbapi_connection.commit()
+OperationalError: (sqlite3.OperationalError) disk I/O error
+2015-05-10 13:37:10,893 Exception during reset or similar
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/sqlalchemy/pool.py", line 567, in _finalize_fairy
+    fairy._reset(pool)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/pool.py", line 701, in _reset
+    pool._dialect.do_rollback(self)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 412, in do_rollback
+    dbapi_connection.rollback()
+OperationalError: cannot rollback - no transaction is active
+[2015-05-10 13:53:35 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2801)
+[2015-05-10 13:53:35 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2802)
+[2015-05-10 13:53:35 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2803)
+[2015-05-10 13:53:35 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2804)
+[2015-05-10 13:53:35 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2805)
+[2015-05-10 13:53:35 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2806)
+[2015-05-10 13:53:35 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2808)
+[2015-05-10 13:53:35 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2809)
+[2015-05-10 13:53:35 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2810)
+2015-05-10 13:53:37,244 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 13:53:37,243 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 13:53:37,274 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 13:53:37,295 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 13:53:37,310 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 13:53:37,335 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 13:53:37,377 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 13:53:37,380 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 13:53:37,384 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 13:54:14,350 Exception on /sync/debugJR47AR:debug5DB3WR [PUT]
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/2.7/site-packages/psiturk/experiment.py", line 522, in update
+    db_session.commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/session.py", line 790, in commit
+    self.transaction.commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/session.py", line 392, in commit
+    self._prepare_impl()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/session.py", line 372, in _prepare_impl
+    self.session.flush()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/session.py", line 2004, in flush
+    self._flush(objects)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/session.py", line 2122, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/session.py", line 2086, in _flush
+    flush_context.execute()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/unitofwork.py", line 373, in execute
+    rec.execute(self)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/unitofwork.py", line 532, in execute
+    uow
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/persistence.py", line 170, in save_obj
+    mapper, table, update)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/persistence.py", line 673, in _emit_update_statements
+    execute(statement, multiparams)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 914, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/sql/elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1010, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1146, in _execute_context
+    context)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1332, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Python/2.7/site-packages/sqlalchemy/util/compat.py", line 199, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 442, in do_execute
+    cursor.execute(statement, parameters)
+OperationalError: (sqlite3.OperationalError) disk I/O error [SQL: u'UPDATE xiaodi3 SET datastring=? WHERE xiaodi3.uniqueid = ?'] [parameters: ('{"condition":0,"counterbalance":0,"assignmentId":"debug5DB3WR","workerId":"debugJR47AR","hitId":"debugGZ56DK","currenttrial":16,"bonus":0,"data":[{"current_trial":0,"dateTime":1431289697374,"trialdata":{"action":"Begin","phase":"INSTRUCTIONS","templates":["instructions/subjectdata.html","instructions/instruct-1.html","instructions/instruct-2.html","instructions/instruct-3.html","instructions/instruct-ready.html"]},"uniqueid":"debugJR47AR:debug5DB3WR"},{"current_trial":1,"dateTime":1431289698266,"trialdata":{"action":"NextPage","indexOf":0,"phase":"INSTRUCTIONS","template":"instructions/subjectdata.html","viewTime":888},"uniqueid":"debugJR47AR:debug5DB3WR"},{"current_trial":2,"dateTime":1431289699059,"trialdata":{"action":"NextPage","indexOf":1,"phase":"INSTRUCTIONS","template":"instructions/instruct-1.html","viewTime":790},"uniqueid":"debugJR47AR:debug5DB3WR"},{"current_trial":3,"dateTime":1431289699756,"trialdata":{"action":"NextPage","indexOf":2,"phase":"INSTRUCTIONS","template":"instructions/instruct-2.html","viewTime":695},"uniqueid":"debugJR47AR:debug5DB3WR"},{"current_trial":4,"dateTime":1431289700624,"trialdata":{"action":"NextPage","indexOf":3,"phase":"INSTRUCTIONS","template":"instructions/instruct-3.html","viewTime":867},"uniqueid":"debugJR47AR:debug5DB3WR"},{"current_trial":5,"dateTime":1431289701186,"trialdata":{"action":"FinishInstructions","indexOf":4,"phase":"INSTRUCTIONS","template":"instructions/instruct-ready.html","viewTime":561},"uniqueid":"debugJR47AR:debug5DB3WR"},{"current_trial":6,"dateTime":1431290448042,"trialdata":{"action":"Begin","phase":"INSTRUCTIONS","templates":["instructions/instruct-1.html","instructions/instruct-2.html","instructions/instruct-3.html","instructions/instruct-ready.html"]},"uniqueid":"debugJR47AR:debug5DB3WR"},{"current_trial":7,"dateTime":1431290450997,"trialdata":{"action":"NextPage","indexOf":0,"phase":"INSTRUCTIONS","template":"instructions/instruct-1.html","viewTime":2953},"uniqueid":"debugJR47AR:debug5DB3WR"},{"current_trial":8,"dateTime":1431290452207,"trialdata":{"action":"NextPage","indexOf":1,"phase":"INSTRUCTIONS","template":"instructions/instruct-2.html","viewTime":1205},"uniqueid":"debugJR47AR:debug5DB3WR"},{"current_trial":9,"dateTime":1431290452928,"trialdata":{"action":"NextPage","indexOf":2,"phase":"INSTRUCTIONS","template":"instructions/instruct-3.html","viewTime":719},"uniqueid":"debugJR47AR:debug5DB3WR"},{"current_trial":10,"dateTime":1431290454129,"trialdata":{"action":"FinishInstructions","indexOf":3,"phase":"INSTRUCTIONS","template":"instructions/instruct-ready.html","viewTime":1200},"uniqueid":"debugJR47AR:debug5DB3WR"},{"uniqueid":"debugJR47AR:debug5DB3WR","current_trial":11,"dateTime":1431291250019,"trialdata":{"phase":"INSTRUCTIONS","templates":["instructions/instruct-1.html","instructions/instruct-2.html","instructions/instruct-3.html","instructions/instruct-ready.html"],"action":"Begin"}},{"uniqueid":"debugJR47AR:debug5DB3WR","current_trial":12,"dateTime":1431291251397,"trialdata":{"phase":"INSTRUCTIONS","template":"instructions/instruct-1.html","indexOf":0,"action":"NextPage","viewTime":1376}},{"uniqueid":"debugJR47AR:debug5DB3WR","current_trial":13,"dateTime":1431291252079,"trialdata":{"phase":"INSTRUCTIONS","template":"instructions/instruct-2.html","indexOf":1,"action":"NextPage","viewTime":680}},{"uniqueid":"debugJR47AR:debug5DB3WR","current_trial":14,"dateTime":1431291253791,"trialdata":{"phase":"INSTRUCTIONS","template":"instructions/instruct-3.html","indexOf":2,"action":"NextPage","viewTime":1711}},{"uniqueid":"debugJR47AR:debug5DB3WR","current_trial":15,"dateTime":1431291254337,"trialdata":{"phase":"INSTRUCTIONS","template":"instructions/instruct-ready.html","indexOf":3,"action":"FinishInstructions","viewTime":545}}],"questiondata":{},"eventdata":[{"eventtype":"initialized","interval":0,"timestamp":1431289697258,"value":null},{"eventtype":"window_resize","interval":0,"timestamp":1431289697258,"value":[1024,422]},{"eventtype":"focus","interval":1001,"timestamp":1431289698259,"value":"on"},{"eventtype":"focus","interval":751490,"timestamp":1431290449749,"value":"off"},{"eventtype":"window_resize","interval":73,"timestamp":1431290449822,"value":[1024,422]},{"eventtype":"focus","interval":1171,"timestamp":1431290450993,"value":"on"}],"useragent":""}', u'debugJR47AR:debug5DB3WR')]
+2015-05-10 14:02:22,752 Exception on /sync/debugG0AELF:debug7JE8KY [PUT]
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/2.7/site-packages/psiturk/experiment.py", line 522, in update
+    db_session.commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/session.py", line 790, in commit
+    self.transaction.commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/session.py", line 396, in commit
+    t[1].commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1560, in commit
+    self._do_commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1591, in _do_commit
+    self.connection._commit_impl()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 690, in _commit_impl
+    self._handle_dbapi_exception(e, None, None, None, None)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1332, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Python/2.7/site-packages/sqlalchemy/util/compat.py", line 199, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 688, in _commit_impl
+    self.engine.dialect.do_commit(self.connection)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 415, in do_commit
+    dbapi_connection.commit()
+OperationalError: (sqlite3.OperationalError) disk I/O error
+2015-05-10 14:02:22,757 Exception during reset or similar
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/sqlalchemy/pool.py", line 567, in _finalize_fairy
+    fairy._reset(pool)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/pool.py", line 701, in _reset
+    pool._dialect.do_rollback(self)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 412, in do_rollback
+    dbapi_connection.rollback()
+OperationalError: cannot rollback - no transaction is active
+2015-05-10 14:03:48,190 DB error: Unique user not found.
+2015-05-10 14:03:48,191 Exception during reset or similar
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/sqlalchemy/pool.py", line 567, in _finalize_fairy
+    fairy._reset(pool)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/pool.py", line 701, in _reset
+    pool._dialect.do_rollback(self)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 412, in do_rollback
+    dbapi_connection.rollback()
+OperationalError: cannot rollback - no transaction is active
+[2015-05-10 14:16:30 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2966)
+[2015-05-10 14:16:30 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2964)
+[2015-05-10 14:16:30 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2967)
+[2015-05-10 14:16:30 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2968)
+[2015-05-10 14:16:30 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2969)
+[2015-05-10 14:16:30 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2970)
+[2015-05-10 14:16:30 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2971)
+[2015-05-10 14:16:30 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2972)
+[2015-05-10 14:16:30 -0700] [2609] [CRITICAL] WORKER TIMEOUT (pid:2965)
+2015-05-10 14:16:32,091 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:16:32,074 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:16:32,097 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:16:32,103 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:16:32,109 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:16:32,121 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:16:32,128 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:16:32,135 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:16:32,146 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:28:26,805 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:28:26,873 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:28:27,162 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:28:27,172 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:28:27,193 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:28:27,236 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:28:27,249 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:28:27,271 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:28:27,277 /Library/Python/2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 14:28:52,301 Exception on /sync/debugLF0F9P:debugIUEOH6 [PUT]
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/2.7/site-packages/psiturk/experiment.py", line 522, in update
+    db_session.commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/session.py", line 790, in commit
+    self.transaction.commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/session.py", line 396, in commit
+    t[1].commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1560, in commit
+    self._do_commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1591, in _do_commit
+    self.connection._commit_impl()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 690, in _commit_impl
+    self._handle_dbapi_exception(e, None, None, None, None)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1332, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Python/2.7/site-packages/sqlalchemy/util/compat.py", line 199, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 688, in _commit_impl
+    self.engine.dialect.do_commit(self.connection)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 415, in do_commit
+    dbapi_connection.commit()
+OperationalError: (sqlite3.OperationalError) disk I/O error
+2015-05-10 14:28:52,306 Exception during reset or similar
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/sqlalchemy/pool.py", line 567, in _finalize_fairy
+    fairy._reset(pool)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/pool.py", line 701, in _reset
+    pool._dialect.do_rollback(self)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 412, in do_rollback
+    dbapi_connection.rollback()
+OperationalError: cannot rollback - no transaction is active
+2015-05-10 14:31:04,172 Exception on /sync/debug08OZEZ:debugS5FATI [PUT]
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/2.7/site-packages/psiturk/experiment.py", line 522, in update
+    db_session.commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/session.py", line 790, in commit
+    self.transaction.commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/orm/session.py", line 396, in commit
+    t[1].commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1560, in commit
+    self._do_commit()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1591, in _do_commit
+    self.connection._commit_impl()
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 690, in _commit_impl
+    self._handle_dbapi_exception(e, None, None, None, None)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1332, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Python/2.7/site-packages/sqlalchemy/util/compat.py", line 199, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 688, in _commit_impl
+    self.engine.dialect.do_commit(self.connection)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 415, in do_commit
+    dbapi_connection.commit()
+OperationalError: (sqlite3.OperationalError) disk I/O error
+2015-05-10 14:31:04,178 Exception during reset or similar
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/sqlalchemy/pool.py", line 567, in _finalize_fairy
+    fairy._reset(pool)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/pool.py", line 701, in _reset
+    pool._dialect.do_rollback(self)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 412, in do_rollback
+    dbapi_connection.rollback()
+OperationalError: cannot rollback - no transaction is active

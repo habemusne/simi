@@ -22,7 +22,6 @@ var mycounterbalance = counterbalance;  // they tell you which condition you hav
 
 // All pages to be loaded
 var pages = [
-	"instructions/subjectdata.html",
 	"instructions/instruct-1.html",
 	"instructions/instruct-2.html",
 	"instructions/instruct-3.html",
@@ -30,13 +29,13 @@ var pages = [
 	"exp1stage.html",
 	"expbreak.html",
 	"exp2stage.html",
-	"postquestionnaire.html"
+	"postquestionnaire.html",
+	"thanks.html"
 ];
 
 psiTurk.preloadPages(pages);
 
 var instructionPages = [ // add as a list as many pages as you like
-	"instructions/subjectdata.html",
 	"instructions/instruct-1.html",
 	"instructions/instruct-2.html",
 	"instructions/instruct-3.html",
@@ -56,7 +55,10 @@ var DoubletExp = function(stims, callbackfunc) {
 	var timeoutvar;
 	var next = function() {
 		if (stims.length===0) {
-			finish();
+			setTimeout(function(){
+				finish()
+			}, 1000);
+			//finish();
 		}
 		else {
 			$('#blank').show();
@@ -100,7 +102,7 @@ var DoubletExp = function(stims, callbackfunc) {
 			listening = false;
 			var rt = new Date().getTime() - wordon;
 
-			psiTurk.recordTrialData({'phase':"TEST",
+			psiTurk.recordTrialData({'phase':"Doublet",
                                      'leftimg':stim[0],
                                      'rightimg':stim[1],
                                      'response':response,
@@ -172,7 +174,7 @@ var DoubletExp = function(stims, callbackfunc) {
 	next();
 };
 
-var TripletExp = function(stims, callbackfunc) {
+var TripletExp = function(stims, phase, callbackfunc) {
 
 	var progress = 1;
 
@@ -188,7 +190,9 @@ var TripletExp = function(stims, callbackfunc) {
 	var timeoutvar3;
 	var next = function() {
 		if (stims.length===0) {
-			finish();
+			setTimeout(function(){
+				finish()
+			}, 1000);
 		}
 		else {
 			$('#blank').show();
@@ -236,7 +240,7 @@ var TripletExp = function(stims, callbackfunc) {
 			listening = false;
 			var rt = new Date().getTime() - wordon;
 
-			psiTurk.recordTrialData({'phase':"TEST",
+			psiTurk.recordTrialData({'phase':phase,
 				                     'topimg': stim[0],
                                      'leftimg':stim[1],
                                      'rightimg':stim[2],
@@ -322,18 +326,22 @@ var TripletExp = function(stims, callbackfunc) {
 };
 
 var BasicInfo = function() {
+
 	record_responses = function() {
 
-		psiTurk.recordTrialData({'phase':'prequestionnaire', 'status':'submit'});
+		psiTurk.recordTrialData({'phase':'subjectdata', 'status':'submit'});
 
 		$('select').each( function(i, val) {
 			psiTurk.recordUnstructuredData(this.id, this.value);		
 		});
+		$('input').each( function(i, val){
+			psiTurk.recordUnstructuredData(this.id, this.value);
+		});
 
 	};
 
-	psiTurk.showPage('instruct-3.html');
-	psiTurk.recordTrialData({'phase':'prequestionnaire', 'status':'begin'});
+	psiTurk.showPage('subjectdata.html');
+	psiTurk.recordTrialData({'phase':'subjectdata', 'status':'begin'});
 	
 	// $("#next").click(function () {
 	//     record_responses();
@@ -373,6 +381,9 @@ var AfterExp = function() {
 		$('textarea').each( function(i, val) {
 			psiTurk.recordUnstructuredData(this.id, this.value);
 		});
+		$('input').each( function(i, val) {
+			psiTurk.recordUnstructuredData(this.id, this.value);
+		});
 		$('select').each( function(i, val) {
 			psiTurk.recordUnstructuredData(this.id, this.value);		
 		});
@@ -409,7 +420,9 @@ var AfterExp = function() {
                 	psiTurk.completeHIT(); // when finished saving compute bonus, the quit
                 }); 
             }, 
-            error: prompt_resubmit});
+            error: prompt_resubmit
+        });
+        psiTurk.showPage('thanks.html')
 	});
 };
 
@@ -458,23 +471,27 @@ $(window).load( function(){
 			stims_triplet = prepareStims('triplet', NUM_FOR_TRIPLET);
 			stims_triplet_1 = stims_triplet.slice(0, stims_triplet.length / 2);
 			stims_triplet_2 = stims_triplet.slice(stims_triplet.length / 2);
-			var continueToTriplet = function(){
-				currentview = new TripletExp(stims_triplet_2, function(){
+			var continueToTriplet2 = function(){
+				phase = 'Triplet2';
+				currentview = new TripletExp(stims_triplet_2, phase, function(){
 					currentview = new AfterExp();
 				});
 			};
 
 			var continueToDoublet = function(){
 				currentview = new DoubletExp(stims_doublet, function(){
-					currentview = new ExperimentBreak(continueToTriplet, DURATION_BREAK);
+					currentview = new ExperimentBreak(continueToTriplet2, DURATION_BREAK);
 				});
 			};
 
-		    currentview = new TripletExp(stims_triplet_1, function(){
-		    	currentview = new ExperimentBreak(continueToDoublet, DURATION_BREAK);
-		    });
-    		//currentview = new ExperimentBreak();
-    		//currentview = new Experiment2();
+			var continueToTriplet1 = function(){
+				phase = 'Triplet1';
+			    currentview = new TripletExp(stims_triplet_1, phase, function(){
+			    	currentview = new ExperimentBreak(continueToDoublet, DURATION_BREAK);
+			    });
+			};
+	   		
+    		continueToTriplet1();
     	} // what you want to do when you are done with instructions
     );
 });
