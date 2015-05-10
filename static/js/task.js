@@ -10,6 +10,9 @@ var DURATION_ALERT = 3000;
 var DURATION_BREAK = 60000;
 var DELAY_QUERY = 500;
 
+var NUM_FOR_DOUBLET = 3;
+var NUM_FOR_TRIPLET = 4;
+
 // Initalize psiturk object
 var psiTurk = new PsiTurk(uniqueId, adServerLoc, mode);
 
@@ -451,8 +454,8 @@ $(window).load( function(){
     	instructionPages, // a list of pages you want to display in sequence
     	function() {
 
-			stims_doublet = prepareStims('doublet', 3);
-			stims_triplet = prepareStims('triplet', 4);
+			stims_doublet = prepareStims('doublet', NUM_FOR_DOUBLET);
+			stims_triplet = prepareStims('triplet', NUM_FOR_TRIPLET);
 			stims_triplet_1 = stims_triplet.slice(0, stims_triplet.length / 2);
 			stims_triplet_2 = stims_triplet.slice(stims_triplet.length / 2);
 			var continueToTriplet = function(){
