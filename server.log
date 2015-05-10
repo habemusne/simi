@@ -2438,3 +2438,79 @@ OperationalError: cannot rollback - no transaction is active
 2015-05-09 17:18:45,871 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
 2015-05-09 17:18:45,992 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
 2015-05-09 17:18:46,039 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 05:54:20,372 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 05:54:20,516 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 05:54:20,553 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 05:55:25,068 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 05:55:25,259 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 05:55:25,261 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 06:01:52,485 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 06:01:52,683 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 06:01:52,725 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 06:10:58,093 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 06:10:58,183 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 06:10:58,221 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:08:19,893 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:08:20,017 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:08:20,028 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:09:26,076 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:09:26,111 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:09:26,145 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:09:47,907 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:09:47,930 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:09:47,977 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:15:07,931 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:15:07,978 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:15:08,026 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:16:26,327 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:16:26,371 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:16:26,381 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:17:19,504 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:17:19,545 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:17:19,566 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:22:08,104 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:22:08,256 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:22:08,309 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:22:18,484 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:22:18,523 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:22:18,573 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+[2015-05-10 18:26:15 +0000] [8404] [ERROR] Invalid address: ('52.24.142.90', 22362)
+[2015-05-10 18:28:35 +0000] [8452] [ERROR] Invalid address: ('52.24.142.90', 22362)
+[2015-05-10 18:28:47 +0000] [8477] [ERROR] Invalid address: ('52.24.142.90', 22362)
+[2015-05-10 18:29:32 +0000] [8518] [ERROR] Invalid address: ('52.24.142.90', 22362)
+2015-05-10 18:30:47,790 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:30:47,892 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:30:47,923 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:31:17,589 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:31:17,596 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:31:17,635 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:32:07,743 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:32:07,796 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:32:07,806 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:33:44,321 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:33:44,416 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:33:44,425 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:56:57,164 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:56:57,166 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:56:57,181 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 18:58:13,615 hit_not_registered_with_ad_server (1018) {'assignmentId': [u'debug'], 'workerId': [u'None'], 'hitId': [u'debug'], 'mode': [u'live']}
+2015-05-10 18:58:24,914 hit_not_registered_with_ad_server (1018) {'assignmentId': [u'debug'], 'workerId': [u'None'], 'hitId': [u'debug'], 'mode': [u'live']}
+2015-05-10 19:01:24,249 hit_not_registered_with_ad_server (1018) {'assignmentId': [u'debug'], 'workerId': [u'None'], 'hitId': [u'debug'], 'mode': [u'live']}
+2015-05-10 19:20:35,092 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 19:20:35,139 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 19:20:35,143 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 19:20:42,511 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 19:20:42,694 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 19:20:42,743 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 19:21:22,193 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 19:21:22,341 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 19:21:22,376 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 19:21:31,124 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 19:21:31,316 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 19:21:31,335 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 19:21:46,075 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 19:21:46,230 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 19:21:46,276 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 19:21:56,761 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 19:21:56,769 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
+2015-05-10 19:21:56,792 /usr/local/lib/python2.7/site-packages/psiturk/psiturk_js/psiturk.js
