@@ -1,164 +1,28 @@
 
-body {
-    padding:0px;
-    margin: 0px;
-    background-color: white;
-    color: black;
-    font-weight: 300; 
-    font-size: 13pt;
+body{
+	text-align: center;
 }
 
-
-/* text styling */
-strong {
-  font-weight: 600;         
+.img-left{
+	margin-right:20%;
 }
 
-
-.warm {
-  color: steelblue;
-  text-align: justify;
+.img-right{
+	margin-left:20%;
+	visibility: hidden;
 }
 
-.cool {
-  color: #ccccff;
+#sliderlabels > li{
+	float:left;
+	display:inline;
+	position:relative;
+	width:14.2857%;
 }
 
-
-/* these are all the same for now, but easy to modify individually */
-#container-ad, #container-error, #container-exp, #container-consent, #container-instructions, #container-questionnaire {
-    position: absolute;
-    top: 0px; /* Header Height */
-    bottom: 0px; /* Footer Height */
-    left: 0px;
-    right: 0px;
-    padding: 100px;
-    padding-top: 5%;
-    border: 18px solid #f3f3f3;
-    background: white;
+.sim{
+	margin-top:5%;
 }
 
-#container-consent, #container-exp {  /* override padding to fit long consent forms and exp display*/
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 1%;
+.text-warning{
+	color: #E74C3C;
 }
-
-/* ad.html  - the ad that people view first */
-#adlogo {
-    float: right;
-    width: 140px;
-    padding: 2px;
-    border: 1px solid #ccc;
-}
-
-/* consent.html - the consent form */
-#consent {
-  margin: 0 auto;
-  margin-top: 0;
-  width: 800px;
-  font-size: 100%;
-}
-
-.legal {
-  text-align: justify;
-  font-size: 11pt;
-  line-height: 1.1em;
-}
-
-#trial {
-  margin: 0 auto;
-  width: 800px;
-  text-align: center;
-}
-
-#query {
-  color: darkgray;
-}
-
-.question {
-  margin-bottom: 30px;
-}
-
-/* errors */
-#error img {
-  padding-right: 10px;
-  padding-top: 15px;
-}
-
-.instru-clicked{
-  transition-delay:2s;
-  transition-duration:1s;
-  
-}
-
-.roundbutton{
-  min-height:60px;
-  min-width:60px;
-  border-radius: 50%;
-  border-width:1px;
-  border-color:#2C3E50;
-  background-color:#2C3E50;
-  color:#ECF0F1;
-  cursor:pointer;
-
-  transition-delay:0.1;
-  transition-duration:0.5;
-}
-
-.roundbutton:hover{
-  background-color:#34495E;
-  border-color:#34495E;
-}
-
-.roundbutton:active{
-  background-color:#ECF0F1;
-  color:#34495E;
-}
-
-.alert-text{
-  color: #E74C3C;
-  display:none;
-}
-
-.blank{
-  min-height: 100%;
-  z-index:1000;
-  width:100%;
-  position:fixed;
-  background-color:#ccc;
-}
-
-.break-instruction{
-  text-align: center;
-}
-
-.rightimg{
-
-}
-
-.leftimg{
-  margin-right:20%;
-}
-
-.leftbutton{
-  width: 15%;
-  height:40px;
-  margin-right:25%;
-  margin-top:3%
-}
-
-.rightbutton{
-  width: 15%;
-  height:40px;
-  margin-top:3%
-}
-
-
-
-
-
-
-
-

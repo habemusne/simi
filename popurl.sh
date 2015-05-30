@@ -1,2 +1,0 @@
-server on
-debug -p

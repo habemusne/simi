@@ -1,7 +1,7 @@
 <!doctype html>
 <!-- 
 	The ad.html has a very specific format.
-DDDD
+
 	Really there are two "ads" contained within this file.
 
 	The first ad displays to participants who are browsing
@@ -76,8 +76,16 @@ DDDD
 
 							    <h1>Call for participants</h1>
 							    <p>
-									Click "Accept Hits" to continue
-							    </p>							    
+									The Angela's Lab at University of California San Diego is looking for online participants for a brief psychology experiment. The task will last for about 60 minutes and you will be payed $5 for completion. 
+							    </p>
+							    <div class="alert alert-danger">
+									<strong>This task can only be completed once.</strong> 
+									If you have already completed this task before, the system will not allow you to run again. If this looks familiar please return the HIT so that someone else can participate.
+							    </div>
+							    <p>
+								    Otherwise, click the "Accept HIT" button on the Amazon site above to begin the task.
+								</p>
+							    
 
 							{% else %}
 
@@ -93,10 +101,9 @@ DDDD
 									openwindow() function below if you want you experiment
 									to work.
 								-->
-							    <h1>Thank you for accepting this HIT!</h1>
+							    <h1>Thank you for accepting this HIT.</h1>
 							    <p>
-							    	By clicking the following URL link, you will be taken to the experiment,
-							        including complete instructions and an informed consent agreement.
+							    	By clicking the following URL link, you will be taken to the experiment. 
 							    </p>
 							    <script>
 									function openwindow() {
