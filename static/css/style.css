@@ -1,6 +1,7 @@
 
 body{
 	text-align: center;
+	font-size: 18px !important;
 }
 
 .img-left{
@@ -26,3 +27,24 @@ body{
 .text-warning{
 	color: #E74C3C;
 }
+
+.qstn-left{
+	text-align: left;
+}
+
+.qstn-right{
+	text-align: left;
+}
+
+.qstn-right > select, .qstn-right > input{
+	width: 250px;
+}
+
+.qstn-container{
+	padding-left: 10%;
+}
+
+
+
+
+
