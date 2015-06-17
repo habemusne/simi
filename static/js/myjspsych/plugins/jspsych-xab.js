@@ -61,7 +61,10 @@
 						"id": 'jspsych-xab-stimulus1'
 					}));
 					display_element.append($('<div>', {
-						"id": 'jspsych-xab-stimulus2'
+						"id": 'jspsych-xab-stimulus2',
+						"css": {
+							"min-height": "200px"
+						}
 					}));
 				} else {
 					display_element.append($('<div>', {
@@ -134,7 +137,7 @@
 				}
 
 				if (trial.prompt !== "") {
-					$("#jspsych-xab-stimulus2").append($('<p>', {
+					display_element.append($('<p>', {
 						html:trial.prompt
 					}));
 				}

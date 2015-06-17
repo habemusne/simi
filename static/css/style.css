@@ -4,13 +4,12 @@ body{
 	font-size: 18px !important;
 }
 
-.img-left{
+.left{
 	margin-right:20%;
 }
 
-.img-right{
+.right{
 	margin-left:20%;
-	visibility: hidden;
 }
 
 #sliderlabels > li{
