@@ -116,11 +116,11 @@
 				if (!trial.is_html) {
 					$("#jspsych-xab-stimulus2").append($('<img>', {
 						"src": images[0],
-						"class": 'left'
+						"class": 'left',
 					}));
 					$("#jspsych-xab-stimulus2").append($('<img>', {
 						"src": images[1],
-						"class": 'right'
+						"class": 'right',
 					}));
 				} else {
 					display_element.append($('<div>', {
@@ -138,6 +138,17 @@
 						html:trial.prompt
 					}));
 				}
+
+				$(window).keypress(function(e){
+					console.log(e.keyCode);
+					if (e.keyCode == 108) {
+						$('.left').css({'border-width': '3', 'border-color': '#E74C3C', 'border-style': 'solid'});
+					}
+					if (e.keyCode == 114) {
+						$('.right').css({'border-width': '1'});
+					}
+
+				});
 
 				// if timing_ab is > 0, then we hide the stimuli after timing_ab milliseconds
 				// if (trial.timing_ab > 0) {
@@ -180,13 +191,12 @@
 					};
 					jsPsych.data.write($.extend({}, trial_data, trial.data));
 
-					display_element.html(''); // remove all
-
 					xab_trial_complete = true;
 
 					// move on to the next trial after timing_post_trial milliseconds
 					if (trial.timing_post_trial > 0) {
 						setTimeout(function() {
+							display_element.html('')
 							jsPsych.finishTrial();
 						}, trial.timing_post_trial);
 					} else {

@@ -122,7 +122,7 @@
         }));
 
         $("#slider").slider({
-          value: Math.ceil(trial.intervals / 2),
+          value: 0,
           min: 1,
           max: trial.intervals,
           step: 1,

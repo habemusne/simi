@@ -28,23 +28,12 @@ body{
 	color: #E74C3C;
 }
 
-.qstn-left{
-	text-align: left;
-}
-
-.qstn-right{
-	text-align: left;
-}
-
-.qstn-right > select, .qstn-right > input{
+.qstn-select{
 	width: 250px;
+	border: 0;
+	height:40px;
+	background-color:none;
 }
-
-.qstn-container{
-	padding-left: 10%;
-}
-
-
 
 
 
