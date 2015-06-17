@@ -139,16 +139,18 @@
 					}));
 				}
 
-				$(window).keypress(function(e){
-					console.log(e.keyCode);
+				var press_listener = function(e){
 					if (e.keyCode == 108) {
 						$('.left').css({'border-width': '3', 'border-color': '#E74C3C', 'border-style': 'solid'});
+						$(window).unbind('keypress', press_listener);
 					}
 					if (e.keyCode == 114) {
-						$('.right').css({'border-width': '1'});
+						$('.right').css({'border-width': '3', 'border-color': '#E74C3C', 'border-style': 'solid'});
+						$(window).unbind('keypress', press_listener);
 					}
+				};
 
-				});
+				$(window).keypress(press_listener);
 
 				// if timing_ab is > 0, then we hide the stimuli after timing_ab milliseconds
 				// if (trial.timing_ab > 0) {
