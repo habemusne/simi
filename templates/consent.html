@@ -16,11 +16,89 @@
               self.close(); // no harm, no foul here
             }
         </script>
+        <<style type="text/css">
+            body {
+                    overflow: auto;
+                    }
+
+            .slide div { 
+                    width: 700px;
+                    margin: 0 auto;
+                    margin-top: 50px;
+                    background-color:#fff;
+                }
+
+            select {
+                    font-size: 12pt;
+                }
+
+
+            
+        </style>
     </head>
     <body>
+        <div id="consent" class="slide">
+<div style='text-align: left'>
+    <h2>Study Information</h2>
+
+        <p>Please read the following information carefully before deciding whether to participate in this experiment.</p>
+
+        <hr>
+        
+        <p><b>Why are you doing this research?</b><br/>
+        We want to understand the way the human brain helps us understand the faces.  More specifically, we want to know the way we measure the similarities between faces.  </p> 
+
+        <p><b>What will I have to do?</b><br/>
+        We will be asking you to pay attention to face images on your computer screen.  We will also ask you to make responses using your keyboard or your mouse.
+        You will receive more specific instructions shortly.</p>
+
+        <p><b>How long will this experiment take?</b><br/>
+        This experiment will take about 30  minutes.</p> 
+
+        <p><b>Are there are any risks?</b><br/> 
+        We do not expect there to be any risks.  For questions of a very private nature that might make you feel uncomfortable, you have the option to skip that question or decline to respond. You are also free to end the experiment at any time by closing your browser window.</p>
+        
+        <!-- <p><b>What do I get out of it?</b><br/>
+        We will give you feedback on how you did when you finish the experiment. We will also tell you how you compare with other people who did this experiment.
+        We will also explain what we hope to learn from this research.  The final results from this experiment will be posted on the Results page.</p> -->
+
+        <p><b>Will I get paid?</b><br/>
+        Yes, we do provide compensation for participation in this experiment.</p>
+        
+        <p><b>Will you share my information with other people?</b><br/>
+        All of your information is stored in a secure database. All of our databases are password-protected and secure. </p>
+        
+        <p><b>What if I change my mind and don't want to do the experiment anymore?</b><br/>
+        You will only get paid until you finish the test. Your decision not to participate or to withdraw will directly affect your payment.</p>
+        
+
+<p><b>What if I have questions or something to tell you?</b> <br/>If you have any questions or comments about this experiment, please contact Amanda Song at
+<a href="mailto:feijuejuanling@gmail.com">feijuejuanling@gmail.com</a>.  <!--Also, please feel free to browse the FAQ  or ABOUT page to find out
+more about this website and the people involved in this research.--> </p>
+<!--<p><b>What if I have questions about my rights in this research, have a complaint, or want to report a problem to someone besides the researcher?</b> <br/>
+If you have questions about your rights in this research or for questions, concerns, suggestions, or complaints that are not being addressed by the researcher, or in the case of research-related harm, please contact:
+Director of IRB Operations at the Harvard University Committee on the Use of Human Subjects in Research, 1414 Massachusetts Avenue, Second Floor, Cambridge, MA 02138. Phone: 617-496-CUHS (2847); Email: cuhs@fas.harvard.edu<br/>-->
+
+<p><b>How do I agree to participate?</b> By ticking the box next to "I agree to participate...", you are saying that:
+<ol>
+<li>You agree to take part in this research.</li>
+<li>You feel like you understand what you are getting into.</li>
+<li>You understand that if leave the experiment before it ends, you will not get paid.</li>
+</ol>
+<hr></p>
+
+<p><i>I agree to take part in this research. I feel that I understand what I am getting into, and I know I will not get paid if leave the experiment before it ends.</i></p>
+
+<p>This research has been reviewed and approved by the Committee on the Use of Human Subjects in Research at University of Canifornia, San Diego.</p>
+<!--<p><input type="checkbox" value="1" name="agree" id="consentAgree">
+I agree to take part in this experiment, and know that I will not get paid if leave the experiment before it ends.</p>-->
+<span id="consentAlert" style="color:#f00;"></span><br>
+
+</div>
+</div>
         <div id="container-consent">
             <div id="consent">
-                <h1>We need your consent to proceed</h1>
+                <!--<h1>We need your consent to proceed</h1>
                 <hr>
                 <div class="legal well">
                     <p>
@@ -34,7 +112,7 @@
                     <button type="button" class="btn btn-default btn-sm" onClick="window.print();">
                     <span class="glyphicon glyphicon-print"></span> Print a copy of this
                     </button>
-                </div>
+                </div>-->
 
                 <hr>
                 <h4>Do you understand and consent to these terms?</h4>
