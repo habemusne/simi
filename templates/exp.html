@@ -11,8 +11,9 @@
         <script src="/static/js/myjspsych/plugins/jspsych-text.js" type="text/javascript"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <script src="/static/js/myjspsych/plugins/jspsych-similarity.js" type="text/javascript"></script>
-        <script src="/static/js/myjspsych/plugins/jspsych-xab.js" type="text/javascript"></script>
+        <script src="/static/js/myjspsych/plugins/jspsych-custom-triplet.js" type="text/javascript"></script>
         <script src="/static/js/myjspsych/plugins/jspsych-text.js" type="text/javascript"></script>
+        <script src="/static/js/myjspsych/plugins/jspsych-survey-select.js" type="text/javascript"></script>
         <script src="/static/js/myjspsych/plugins/jspsych-survey-text.js" type="text/javascript"></script>
         <script src="/static/js/myjspsych/plugins/jspsych-call-function.js" type="text/javascript"></script>
         
@@ -128,7 +129,7 @@
     };
 
     var welcome_survey_block = {
-      type: "text",
+      type: "survey_select",
       text: "<div class='jspsych_target jspsych-display-element'> <div class='jspsych-survey-likert-preamble'></div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'>Your gender is</p> <select id='gender' name='gender' class='qstn-select'> <option value='empty'>Your gender is</option> <option value='Male'>Male</option> <option value='Female'>Female</option> </select> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'>Please specify your ethnicity</p> <select id='demographic' name='demographic' class='qstn-select'> <option value='empty'> Please specify your ethnicity</option> <option value='white'> White</option> <option value='hispanic'> Hispanic or Latino</option> <option value='african'> Black or African American</option> <option value='indian'> Native American or American Indian</option> <option value='asian'> Asian / Pacific Islander</option> <option value='other'> Other</option> </select> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'>Indicate your handedness</p> <select id='handedness' name='handedness' class='qstn-select'> <option value='empty'> Indicate your handedness</option> <option value='right'> Right-handedness</option> <option value='left'> Left-handedness</option> <option value='mixed'> Mixed-handedness</option> </select> </div> <br/><br/> <p class='jspsych-survey-text'>Press any key to continue.</p></div>"
     };
 
@@ -210,11 +211,9 @@
     };
 
     var prac_triplet_block = {
-      type: 'xab',
+      type: 'custom_triplet',
       stimuli: prac_triplet_stim,
-      left_key: 'L',
-      right_key: 'R',
-      prompt: "Select the face that is more similar to the top one by pressing 'L' or 'R'.",
+      prompt: "Press two similar faces.",
       timing_post_trial: post_trial_gap
     };
 
@@ -227,20 +226,16 @@
     };
 
     var test_triplet1_block = {
-      type: 'xab',
+      type: 'custom_triplet',
       stimuli: test_triplet1_stim,
-      left_key: 'L',
-      right_key: 'R',
-      prompt: "Select the face that is more similar to the top one by pressing 'L' or 'R'.",
+      prompt: "Press two similar faces.",
       timing_post_trial: post_trial_gap
     };
 
     var test_triplet2_block = {
-      type: 'xab',
+      type: 'custom_triplet',
       stimuli: test_triplet2_stim,
-      left_key: 'L',
-      right_key: 'R',
-      prompt: "Select the face that is more similar to the top one by pressing 'L' or 'R'.",
+      prompt: "Press two similar faces.",
       timing_post_trial: post_trial_gap
     };
 
@@ -266,7 +261,6 @@
 
     /* create experiment definition array */
     var experiment = [];
-    experiment.push(test_triplet1_block);
     experiment.push(welcome_survey_age_block);
     experiment.push(welcome_survey_block);
     experiment.push(instruction1_block);
