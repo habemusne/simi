@@ -4,3 +4,5 @@
 *.pyc
 
 /.psiturk_history
+
+/.static/images/2kfaces

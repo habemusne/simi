@@ -61,12 +61,82 @@
 
     // Input: gender = 'F' / 'M'
     // Output: images of specified gener in folder static/images/EclipseFace
-    function getAllImages (gender, maxnum) {
+    function getAllImages_EclipseFace (gender, maxnum) {
       images = [];
       for (i = 1; i < maxnum + 1; ++i){
         images.push('/static/images/EclipseFace/' + gender + i + '.png');
       }
       return images;
+    }
+
+    function getDoubletStimuli_EclipseFace (gender, num, numcatch) {
+      stimuli = [];
+      allimages = getAllImages(gender, num);
+      for (i = 0; i < allimages.length; ++i){
+        for (j = i + 1; j < allimages.length; ++j){
+          stimuli.push([allimages[i], allimages[j]]);
+        }
+      }
+      if (numcatch != 0){
+        randlist = generateUniqueRandomNums(numcatch, 10, stimuli.length);
+
+      }
+      return stimuli;
+    }
+
+    function getTripletStimuli_EclipaseFace (gender, num, numcatch) {
+      stimuli = [];
+      allimages = getAllImages(gender, num);
+      for (i = 0; i < allimages.length; ++i){
+        for (j = i + 1; j < allimages.length; ++j){
+          for (k = j + 1; k < allimages.length; ++k){
+            arr = [allimages[i], allimages[j], allimages[k]];
+            jsPsych.randomization.shuffle(arr)
+            stimuli.push(arr);
+          }
+        }
+      }
+      console.log(stimuli.length);
+      return stimuli;
+    }
+
+
+    function getAllImages (gender, maxnum) {
+      images = [];
+      if (gender == 'F'){
+        gender = 'female'
+      } else {
+        gender = 'male'
+      }
+      for (i = 1; i < maxnum + 1; ++i){
+        images.push('/static/images/2kfaces_' + gender + '/' + i + '.jpg');
+      }
+      return images;
+    }
+
+    function getDoubletStimuli (gender, num, numcatch) {
+      stimuli = [];
+      allimages = getAllImages(gender, num);
+      for (i = 0; i < allimages.length - 1; i += 2){
+        stimuli.push([allimages[i], allimages[i + 1]]);
+      }
+      if (numcatch != 0){
+        randlist = generateUniqueRandomNums(numcatch, 10, stimuli.length);
+
+      }
+      return stimuli;
+    }
+
+    function getTripletStimuli (gender, num, numcatch) {
+      stimuli = [];
+      allimages = getAllImages(gender, num);
+      for (i = 0; i < allimages.length - 2; i += 3){
+        arr = [allimages[i], allimages[i + 1], allimages[i + 2]];
+        jsPsych.randomization.shuffle(arr)
+        stimuli.push(arr);
+      }
+      console.log(stimuli.length);
+      return stimuli;
     }
 
     function generateUniqueRandomNums(numrands, start, end){
@@ -83,40 +153,6 @@
       return randlist;
     }
 
-    // Input: number of images used in the whole stimuli
-    // Output: array containing doublets of stimuli. Each pair 
-    //   does not occur more than once (regardless of the order of 
-    //   both images), and each pair does not contain the same image.
-    function getDoubletStimuli(gender, num, numcatch) {
-      stimuli = [];
-      allimages = getAllImages(gender, num);
-      for (i = 0; i < allimages.length; ++i){
-        for (j = i + 1; j < allimages.length; ++j){
-          stimuli.push([allimages[i], allimages[j]]);
-        }
-      }
-      if (numcatch != 0){
-        randlist = generateUniqueRandomNums(numcatch, 10, stimuli.length);
-
-      }
-      return stimuli;
-    }
-
-    function getTripletStimuli(gender, num, numcatch) {
-      stimuli = [];
-      allimages = getAllImages(gender, num);
-      for (i = 0; i < allimages.length; ++i){
-        for (j = i + 1; j < allimages.length; ++j){
-          for (k = j + 1; k < allimages.length; ++k){
-            arr = [allimages[i], allimages[j], allimages[k]];
-            jsPsych.randomization.shuffle(arr)
-            stimuli.push(arr);
-          }
-        }
-      }
-      console.log(stimuli.length);
-      return stimuli;
-    }
 
     var post_trial_gap = function() {
       return Math.floor( Math.random() * 750 ) + 250;
@@ -187,14 +223,15 @@
 
     /* define test block */
 
-    var prac_doublet_stim = getDoubletStimuli('F', 3);
-    var test_doublet_stim = getDoubletStimuli('F', 3);
-    var prac_triplet_stim = getTripletStimuli('F', 3);
-    var test_triplet_all_stim = getTripletStimuli('F', 5);
+    var prac_doublet_stim = getDoubletStimuli('F', 4);
+    var test_doublet_stim = getDoubletStimuli('F', 14);
+    var prac_triplet_stim = getTripletStimuli('F', 6);
+    var test_triplet_all_stim = getTripletStimuli('F', 18);
     var test_triplet1_stim = test_triplet_all_stim.slice(
       0, test_triplet_all_stim.length / 2);
     var test_triplet2_stim = test_triplet_all_stim.slice(
       test_triplet_all_stim.length / 2);
+    jsPsych.preloadImages(getAllImages('F', 6), start)
 
     jsPsych.randomization.shuffle(prac_doublet_stim);
     jsPsych.randomization.shuffle(test_doublet_stim);
@@ -279,7 +316,6 @@
     experiment.push(complete_block);
     experiment.push(debrief_block);
 
-    jsPsych.preloadImages(getAllImages('F', 6), start)
     var psiturk = new PsiTurk(uniqueId, adServerLoc, mode);
 
     /* start the experiment */
