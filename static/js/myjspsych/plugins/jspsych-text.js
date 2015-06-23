@@ -22,7 +22,7 @@
             for (var i = 0; i < trials.length; i++) {
                 trials[i] = {};
                 trials[i].text = params.text[i]; // text of all trials
-                trials[i].cont_key = params.cont_key || []; // keycode to press to advance screen, default is all keys.
+                //trials[i].cont_key = params.cont_key || []; // keycode to press to advance screen, default is all keys.
             }
             return trials;
         };
@@ -62,15 +62,43 @@
                 display_element.click(mouse_listener);
                 var start_time = (new Date()).getTime();
             } else {
-                jsPsych.pluginAPI.getKeyboardResponse(after_response, trial.cont_key);
+                //jsPsych.pluginAPI.getKeyboardResponse(after_response, trial.cont_key);
             }
+
+
+            // add Continue button
+            display_element.append($('<button>', {
+                'id': 'jspsych-survey-text-next',
+                'class': 'jspsych-survey-text'
+            }));
+            $("#jspsych-survey-text-next").html('Continue');
+            $("#jspsych-survey-text-next").click(function() {
+                // measure response time
+                var endTime = (new Date()).getTime();
+                var response_time = endTime - startTime;
+                jsPsych.data.write({
+                    "rt": response_time
+                //"responses": JSON.stringify(question_data)
+                });
+                display_element.html('');
+                //save_data(info.rt);
+                // next trial
+                jsPsych.finishTrial(); 
+            });
+            var startTime = (new Date()).getTime();
+
+
+
+
 
             function save_data(key, rt) {
                 jsPsych.data.write({
                     "rt": rt,
                     "key_press": key
                 });
+                
             }
+            
         };
 
         return plugin;

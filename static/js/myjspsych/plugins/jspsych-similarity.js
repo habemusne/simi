@@ -22,7 +22,8 @@
         trials[i] = {};
         trials[i].a_path = params.stimuli[i][0];
         trials[i].b_path = params.stimuli[i][1];
-        trials[i].labels = (typeof params.labels === 'undefined') ? ["Not at all similar", "Identical"] : params.labels;
+        trials[i].labels = (typeof params.labels === 'undefined') ? ["1", "2"] : params.labels;
+        trials[i].labelName = (typeof params.labelName === 'undefined') ? ["Not at all similar", "Identical"] : params.labelName;
         trials[i].intervals = params.intervals || 100;
         trials[i].show_ticks = (typeof params.show_ticks === 'undefined') ? false : params.show_ticks;
 
@@ -153,7 +154,7 @@
           "css": {
             "width": "120%",
             "height": "3em",
-            "margin": "5% 0 5% -10%",
+            "margin": "5% 0 0% -5%",
             "display": "block",
             "position": "relative",
             "padding-left": "0px"
@@ -163,7 +164,26 @@
         for (var j = 0; j < trial.labels.length; j++) {
           $("#sliderlabels").append('<li>' + trial.labels[j] + '</li>');
         }
-
+        display_element.append($('<ul>', {
+          "id": "sliderlabelName",
+          "class": 'sliderlabelName',
+          "css": {
+            "width": "120%",
+            "height": "3em",
+            "margin": "0% 0 0% -10%",
+            "display": "block",
+            "position": "relative",
+            "padding-left": "0px"
+          }
+        }));
+        
+        for (var j = 0, num= 1; j < trial.labelName.length; j++) {
+          
+          if(trial.labelName[j].length >1){
+            $("#sliderlabelName").append('<li id="sliderlabelName' + num +'">'+ trial.labelName[j] + '</li>');
+            num++;
+          }
+        }
         // position labels to match slider intervals
         var slider_width = $("#slider").width();
         var num_items = trial.labels.length;

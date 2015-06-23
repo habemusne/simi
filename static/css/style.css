@@ -3,22 +3,41 @@ body{
 	text-align: center;
 	font-size: 18px !important;
 }
-
+.well > p{
+	text-align: left;
+}
 .left{
 	margin-right:20%;
 }
-
+.img-left{
+	padding-right:20%;
+}
 .right{
 	margin-left:20%;
 }
-
+.img-right{
+	padding-left:20%;
+}
 #sliderlabels > li{
 	float:left;
 	display:inline;
 	position:relative;
-	width:14.2857%;
+	width:10.3%;
 }
-
+#sliderlabelName2 {
+	float:left;
+	display:inline;
+	position:relative;
+	width:20%;
+	margin-left: 25%;
+}
+#sliderlabelName1 {
+	float:left;
+	display:inline;
+	position:relative;
+	width:20%;
+	margin-right: 35%;
+}
 .sim{
 	margin-top:5%;
 }

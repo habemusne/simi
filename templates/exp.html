@@ -15,6 +15,7 @@
         <script src="/static/js/myjspsych/plugins/jspsych-text.js" type="text/javascript"></script>
         <script src="/static/js/myjspsych/plugins/jspsych-survey-select.js" type="text/javascript"></script>
         <script src="/static/js/myjspsych/plugins/jspsych-survey-text.js" type="text/javascript"></script>
+        <script src="/static/js/myjspsych/plugins/jspsych-survey-new.js" type="text/javascript"></script>
         <script src="/static/js/myjspsych/plugins/jspsych-call-function.js" type="text/javascript"></script>
         
         <script type="text/javascript">
@@ -69,6 +70,24 @@
       return images;
     }
 
+    function generateUniqueRandomNums(numrands, start, end){
+      var pool = [];
+      for (i = start; i < end; ++i){
+        pool[i] = i;
+      }
+      randlist = [];
+      for (i = 0; i < numrands; ++i){
+        var index = Math.floor(pool.length * Math.random());
+        var drawn = pool.splice(index, 1);
+        randlist.push(drawn);
+      }
+      return randlist;
+    }
+
+    // Input: number of images used in the whole stimuli
+    // Output: array containing doublets of stimuli. Each pair 
+    //   does not occur more than once (regardless of the order of 
+    //   both images), and each pair does not contain the same image.
     function getDoubletStimuli_EclipseFace (gender, num, numcatch) {
       stimuli = [];
       allimages = getAllImages(gender, num);
@@ -84,7 +103,7 @@
       return stimuli;
     }
 
-    function getTripletStimuli_EclipaseFace (gender, num, numcatch) {
+    function getTripletStimuli_EclipseFace (gender, num, numcatch) {
       stimuli = [];
       allimages = getAllImages(gender, num);
       for (i = 0; i < allimages.length; ++i){
@@ -99,7 +118,6 @@
       console.log(stimuli.length);
       return stimuli;
     }
-
 
     function getAllImages (gender, maxnum) {
       images = [];
@@ -139,67 +157,62 @@
       return stimuli;
     }
 
-    function generateUniqueRandomNums(numrands, start, end){
-      var pool = [];
-      for (i = start; i < end; ++i){
-        pool[i] = i;
-      }
-      randlist = [];
-      for (i = 0; i < numrands; ++i){
-        var index = Math.floor(pool.length * Math.random());
-        var drawn = pool.splice(index, 1);
-        randlist.push(drawn);
-      }
-      return randlist;
-    }
-
-
     var post_trial_gap = function() {
       return Math.floor( Math.random() * 750 ) + 250;
     }
 
     var question_age = ["How old are you?"];
-    var welcome_survey_age_block = {
+    /*var welcome_survey_age_block = {
       type: "survey-text",
+      //text: "<p> Please </p>",
       questions: [question_age],
+    };*/
+    var welcome_survey_new_block = {
+      type: "survey_new",
+      questions: [question_age],
+      text: "<div class='jspsych_target jspsych-display-element'> <div class='jspsych-survey-likert-preamble'></div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> Please fill out this short survey </p> <br> </br> <p class='jspsych-survey-text'> <!--My gender is--></p> <select id='gender' name='gender' class='qstn-select'> <option value='empty'> My gender is </option> <option value='Male'>Male</option> <option value='Female'>Female</option> </select> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'><!--My ethnicity is--> </p> <select id='demographic' name='demographic' class='qstn-select'> <option value='empty'> My ethnicity is</option> <option value='white'> White</option> <option value='hispanic'> Hispanic or Latino</option> <option value='african'> Black or African American</option> <option value='indian'> Native American or American Indian</option> <option value='asian'> Asian / Pacific Islander</option> <option value='other'> Other</option> </select> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'><!--My sexual orientation is --></p> <select id='demographic' name='demographic' class='qstn-select'> <option value='empty'> My sexual orientation is </option> <option value='bisexual'> Bisexual</option> <option value='heterosexual'> Heterosexual</option> <option value='homosexual'> Homosexual</option> <option value='other'> Other</option> </select> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'><!--My handedness is--> </p> <select id='handedness' name='handedness' class='qstn-select'> <option value='empty'> My handedness is</option> <option value='right'> Right-handedness</option> <option value='left'> Left-handedness</option> <option value='mixed'> Mixed-handedness</option> </select> </div> </div>"
     };
-
-    var welcome_survey_block = {
+    /*var welcome_survey_block = {
       type: "survey_select",
       text: "<div class='jspsych_target jspsych-display-element'> <div class='jspsych-survey-likert-preamble'></div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'>Your gender is</p> <select id='gender' name='gender' class='qstn-select'> <option value='empty'>Your gender is</option> <option value='Male'>Male</option> <option value='Female'>Female</option> </select> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'>Please specify your ethnicity</p> <select id='demographic' name='demographic' class='qstn-select'> <option value='empty'> Please specify your ethnicity</option> <option value='white'> White</option> <option value='hispanic'> Hispanic or Latino</option> <option value='african'> Black or African American</option> <option value='indian'> Native American or American Indian</option> <option value='asian'> Asian / Pacific Islander</option> <option value='other'> Other</option> </select> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'>Indicate your handedness</p> <select id='handedness' name='handedness' class='qstn-select'> <option value='empty'> Indicate your handedness</option> <option value='right'> Right-handedness</option> <option value='left'> Left-handedness</option> <option value='mixed'> Mixed-handedness</option> </select> </div> <br/><br/> <p class='jspsych-survey-text'>Press any key to continue.</p></div>"
-    };
+    };*/
 
     /* define welcome message block */
     var instruction1_block = {
       type: "text",
-      text: "<div><h1>Instruction (1/3)</h1> <hr> <div class='instructions well'> <p>In this experiment, you will see many faces and your task is to compare and judge face similarities.</p> <p>There are two types of tasks: face pair task and face triplet task</p> <div class='row'> <div class='col-md-6'> <h5><b>Face Pair Task</b></h5> <p>Rate the similarity level of the face pair from 1 to 7.</p> <p>1 -- Maximally dissimilar, 7 -- Maximally similar</p> <img src='/static/images/instru-p1.png' style='width:100%'/> </div> <div class='col-md-6'> <h5><b>Face Triplet Task</b></h5> <p>Decide which of the bottom face images is more similar to the top one. You can press 'Left'/ 'Right' button or click on the left/ right face image to indicate your choice.</p> <img src='/static/images/instru-p2.png' style='width:100%'/> </div> </div></div></div>"
+      text: "<div><h1>Instruction (1/3)</h1> <hr> <div class='well'> <p>In this experiment, you will see many faces and your task is to compare and judge face similarities.</p> <p>There are two types of tasks: face pair task and face triplet task</p> <div class='row'> <div class='col-md-6'> <h5><b>Face Pair Task</b></h5> <p>Rate the similarity level of the face pair from 1 to 9.</p> <p>1 -- Maximally dissimilar, 9 -- Maximally similar</p> <img src='/static/images/instru-p1.png' style='width:100%'/> </div> <div class='col-md-6'> <h5><b>Face Triplet Task</b></h5> <p>Decide which of the two face images is more similar to each other. You can click on the face image to indicate your choice.</p> <img src='/static/images/instru-p2.png' style='width:100%'/> </div> </div></div></div>"
     };
 
     var instruction2_block = {
       type: "text",
-      text: "<div><h1>Instruction (2/3)</h1> <hr> <div class='instructions well'> <p>The whole experiment will last approximately 20 mins. The timeline is as follows. <div style='text-align:center;''> <img src='/static/images/instru-p3_new.png' style='width:100%'/> </div></div></div>"
+      text: "<div><h1>Instruction (2/3)</h1> <hr> <div class='well' > <p>The whole experiment will last approximately 30 mins. The timeline is as follows. <div style='text-align:center;''> <img src='/static/images/instru-p3_new.png' style='width:100%'/> </div></div></div>"
     };
 
     var instruction3_block = {
       type: "text",
-      text: '<div><h1>Instructions (3/3)</h1> <hr> <div class="instructions well"> <p>Each presentation will remain on the screen for 0.5 seconds before you can start to respond. After choice bottoms appear, indicate your choice as fast as you can, in no more than 3 seconds. You will see the next page after indicating your choice.</p> <p>If you respond too fast or too slow, you will hear a warning sound.</p> <p>Between the tasks, you will have a 1 min break.</p> <br/> <p>You will enter the practice session after this page. Press "Continue" to start your practice. Press "Back" to return to previous instruction pages.</p> </div></div>'
+      text: '<div><h1>Instructions (3/3)</h1> <hr> <div class="well" > <p>Each presentation will remain on the screen for 0.5 seconds before you can start to respond. After choice bottoms appear, indicate your choice as fast as you can, in no more than 3 seconds. You will see the next page after indicating your choice.</p> <p>If you respond too fast or too slow, you will hear a warning sound.</p> <p>Between the tasks, you will have a 1 min break.</p> <br/> <p>You will enter the practice session after this page. Press "Continue" to start your practice. Press "Back" to return to previous instruction pages.</p> </div></div>'
     };
 
     var prac1_ready_block = {
       type: "text",
-      text: "<p>Press any key to begin the practice for Doublet experiment.</p>",
+      text: '<div><strong>Judging face similarities</strong> <hr> <div class="well">  <p>You will be presented with a series of pairs of face images.  You will be judging the similarities between them.</p>  <p>Click the "Continue" button below to practice a couple of times.</p>  <p>In the first example, you will be asked to rate the similarity level of the face pair from 1 to 9.</p> <p>1 -- Maximally Dissimilar, 9 -- Maximally Similar</p> <br></div></div>',
+        //"<p>Press any key to begin the practice for Doublet experiment.</p>",
       timing_post_trial: post_trial_gap
     };
 
     var prac2_ready_block = {
       type: "text",
-      text: "<p>The Doublet experiment practice session is over. Press any key to begin the practice for Triplet experiment.</p>",
+      text: '<div class="well"> <p>Great Job! </p> <p> Next you will do the similar thing, but instead of seeing two faces, you are going to see <strong>three</strong> faces and click on the two images that look more similar to you.</div>',
       timing_post_trial: post_trial_gap
     };
-
+    var prac_no_inst_ready_block = {
+      type: "text",
+      text: '<div class="well"> <p>Good Job! </p> <p> Practice a few more.</div>',
+      timing_post_trial: post_trial_gap
+    };
     var test_ready_block = {
       type: "text",
-      text: "<p>The pratice session is over. Press any key to begin the test.</p>",
+      text: '<div class="well"><p>Terrific! That'+ "'s" +' the end of the pratice trials. Now you will be presented with 200 trials like those you just practiced on, except that you will not receive instructions between trials. </p> <p>Remember, click on the faces that you think are more similar for trials with three faces, or rate the similarities between two faces for trials with two faces.</p> <p>The most important rule, <em> go with your guts!</em></p> <p>Click the button below to begin the experiment.</p></div>',
       timing_post_trial: post_trial_gap
     };
 
@@ -223,15 +236,14 @@
 
     /* define test block */
 
-    var prac_doublet_stim = getDoubletStimuli('F', 4);
-    var test_doublet_stim = getDoubletStimuli('F', 14);
-    var prac_triplet_stim = getTripletStimuli('F', 6);
-    var test_triplet_all_stim = getTripletStimuli('F', 18);
+    var prac_doublet_stim = getDoubletStimuli('F', 3);
+    var test_doublet_stim = getDoubletStimuli('F', 3);
+    var prac_triplet_stim = getTripletStimuli('F', 3);
+    var test_triplet_all_stim = getTripletStimuli('F', 5);
     var test_triplet1_stim = test_triplet_all_stim.slice(
       0, test_triplet_all_stim.length / 2);
     var test_triplet2_stim = test_triplet_all_stim.slice(
       test_triplet_all_stim.length / 2);
-    jsPsych.preloadImages(getAllImages('F', 6), start)
 
     jsPsych.randomization.shuffle(prac_doublet_stim);
     jsPsych.randomization.shuffle(test_doublet_stim);
@@ -239,40 +251,106 @@
     jsPsych.randomization.shuffle(test_triplet1_stim);
     jsPsych.randomization.shuffle(test_triplet2_stim);
 
+
+    //practice with instruction blocks
     var prac_doublet_block = {
       type: 'similarity',
       stimuli: prac_doublet_stim,
-      labels: ['Maximally Dissimilar', 'Very Dissimilar', 'Dissimilar', 'Indifferent', 'Similar', 'Very Similar', 'Maximally Similar'],
-      intervals:7,
+      labels: ['1', '2', '3', '4', '5', '6', '7','8','9'],
+      intervals: 9,
+      labelName: ['Maximally Dissimilar','','','','','','','','Maximally Similar'],
       timing_post_trial: post_trial_gap
     };
 
     var prac_triplet_block = {
       type: 'custom_triplet',
       stimuli: prac_triplet_stim,
-      prompt: "Press two similar faces.",
+      prompt: "Click on the two faces that you think are more similar.",
       timing_post_trial: post_trial_gap
     };
 
+
+    //practice with no instruction blocks
+    var prac_no_inst_doublet_block_1 = {
+      type: 'similarity',
+      stimuli: prac_doublet_stim,
+      labels: ['1', '2', '3', '4', '5', '6', '7','8','9'],
+      intervals: 9,
+      labelName: ['Maximally Dissimilar','','','','','','','','Maximally Similar'],
+      timing_post_trial: post_trial_gap
+    };
+    var prac_no_inst_doublet_block_2 = {
+      type: 'similarity',
+      stimuli: prac_doublet_stim,
+      labels: ['1', '2', '3', '4', '5', '6', '7','8','9'],
+      intervals: 9,
+      labelName: ['Maximally Dissimilar','','','','','','','','Maximally Similar'],
+      timing_post_trial: post_trial_gap
+    };
+    
+    var prac_no_inst_doublet_block_3 = {
+      type: 'similarity',
+      stimuli: prac_doublet_stim,
+      labels: ['1', '2', '3', '4', '5', '6', '7','8','9'],
+      intervals: 9,
+      labelName: ['Maximally Dissimilar','','','','','','','','Maximally Similar'],
+      timing_post_trial: post_trial_gap
+    };
+    var prac_no_inst_doublet_block_4 = {
+      type: 'similarity',
+      stimuli: prac_doublet_stim,
+      labels: ['1', '2', '3', '4', '5', '6', '7','8','9'],
+      intervals: 9,
+      labelName: ['Maximally Dissimilar','','','','','','','','Maximally Similar'],
+      timing_post_trial: post_trial_gap
+    };
+    var prac_no_inst_triplet_block_1 = {
+      type: 'custom_triplet',
+      stimuli: prac_triplet_stim,
+      prompt: "Click on the two faces that you think are more similar.",
+      timing_post_trial: post_trial_gap
+    };
+    var prac_no_inst_triplet_block_2 = {
+      type: 'custom_triplet',
+      stimuli: prac_triplet_stim,
+      prompt: "Click on the two faces that you think are more similar.",
+      timing_post_trial: post_trial_gap
+    };
+    var prac_no_inst_triplet_block_3 = {
+      type: 'custom_triplet',
+      stimuli: prac_triplet_stim,
+      prompt: "Click on the two faces that you think are more similar.",
+      timing_post_trial: post_trial_gap
+    };
+    var prac_no_inst_triplet_block_4 = {
+      type: 'custom_triplet',
+      stimuli: prac_triplet_stim,
+      prompt: "Click on the two faces that you think are more similar.",
+      timing_post_trial: post_trial_gap
+    };
+
+
+    //test blocks
     var test_doublet_block = {
       type: 'similarity',
       stimuli: test_doublet_stim,
-      labels: ['Maximally Dissimilar', 'Very Dissimilar', 'Dissimilar', 'Indifferent', 'Similar', 'Very Similar', 'Maximally Similar'],
-      intervals:7,
+      labels: ['1', '2', '3', '4', '5', '6', '7','8','9'],
+      labelName: ['Maximally Dissimilar','','','','','','','','Maximally Similar'],
+      intervals: 9,
       timing_post_trial: post_trial_gap
     };
 
     var test_triplet1_block = {
       type: 'custom_triplet',
       stimuli: test_triplet1_stim,
-      prompt: "Press two similar faces.",
+      prompt: "Click on the two faces that you think are more similar.",
       timing_post_trial: post_trial_gap
     };
 
     var test_triplet2_block = {
       type: 'custom_triplet',
       stimuli: test_triplet2_stim,
-      prompt: "Press two similar faces.",
+      prompt: "Click on the two faces that you think are more similar.",
       timing_post_trial: post_trial_gap
     };
 
@@ -298,15 +376,25 @@
 
     /* create experiment definition array */
     var experiment = [];
-    experiment.push(welcome_survey_age_block);
-    experiment.push(welcome_survey_block);
-    experiment.push(instruction1_block);
-    experiment.push(instruction2_block);
-    experiment.push(instruction3_block);
+    //experiment.push(welcome_survey_age_block);
+    //experiment.push(welcome_survey_block);
+    experiment.push(welcome_survey_new_block);
+    //experiment.push(instruction1_block);
+    //experiment.push(instruction2_block);
+    //experiment.push(instruction3_block);
     experiment.push(prac1_ready_block);
     experiment.push(prac_doublet_block);
     experiment.push(prac2_ready_block);
     experiment.push(prac_triplet_block);
+    experiment.push(prac_no_inst_ready_block);
+    experiment.push(prac_no_inst_doublet_block_1);
+    experiment.push(prac_no_inst_doublet_block_2);
+    experiment.push(prac_no_inst_triplet_block_1);
+    experiment.push(prac_no_inst_triplet_block_2);
+    experiment.push(prac_no_inst_doublet_block_3);
+    experiment.push(prac_no_inst_doublet_block_4);
+    experiment.push(prac_no_inst_triplet_block_3);
+    experiment.push(prac_no_inst_triplet_block_4);
     experiment.push(test_ready_block);
     experiment.push(test_triplet1_block);
     experiment.push(break1_block);
@@ -316,6 +404,7 @@
     experiment.push(complete_block);
     experiment.push(debrief_block);
 
+    jsPsych.preloadImages(getAllImages('F', 6), start)
     var psiturk = new PsiTurk(uniqueId, adServerLoc, mode);
 
     /* start the experiment */
