@@ -120,59 +120,88 @@
     }
 
     function getAllImages (gender, maxnum) {
-      images = [];
-      if (gender == 'F'){
-        gender = 'female'
-      } else {
-        gender = 'male'
-      }
-      for (i = 1; i < maxnum + 1; ++i){
-        images.push('/static/images/2kfaces_' + gender + '/' + i + '.jpg');
+      images = [
+'Google_1_Donald_Meyers_13_oval.jpg','Google_1_Phillip_Browning_17_oval.jpg',
+'Angela_Upshaw_15_oval.jpg','Audrey_Rosenbaum_10_oval.jpg',
+'Google_1_Candice_Carraway_1_oval.jpg','Google_1_Marjorie_Petty_11_oval.jpg',
+'Google_1_Donald_Meyers_13_oval.jpg','Google_1_Marvin_Lavergne_5_oval_(2).jpg',
+'Google_1_Mark_Detwiler_9_oval.jpg','Google_1_Virginia_Stokes_5_oval.jpg',
+
+'Ana_Bahr_11_oval.jpg','Google_1_Lydia_Ngo_15_oval.jpg','Google_1_Vicky_Frey_1_oval.jpg',
+'Google_1_Jeanette_Driver_11_oval.jpg','Google_1_Elaine_Grady_9_oval.jpg','Arlene_Grande_19_oval.jpg',
+'Google_1_Eric_Williford_3_oval.jpg','Google_1_Sheila_Clemmons_3_oval.jpg','Google_1_Brittany_Kelley_17_oval.jpg',
+'Google_1_Jeanette_Braswell_15_oval.jpg','Google_1_Kristi_Marty_5_oval.jpg','Google_1_Lola_Shick_5_oval.jpg',
+'Google_1_Christopher_Holladay_15_oval.jpg','Google_1_Jo_Snook_7_oval.jpg','Google_1_Marjorie_Ferris_15_oval.jpg',
+
+'Google_1_Joshua_Regan_7_oval.jpg','Google_1_Jason_Haws_1_oval.jpg',
+'Google_1_Howard_Paulino_9_oval.jpg','Google_1_Stephen_Palmer_15_oval.jpg',
+'Google_1_Randy_Gary_3_oval.jpg','Google_1_Adam_Khan_3_oval.jpg',
+'Google_1_Samuel_Whittemore_3_oval.jpg','Google_1_Benjamin_Mcshane_15_oval.jpg',
+'Google_1_George_Spurgeon_13_oval.jpg','Google_1_Paul_Fernandes_5_oval.jpg',
+
+'Google_1_Joshua_Mcmillon_1_oval.jpg','Google_1_Colleen_Lowe_1_oval.jpg','Google_1_Keith_Worth_13_oval.jpg',
+'Google_1_Chris_Avelar_5_oval.jpg','Google_1_Karla_Santoro_5_oval.jpg','Google_1_Craig_Carroll_5_oval.jpg',
+'Google_1_Samuel_Chartier_17_oval.jpg','Google_1_Randy_Stanger_17_oval.jpg','Google_1_James_Howie_9_oval.jpg',
+'Google_1_Joe_Bristol_19_oval.jpg','Google_1_Jeffrey_Overton_8_oval.jpg','Google_1_Alan_Schlosser_17_oval.jpg',
+'Brian_Shively_13_oval.jpg','Google_1_Erika_Wyche_1_oval.jpg','Google_1_Shawn_Schuster_15_oval.jpg'
+      ];
+      for (i = 0; i < images.length; ++i){
+        images[i] = 'static/images/2kfaces_new/' + images[i];
       }
       return images;
     }
 
     function getDoubletStimuli (gender, num, numcatch) {
-      stimuli = [];
+      if (gender == 'M'){
+        stimuli = [
+['Google_1_Joshua_Regan_7_oval.jpg','Google_1_Jason_Haws_1_oval.jpg'],
+['Google_1_Howard_Paulino_9_oval.jpg','Google_1_Stephen_Palmer_15_oval.jpg'],
+['Google_1_Randy_Gary_3_oval.jpg','Google_1_Adam_Khan_3_oval.jpg'],
+['Google_1_Samuel_Whittemore_3_oval.jpg','Google_1_Benjamin_Mcshane_15_oval.jpg'],
+['Google_1_George_Spurgeon_13_oval.jpg','Google_1_Paul_Fernandes_5_oval.jpg']
+        ];
+      } else {
+        stimuli = [
+['Google_1_Donald_Meyers_13_oval.jpg','Google_1_Phillip_Browning_17_oval.jpg'],
+['Angela_Upshaw_15_oval.jpg','Audrey_Rosenbaum_10_oval.jpg'],
+['Google_1_Candice_Carraway_1_oval.jpg','Google_1_Marjorie_Petty_11_oval.jpg'],
+['Google_1_Donald_Meyers_13_oval.jpg','Google_1_Marvin_Lavergne_5_oval_(2).jpg'],
+['Google_1_Mark_Detwiler_9_oval.jpg','Google_1_Virginia_Stokes_5_oval.jpg']
+        ];
+      }
+      for (i = 0; i < stimuli.length; ++i){
+        stimuli[i][0] = 'static/images/2kfaces_new/' + stimuli[i][0];
+        stimuli[i][1] = 'static/images/2kfaces_new/' + stimuli[i][1];
+      }
       
-      if (numcatch != 0){
-        allimages = getAllImages(gender, num);
-        randlist = generateUniqueRandomNums(numcatch,0,20);
-        console.log(randlist);
-        for (var i = 0; i < randlist.length; i += 2){
-          stimuli.push([allimages[randlist[i]], allimages[randlist[i + 1]]]);
-        }
-      }
-      else{
-        allimages = getAllImages(gender, num);
-        for (var i = 0; i < allimages.length - 1; i += 2){
-          stimuli.push([allimages[i], allimages[i + 1]]);
-        }
-      }
       return stimuli;
     }
 
     function getTripletStimuli (gender, num, numcatch) {
       stimuli = [];
-      
-      if (numcatch != 0){
-        allimages = getAllImages(gender, num);
-        randlist = generateUniqueRandomNums(numcatch,0,20);
-        console.log(randlist);
-        for (var i = 0; i < randlist.length; i += 3){
-          stimuli.push([allimages[randlist[i]], allimages[randlist[i + 1]],allimages[randlist[i + 2]]]);
-        }
+     if (gender == 'M') {
+        stimuli = [
+['Google_1_Joshua_Mcmillon_1_oval.jpg','Google_1_Colleen_Lowe_1_oval.jpg','Google_1_Keith_Worth_13_oval.jpg'],
+['Google_1_Chris_Avelar_5_oval.jpg','Google_1_Karla_Santoro_5_oval.jpg','Google_1_Craig_Carroll_5_oval.jpg'],
+['Google_1_Samuel_Chartier_17_oval.jpg','Google_1_Randy_Stanger_17_oval.jpg','Google_1_James_Howie_9_oval.jpg'],
+['Google_1_Joe_Bristol_19_oval.jpg','Google_1_Jeffrey_Overton_8_oval.jpg','Google_1_Alan_Schlosser_17_oval.jpg'],
+['Brian_Shively_13_oval.jpg','Google_1_Erika_Wyche_1_oval.jpg','Google_1_Shawn_Schuster_15_oval.jpg']
+        ];
+      } else {
+        stimuli = [
+['Ana_Bahr_11_oval.jpg','Google_1_Lydia_Ngo_15_oval.jpg','Google_1_Vicky_Frey_1_oval.jpg'],
+['Google_1_Jeanette_Driver_11_oval.jpg','Google_1_Elaine_Grady_9_oval.jpg','Arlene_Grande_19_oval.jpg'],
+['Google_1_Eric_Williford_3_oval.jpg','Google_1_Sheila_Clemmons_3_oval.jpg','Google_1_Brittany_Kelley_17_oval.jpg'],
+['Google_1_Jeanette_Braswell_15_oval.jpg','Google_1_Kristi_Marty_5_oval.jpg','Google_1_Lola_Shick_5_oval.jpg'],
+['Google_1_Christopher_Holladay_15_oval.jpg','Google_1_Jo_Snook_7_oval.jpg','Google_1_Marjorie_Ferris_15_oval.jpg'],
+        ];
       }
-      else{
-        allimages = getAllImages(gender, num);
-        for (var i = 0; i < allimages.length - 2; i += 3){
-          arr = [allimages[i], allimages[i + 1], allimages[i + 2]];
-          jsPsych.randomization.shuffle(arr)
-          stimuli.push(arr);
-        }
+      for (i = 0; i < stimuli.length; ++i){
+        stimuli[i][0] = 'static/images/2kfaces_new/' + stimuli[i][0];
+        stimuli[i][1] = 'static/images/2kfaces_new/' + stimuli[i][1];
+        stimuli[i][2] = 'static/images/2kfaces_new/' + stimuli[i][2];
       }
-      //console.log(stimuli.length);
-      return stimuli;
+            return stimuli;
     }
     //read a text file
     function readTextFile(file){
@@ -268,6 +297,7 @@
 
     /* define test block */
 
+<<<<<<< Updated upstream
     var prac_no_inst_doublet_stim_1 = getDoubletStimuli('F', 20, 4);
     var prac_no_inst_doublet_stim_2 = getDoubletStimuli('F', 20, 4);
     var prac_doublet_stim = getDoubletStimuli('F',20,2);
@@ -276,6 +306,12 @@
     var prac_no_inst_triplet_stim_1 = getTripletStimuli('F', 20, 6);
     var prac_no_inst_triplet_stim_2 = getTripletStimuli('F', 20, 6);
     var test_triplet_all_stim = getTripletStimuli('F', 20,6);
+=======
+    var prac_doublet_stim = getDoubletStimuli('M', 4);
+    var test_doublet_stim = getDoubletStimuli('F', 14);
+    var prac_triplet_stim = getTripletStimuli('M', 6);
+    var test_triplet_all_stim = getTripletStimuli('F', 18);
+>>>>>>> Stashed changes
     var test_triplet1_stim = test_triplet_all_stim.slice(
       0, test_triplet_all_stim.length/2);
     var test_triplet2_stim = test_triplet_all_stim.slice(
