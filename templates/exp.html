@@ -134,27 +134,59 @@
 
     function getDoubletStimuli (gender, num, numcatch) {
       stimuli = [];
-      allimages = getAllImages(gender, num);
-      for (i = 0; i < allimages.length - 1; i += 2){
-        stimuli.push([allimages[i], allimages[i + 1]]);
-      }
+      
       if (numcatch != 0){
-        randlist = generateUniqueRandomNums(numcatch, 10, stimuli.length);
-
+        allimages = getAllImages(gender, num);
+        randlist = generateUniqueRandomNums(numcatch,0,20);
+        console.log(randlist);
+        for (var i = 0; i < randlist.length; i += 2){
+          stimuli.push([allimages[randlist[i]], allimages[randlist[i + 1]]]);
+        }
+      }
+      else{
+        allimages = getAllImages(gender, num);
+        for (var i = 0; i < allimages.length - 1; i += 2){
+          stimuli.push([allimages[i], allimages[i + 1]]);
+        }
       }
       return stimuli;
     }
 
     function getTripletStimuli (gender, num, numcatch) {
       stimuli = [];
-      allimages = getAllImages(gender, num);
-      for (i = 0; i < allimages.length - 2; i += 3){
-        arr = [allimages[i], allimages[i + 1], allimages[i + 2]];
-        jsPsych.randomization.shuffle(arr)
-        stimuli.push(arr);
+      
+      if (numcatch != 0){
+        allimages = getAllImages(gender, num);
+        randlist = generateUniqueRandomNums(numcatch,0,20);
+        console.log(randlist);
+        for (var i = 0; i < randlist.length; i += 3){
+          stimuli.push([allimages[randlist[i]], allimages[randlist[i + 1]],allimages[randlist[i + 2]]]);
+        }
       }
-      console.log(stimuli.length);
+      else{
+        allimages = getAllImages(gender, num);
+        for (var i = 0; i < allimages.length - 2; i += 3){
+          arr = [allimages[i], allimages[i + 1], allimages[i + 2]];
+          jsPsych.randomization.shuffle(arr)
+          stimuli.push(arr);
+        }
+      }
+      //console.log(stimuli.length);
       return stimuli;
+    }
+    //read a text file
+    function readTextFile(file){
+      var rawFile = new XMLHttpRequest();
+      rawFile.open("GET", file, false);
+      rawFile.onreadystatechange = function (){
+        if(rawFile.readyState === 4){
+          if(rawFile.status === 200 || rawFile.status == 0){
+            var allText = rawFile.responseText;
+            alert(allText);
+          }
+        }
+      }
+      rawFile.send(null);
     }
 
     var post_trial_gap = function() {
@@ -218,32 +250,36 @@
 
     var break1_block = {
       type: "text",
-      text: "<p>You have just finished half of Triplet experiment. You will now begin Doublet experiment.</p>",
+      text: '<div class="well"><p>You have just finished half of Triplet experiment. You will now begin Doublet experiment.</p></div>',
       timing_post_trial: post_trial_gap
     };
 
     var break2_block = {
       type: "text",
-      text: "<p>You have just finished Doublet experiment. You will now begin the second half of Triplet experiment.</p>",
+      text: '<div class="well"><p>You have just finished Doublet experiment. You will now begin the second half of Triplet experiment.</p></div>',
       timing_post_trial: post_trial_gap
     };
 
     var complete_block = {
       type: "text",
-      text: "<p>You have just finished the whole experiment. Thank you for your participation.</p>",
+      text: '<div class="well"><p>You have just finished the whole experiment. Thank you for your participation.</p></div>',
       timing_post_trial: post_trial_gap
     };
 
     /* define test block */
 
-    var prac_doublet_stim = getDoubletStimuli('F', 3);
-    var test_doublet_stim = getDoubletStimuli('F', 3);
-    var prac_triplet_stim = getTripletStimuli('F', 3);
-    var test_triplet_all_stim = getTripletStimuli('F', 5);
+    var prac_no_inst_doublet_stim_1 = getDoubletStimuli('F', 20, 4);
+    var prac_no_inst_doublet_stim_2 = getDoubletStimuli('F', 20, 4);
+    var prac_doublet_stim = getDoubletStimuli('F',20,2);
+    var test_doublet_stim = getDoubletStimuli('F',20,2);
+    var prac_triplet_stim = getTripletStimuli('F',20,3);
+    var prac_no_inst_triplet_stim_1 = getTripletStimuli('F', 20, 6);
+    var prac_no_inst_triplet_stim_2 = getTripletStimuli('F', 20, 6);
+    var test_triplet_all_stim = getTripletStimuli('F', 20,6);
     var test_triplet1_stim = test_triplet_all_stim.slice(
-      0, test_triplet_all_stim.length / 2);
+      0, test_triplet_all_stim.length/2);
     var test_triplet2_stim = test_triplet_all_stim.slice(
-      test_triplet_all_stim.length / 2);
+      test_triplet_all_stim.length/2,test_triplet_all_stim.length);
 
     jsPsych.randomization.shuffle(prac_doublet_stim);
     jsPsych.randomization.shuffle(test_doublet_stim);
@@ -273,7 +309,7 @@
     //practice with no instruction blocks
     var prac_no_inst_doublet_block_1 = {
       type: 'similarity',
-      stimuli: prac_doublet_stim,
+      stimuli: prac_no_inst_doublet_stim_1,
       labels: ['1', '2', '3', '4', '5', '6', '7','8','9'],
       intervals: 9,
       labelName: ['Maximally Dissimilar','','','','','','','','Maximally Similar'],
@@ -281,54 +317,25 @@
     };
     var prac_no_inst_doublet_block_2 = {
       type: 'similarity',
-      stimuli: prac_doublet_stim,
+      stimuli: prac_no_inst_doublet_stim_2,
       labels: ['1', '2', '3', '4', '5', '6', '7','8','9'],
       intervals: 9,
       labelName: ['Maximally Dissimilar','','','','','','','','Maximally Similar'],
       timing_post_trial: post_trial_gap
     };
     
-    var prac_no_inst_doublet_block_3 = {
-      type: 'similarity',
-      stimuli: prac_doublet_stim,
-      labels: ['1', '2', '3', '4', '5', '6', '7','8','9'],
-      intervals: 9,
-      labelName: ['Maximally Dissimilar','','','','','','','','Maximally Similar'],
-      timing_post_trial: post_trial_gap
-    };
-    var prac_no_inst_doublet_block_4 = {
-      type: 'similarity',
-      stimuli: prac_doublet_stim,
-      labels: ['1', '2', '3', '4', '5', '6', '7','8','9'],
-      intervals: 9,
-      labelName: ['Maximally Dissimilar','','','','','','','','Maximally Similar'],
-      timing_post_trial: post_trial_gap
-    };
     var prac_no_inst_triplet_block_1 = {
       type: 'custom_triplet',
-      stimuli: prac_triplet_stim,
+      stimuli: prac_no_inst_triplet_stim_1,
       prompt: "Click on the two faces that you think are more similar.",
       timing_post_trial: post_trial_gap
     };
     var prac_no_inst_triplet_block_2 = {
       type: 'custom_triplet',
-      stimuli: prac_triplet_stim,
+      stimuli: prac_no_inst_triplet_stim_2,
       prompt: "Click on the two faces that you think are more similar.",
       timing_post_trial: post_trial_gap
     };
-    var prac_no_inst_triplet_block_3 = {
-      type: 'custom_triplet',
-      stimuli: prac_triplet_stim,
-      prompt: "Click on the two faces that you think are more similar.",
-      timing_post_trial: post_trial_gap
-    };
-    var prac_no_inst_triplet_block_4 = {
-      type: 'custom_triplet',
-      stimuli: prac_triplet_stim,
-      prompt: "Click on the two faces that you think are more similar.",
-      timing_post_trial: post_trial_gap
-    };
-
 
     //test blocks
     var test_doublet_block = {
@@ -378,7 +385,7 @@
     var experiment = [];
     //experiment.push(welcome_survey_age_block);
     //experiment.push(welcome_survey_block);
-    experiment.push(welcome_survey_new_block);
+    
     //experiment.push(instruction1_block);
     //experiment.push(instruction2_block);
     //experiment.push(instruction3_block);
@@ -388,19 +395,16 @@
     experiment.push(prac_triplet_block);
     experiment.push(prac_no_inst_ready_block);
     experiment.push(prac_no_inst_doublet_block_1);
-    experiment.push(prac_no_inst_doublet_block_2);
     experiment.push(prac_no_inst_triplet_block_1);
+    experiment.push(prac_no_inst_doublet_block_2);
     experiment.push(prac_no_inst_triplet_block_2);
-    experiment.push(prac_no_inst_doublet_block_3);
-    experiment.push(prac_no_inst_doublet_block_4);
-    experiment.push(prac_no_inst_triplet_block_3);
-    experiment.push(prac_no_inst_triplet_block_4);
     experiment.push(test_ready_block);
     experiment.push(test_triplet1_block);
     experiment.push(break1_block);
     experiment.push(test_doublet_block);
     experiment.push(break2_block);
     experiment.push(test_triplet2_block);
+    experiment.push(welcome_survey_new_block);
     experiment.push(complete_block);
     experiment.push(debrief_block);
 
