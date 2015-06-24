@@ -3,6 +3,9 @@ body{
 	text-align: center;
 	font-size: 18px !important;
 }
+label {
+	padding-left: 10px;
+}
 .well > p{
 	text-align: left;
 }

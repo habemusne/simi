@@ -222,7 +222,7 @@
       return Math.floor( Math.random() * 750 ) + 250;
     }
 
-    var question_age = ["How old are you?"];
+    var question_age = ["My age is"];
     /*var welcome_survey_age_block = {
       type: "survey-text",
       //text: "<p> Please </p>",
@@ -231,11 +231,11 @@
     var welcome_survey_new_block = {
       type: "survey_new",
       questions: [question_age],
-      text: "<div class='jspsych_target jspsych-display-element'> <div class='jspsych-survey-likert-preamble'></div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> Please fill out this short survey </p> <br> </br> <p class='jspsych-survey-text'> <!--My gender is--></p> <select id='gender' name='gender' class='qstn-select'> <option value='empty'> My gender is </option> <option value='Male'>Male</option> <option value='Female'>Female</option> <option value='Not_say'>I prefer not to give this information </option> </select> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'><!--My ethnicity is--> </p> <select id='demographic' name='demographic' class='qstn-select'> <option value='empty'> My ethnicity is</option> <option value='white'> White</option> <option value='hispanic'> Hispanic or Latino</option> <option value='african'> Black or African American</option> <option value='indian'> Native American or American Indian</option> <option value='asian'> Asian / Pacific Islander</option> <option value='other'> Other</option> <option value='Not_say'>I prefer not to give this information </option> </select> </div> <!--<div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'>My sexual orientation is </p> <select id='demographic' name='demographic' class='qstn-select'> <option value='empty'> My sexual orientation is </option> <option value='bisexual'> Bisexual</option> <option value='heterosexual'> Heterosexual</option> <option value='homosexual'> Homosexual</option> <option value='other'> Other</option> </select> </div> --> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'><!--My handedness is--> </p> <select id='handedness' name='handedness' class='qstn-select'> <option value='empty'> My handedness is</option> <option value='right'> Right-handedness</option> <option value='left'> Left-handedness</option> <option value='mixed'> Mixed-handedness</option> <option value='Not_say'>I prefer not to give this information </option> </select> </div> </div>"
+      text: "<div class='jspsych_target jspsych-display-element'style='text-align: left; width: 500px; margin-left: 30%; padding-top: 30px'> <div class='jspsych-survey-likert-preamble'>Please fill out this short survey </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My gender is <br><input type='radio' name='gender' id='Male' value='Male'><label for='Male'> Male</label><br> <input type='radio' name='gender' id='Female' value='Female'><label for='female'> Female</label><br> <input type='radio' name='gender' id='Other' value='Other'><label for='Other_gender'> Other</label><br> <!--<input type='radio' name='gender' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--> <!--<span class='zen_error' id='gender_error'></span>--> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My ethnicity is <br> <input type='radio' name='ethnicity' id='Hispanic or Latino' value='Hispanic or Latino'><label for='Male'> Hispanic or Latino </label><br> <input type='radio' name='ethnicity' id='Not Hispanic or Latino' value='Not Hispanic or Latino'><label for='female'> Not Hispanic or Latino </label><br> <input type='radio' name='ethnicity' id='Other' value='Other'><label for='Other'> Other </label><br> <!--<input type='radio' name='ethnicity' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--> <!--<span class='zen_error' id='ethnicity_error'></span>--> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My race is (select one or more)<br> <input type='checkbox' name='race' id='American Indian or Alaska Native' value='American Indian or Alaska Native'><label for='American Indian or Alaska Native'> American Indian or Alaska Native</label><br> <input type='checkbox' name='race' id='Asian' value='Asian'><label for='Asian'> Asian</label><br> <input type='checkbox' name='race' id='Black or African American' value='Black or African American'><label for='Black or African American'> Black or African American </label><br> <input type='checkbox' name='race' id='Native Hawaiian or Other Pacific Islander' value='Native Hawaiian or Other Pacific Islander'><label for='Native Hawaiian or Other Pacific Islander'> Native Hawaiian or Other Pacific Islander </label><br> <input type='checkbox' name='race' id='White' value='White'><label for='White'> White </label><br> <input type='checkbox' name='race' id='Other' value='Other'><label for='Other'> Other</label><br> <!--<input type='checkbox' name='race' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--> <!--<span class='zen_error' id='race_error'></span>--> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> The ethnicities of people I grew up with are (select one or more)<br> <input type='checkbox' name='comEthnicity' id='Hispanic or Latino' value='Hispanic or Latino'><label for='Hispanic or Latino'> Hispanic or Latino</label><br> <input type='checkbox' name='comEthnicity' id='Not Hispanic or Latino' value='Not Hispanic or Latino'><label for='Not Hispanic or Latino'> Not Hispanic or Latino</label><br> <input type='checkbox' name='comEthnicity' id='Other' value='Other'><label for='Other'> Other</label><br> <!--<input type='radio' name='comEthnicity' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--> <!--<span class='zen_error' id='comEthnicity_error'></span>--> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> The races of people I grew up with are (select one or more)<br> <input type='checkbox' name='comRace' id='American Indian or Alaska Native' value='American Indian or Alaska Native'><label for='American Indian or Alaska Native'> American Indian or Alaska Native</label><br> <input type='checkbox' name='comRace' id='Asian' value='Asian'><label for='Asian'> Asian</label><br> <input type='checkbox' name='comRace' id='Black or African American' value='Black or African American'><label for='Black or African American'> Black or African American </label><br> <input type='checkbox' name='comRace' id='Native Hawaiian or Other Pacific Islander' value='Native Hawaiian or Other Pacific Islander'><label for='Native Hawaiian or Other Pacific Islander'> Native Hawaiian or Other Pacific Islander </label><br> <input type='checkbox' name='comRace' id='White' value='White'><label for='White'> White </label><br> <input type='checkbox' name='comRace' id='Other' value='Other'><label for='Other'> Other</label><br> <!--<input type='checkbox' name='comRace' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--> <!--<span class='zen_error' id='comRace_error'></span>--> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My sexual orientation is <br> <input type='radio' name='sexual_ori' id='Bisexual' value='Bisexual'><label for='Bisexual'> Bisexual</label><br> <input type='radio' name='sexual_ori' id='Heterosexual' value='Heterosexual'><label for='heterosexual'> Heterosexual</label><br> <input type='radio' name='sexual_ori' id='Homosexual' value='Homosexual'><label for='Homosexual'> Homosexual</label><br> <input type='radio' name='sexual_ori' id='Other' value='Other'><label for='Other'> Other</label><br><input type='radio' name='comRace' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label></p> </div> </div>"
     };
     /*var welcome_survey_block = {
       type: "survey_select",
-      text: "<div class='jspsych_target jspsych-display-element'> <div class='jspsych-survey-likert-preamble'></div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'>Your gender is</p> <select id='gender' name='gender' class='qstn-select'> <option value='empty'>Your gender is</option> <option value='Male'>Male</option> <option value='Female'>Female</option> </select> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'>Please specify your ethnicity</p> <select id='demographic' name='demographic' class='qstn-select'> <option value='empty'> Please specify your ethnicity</option> <option value='white'> White</option> <option value='hispanic'> Hispanic or Latino</option> <option value='african'> Black or African American</option> <option value='indian'> Native American or American Indian</option> <option value='asian'> Asian / Pacific Islander</option> <option value='other'> Other</option> </select> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'>Indicate your handedness</p> <select id='handedness' name='handedness' class='qstn-select'> <option value='empty'> Indicate your handedness</option> <option value='right'> Right-handedness</option> <option value='left'> Left-handedness</option> <option value='mixed'> Mixed-handedness</option> </select> </div> <br/><br/> <p class='jspsych-survey-text'>Press any key to continue.</p></div>"
+      text: "<div class='jspsych_target jspsych-display-element'> <div class='jspsych-survey-likert-preamble'></div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> Please fill out this short survey </p> <br> </br> <p class='jspsych-survey-text'> <!--My gender is--></p> <select id='gender' name='gender' class='qstn-select'> <option value='empty'> My gender is </option> <option value='Male'>Male</option> <option value='Female'>Female</option> <option value='Not_say'>I prefer not to give this information </option> </select> </div>  <div class='jspsych-survey-text-question'> <select id='ethnicity' name='ethnicity' class='qstn-select'> <option value='empty'> My ethnicity is </option> <option value='Hispanic or Latino'> Hispanic or Latino</option> <option value='Not Hispanic or Latino'> Not Hispanic or Latino</option> <option value='Not_say'>I prefer not to give this information </option> </select> </div><div class='jspsych-survey-text-question'>  <select id='race' name='race' class='qstn-select'> <option value='empty'> My race is</option> <option value='American Indian or Alaska Native'> American Indian or Alaska Native</option> <option value='Asian'> Asian </option> <option value='Black or African American'> Black or African American</option> <option value='Native Hawaiian or Other Pacific Islander'> Native Hawaiian or Other Pacific Islander</option> <option value='White'> White</option> <option value='Not_say'>I prefer not to give this information </option> </select> </div>  <div class='jspsych-survey-text-question'> <select id='ethnicity' name='ethnicity' class='qstn-select'> <option value='empty'> The ethnicity of people I grew up with is </option> <option value='Hispanic or Latino'> Hispanic or Latino</option> <option value='Not Hispanic or Latino'> Not Hispanic or Latino</option> <option value='Not_say'>I prefer not to give this information </option> </select> </div>  <div class='jspsych-survey-text-question'> <select id='comRace' name='comRace' class='qstn-select'> <option value='empty'> The race of people I grew up with is </option> <option value='American Indian or Alaska Native'> American Indian or Alaska Native</option> <option value='Asian'> Asian </option> <option value='Black or African American'> Black or African American</option> <option value='Native Hawaiian or Other Pacific Islander'> Native Hawaiian or Other Pacific Islander</option> <option value='White'> White</option> <option value='Not_say'>I prefer not to give this information </option> </select> </div> <div class='jspsych-survey-text-question'> <select id='ethnicity' name='ethnicity' class='qstn-select'> <option value='empty'> My sexual orientation is </option> <option value='Bisexual'> Bisexual </option> <option value='Heterosexual'> Heterosexual</option> <option value='Homosexual'> Homosexual</option><option value='Other'> Other</option> <option value='Not_say'>I prefer not to give this information </option> </select> </div></div>"
     };*/
 
     /* define welcome message block */
@@ -263,12 +263,17 @@
 
     var prac2_ready_block = {
       type: "text",
-      text: '<div class="well"> <p>Great Job! </p> <p> Next you will do the similar thing, but instead of seeing two faces, you are going to see <strong>three</strong> faces and click on the two images that look more similar to you.</div>',
+      text: '<div class="well"> <p>Great Job! </p> <p> Next you will do the similar thing, but instead of seeing two faces, you are going to see <strong>three</strong> faces and click on the two images that look more similar to you.</p><br></div>',
+      timing_post_trial: post_trial_gap
+    };
+    var face_images_explore_block = {
+      type: "text",
+      text: '<div class="well"> <p>Good Job! </p> <p> Next, you will see a lot of face images, just to give you an idea how the range of variabilities these faces will have.</p><br></div>',
       timing_post_trial: post_trial_gap
     };
     var prac_no_inst_ready_block = {
       type: "text",
-      text: '<div class="well"> <p>Good Job! </p> <p> Practice a few more.</div>',
+      text: '<div class="well"> <p> Now you are half way prepared. Practice a few more.</p> </div>',
       timing_post_trial: post_trial_gap
     };
     var test_ready_block = {
@@ -335,7 +340,7 @@
     var prac_triplet_block = {
       type: 'custom_triplet',
       stimuli: prac_triplet_stim,
-      prompt: "Click on the two faces that you think are more similar.",
+      prompt: "Click on the two faces that you think are most similar.",
       timing_post_trial: post_trial_gap
     };
 
@@ -361,13 +366,13 @@
     var prac_no_inst_triplet_block_1 = {
       type: 'custom_triplet',
       stimuli: prac_no_inst_triplet_stim_1,
-      prompt: "Click on the two faces that you think are more similar.",
+      prompt: "Click on the two faces that you think are most similar.",
       timing_post_trial: post_trial_gap
     };
     var prac_no_inst_triplet_block_2 = {
       type: 'custom_triplet',
       stimuli: prac_no_inst_triplet_stim_2,
-      prompt: "Click on the two faces that you think are more similar.",
+      prompt: "Click on the two faces that you think are most similar.",
       timing_post_trial: post_trial_gap
     };
 
@@ -392,14 +397,14 @@
     var test_triplet1_block = {
       type: 'custom_triplet',
       stimuli: test_triplet1_stim,
-      prompt: "Click on the two faces that you think are more similar.",
+      prompt: "Click on the two faces that you think are most similar.",
       timing_post_trial: post_trial_gap
     };
 
     var test_triplet2_block = {
       type: 'custom_triplet',
       stimuli: test_triplet2_stim,
-      prompt: "Click on the two faces that you think are more similar.",
+      prompt: "Click on the two faces that you think are most similar.",
       timing_post_trial: post_trial_gap
     };
 
