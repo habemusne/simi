@@ -78,6 +78,8 @@
                 });
             }
 
+
+
             // show preamble text
             display_element.append($('<div>', {
               "id": 'jspsych-survey-likert-preamble',

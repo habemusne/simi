@@ -239,7 +239,7 @@
     };*/
 
     /* define welcome message block */
-    var instruction1_block = {
+    /*var instruction1_block = {
       type: "text",
       text: "<div><h1>Instruction (1/3)</h1> <hr> <div class='well'> <p>In this experiment, you will see many faces and your task is to compare and judge face similarities.</p> <p>There are two types of tasks: face pair task and face triplet task</p> <div class='row'> <div class='col-md-6'> <h5><b>Face Pair Task</b></h5> <p>Rate the similarity level of the face pair from 1 to 9.</p> <p>1 -- Maximally dissimilar, 9 -- Maximally similar</p> <img src='/static/images/instru-p1.png' style='width:100%'/> </div> <div class='col-md-6'> <h5><b>Face Triplet Task</b></h5> <p>Decide which of the two face images is more similar to each other. You can click on the face image to indicate your choice.</p> <img src='/static/images/instru-p2.png' style='width:100%'/> </div> </div></div></div>"
     };
@@ -252,54 +252,99 @@
     var instruction3_block = {
       type: "text",
       text: '<div><h1>Instructions (3/3)</h1> <hr> <div class="well" > <p>Each presentation will remain on the screen for 0.5 seconds before you can start to respond. After choice bottoms appear, indicate your choice as fast as you can, in no more than 3 seconds. You will see the next page after indicating your choice.</p> <p>If you respond too fast or too slow, you will hear a warning sound.</p> <p>Between the tasks, you will have a 1 min break.</p> <br/> <p>You will enter the practice session after this page. Press "Continue" to start your practice. Press "Back" to return to previous instruction pages.</p> </div></div>'
-    };
+    };*/
 
     var prac1_ready_block = {
       type: "text",
-      text: '<div><strong>Judging face similarities</strong> <hr> <div class="well">  <p>You will be presented with a series of pairs of face images.  You will be judging the similarities between them.</p>  <p>Click the "Continue" button below to practice a couple of times.</p>  <p>In the first example, you will be asked to rate the similarity level of the face pair from 1 to 9.</p> <p>1 -- Maximally Dissimilar, 9 -- Maximally Similar</p> <br></div></div>',
+      text: '<div><h2><strong>Judging face similarities</strong></h2> <hr> <div class="well">  <p>You will be presented with a series of pairs of face images.  You will be judging the similarities between them.</p> <p> <em><strong> Try to focus on the face features and ignore the pose, expression and lighting influence.</strong></em> </p> <p>In the first example, you will be asked to rate the similarity level of the face pair from 1 to 9.</p> <p>1 -- Maximally Dissimilar, 9 -- Maximally Similar</p> <p>Click the "Continue" button below to practice a couple of times.</p><br></div></div>',
         //"<p>Press any key to begin the practice for Doublet experiment.</p>",
       timing_post_trial: post_trial_gap
     };
-
+    
     var prac2_ready_block = {
       type: "text",
       text: '<div class="well"> <p>Great Job! </p> <p> Next you will do the similar thing, but instead of seeing two faces, you are going to see <strong>three</strong> faces and click on the two images that look more similar to you.</p><br></div>',
       timing_post_trial: post_trial_gap
     };
-    var face_images_explore_block = {
+    var bad_examples_ready_block = {
       type: "text",
-      text: '<div class="well"> <p>Good Job! </p> <p> Next, you will see a lot of face images, just to give you an idea how the range of variabilities these faces will have.</p><br></div>',
+      text: '<div class="well"> <p>Good Job! </p> <p> These two examples should gave you an idea what the trials would be like.</p> <p> Keep in mind that you should <strong><em> focus on the face itself </em></strong> rather then the pose, expression and lighting of the face.</p> <p> We will give you some examples of what you should pay attention to.</p><br></div>',
       timing_post_trial: post_trial_gap
+    };
+    var bad_examples_block1 = {
+      type: "text",
+      text:"<div><h3>Pose Difference Between Faces </h3> <hr> <div class='well'> <p>The two pairs of faces below is to demonstrate that you should focus on the face itself rather than pose.</p> <p>In figure 1, even though the left face and the right face has similar pose, most people find that the left face and the right face are most similar. In figure 2, most people think that the left face and the middle face are most similar</p> <br> <div class='row'> <div class='col-md-6'>  <img src='/static/images/bad_examples/F1.jpg' style='width:100%'/> <p>Figure 1</p></div> <div class='col-md-6'> <img src='/static/images/bad_examples/M1.jpg' style='width:100%'/><p>Figure 2</p> </div> </div></div></div>"
+    };
+    var bad_examples_block2 = {
+      type: "text",
+      text:"<div><h3>Expression Difference Between Faces </h3> <hr> <div class='well'> <p>The two pairs of faces below is to demonstrate that you should focus on the face itself rather than expression.</p> <p>In figure 1, even though the left face and the middle face has similar expression, most people find that the middle face and the right face are most similar. In figure 2, most people think that the left face and the middle face are most similar</p> <br> <div class='row'> <div class='col-md-6'>  <img src='/static/images/bad_examples/F3.jpg' style='width:100%'/> <p>Figure 1</p></div> <div class='col-md-6'> <img src='/static/images/bad_examples/M2.jpg' style='width:100%'/><p>Figure 2</p> </div> </div></div></div>"
     };
     var prac_no_inst_ready_block = {
       type: "text",
-      text: '<div class="well"> <p> Now you are half way prepared. Practice a few more.</p> </div>',
+      text: '<div class="well"> <p> Now you are half way prepared. Practice a few more.</p> <br> </div>',
       timing_post_trial: post_trial_gap
     };
+    var face_images_explore_ready_block = {
+      type: "text",
+      text: '<div class="well"> <p>Terrific! That'+ "'s" +' the end of the pratice trials. </p> <p> Next, you will see some face examples, just to give you an idea how different these faces will be.</p><br></div>',
+      timing_post_trial: post_trial_gap
+    };
+    
     var test_ready_block = {
       type: "text",
-      text: '<div class="well"><p>Terrific! That'+ "'s" +' the end of the pratice trials. Now you will be presented with 200 trials like those you just practiced on, except that you will not receive instructions between trials. </p> <p>Remember, click on the faces that you think are more similar for trials with three faces, or rate the similarities between two faces for trials with two faces.</p> <p>The most important rule, <em> go with your guts!</em></p> <p>Click the button below to begin the experiment.</p></div>',
+      text: '<div class="well"><p>Here come the actual trials!</p> <p> Now you will be presented with 200 trials like those you just practiced on, except that you will not receive instructions between trials. </p>  <p>The most important rule, <strong><em> go with your gut!</em></strong></p> <p>Click the button below to begin the experiment.</p><br></div>',
       timing_post_trial: post_trial_gap
     };
 
     var break1_block = {
       type: "text",
-      text: '<div class="well"><p>You have just finished half of Triplet experiment. You will now begin Doublet experiment.</p></div>',
+      text: '<div class="well"><p>You have just finished half of Triplet experiment. You will now begin Doublet experiment.</p><br></div>',
       timing_post_trial: post_trial_gap
     };
 
     var break2_block = {
       type: "text",
-      text: '<div class="well"><p>You have just finished Doublet experiment. You will now begin the second half of Triplet experiment.</p></div>',
+      text: '<div class="well"><p>You have just finished Doublet experiment. You will now begin the second half of Triplet experiment.</p><br></div>',
       timing_post_trial: post_trial_gap
     };
 
     var complete_block = {
       type: "text",
-      text: '<div class="well"><p>You have just finished the whole experiment. Thank you for your participation.</p></div>',
+      text: '<div class="well"><p>You have just finished the whole experiment. Thank you for your participation.</p><br></div>',
+      timing_post_trial: post_trial_gap
+    };
+    var face_images_explore_block1 = {
+      type: "text",
+      text: "<div><h3>Face Examples (1/6)</h3> <hr> <img src='/static/images/faceExamples/M1.jpg' style='width:100%'/><br> </div> ",
       timing_post_trial: post_trial_gap
     };
 
+
+    var face_images_explore_block2 = {
+      type: "text",
+      text: "<div><h3>Face Examples (2/6)</h3> <hr> <img src='/static/images/faceExamples/M2.jpg' style='width:100%'/> <br></div> ",
+      timing_post_trial: post_trial_gap
+    };
+    var face_images_explore_block3 = {
+      type: "text",
+      text: "<div><h3>Face Examples (3/6)</h3> <hr> <img src='/static/images/faceExamples/M3.jpg' style='width:100%'/><br> </div> ",
+      timing_post_trial: post_trial_gap
+    };
+    var face_images_explore_block4 = {
+      type: "text",
+      text: "<div><h3>Face Examples (4/6)</h3> <hr> <img src='/static/images/faceExamples/F1.jpg' style='width:100%'/> <br></div> ",
+      timing_post_trial: post_trial_gap
+    };
+    var face_images_explore_block5 = {
+      type: "text",
+      text: "<div><h3>Face Examples (5/6)</h3> <hr> <img src='/static/images/faceExamples/F2.jpg' style='width:100%'/> <br> </div> ",
+      timing_post_trial: post_trial_gap
+    };
+    var face_images_explore_block6 = {
+      type: "text",
+      text: "<div><h3>Face Examples (6/6)</h3> <hr> <img src='/static/images/faceExamples/F3.jpg' style='width:100%'/> <br> </div> ",
+      timing_post_trial: post_trial_gap
+    };
     /* define test block */
 
     var doublet_stim_m = getDoubletStimuli('M', 4);
@@ -307,17 +352,17 @@
     var doublet_stim_f = getDoubletStimuli('F', 14);
     var triplet_stim_m = getTripletStimuli('M', 6);
     var triplet_stim_f = getTripletStimuli('F', 18);
-    var prac_no_inst_doublet_stim_1 = [doublet_stim_m[1],doublet_stim_m[2]];
-    var prac_no_inst_doublet_stim_2 = [doublet_stim_f[0],doublet_stim_f[1]];
+    var prac_no_inst_doublet_stim_1 = [doublet_stim_m[1]];//,doublet_stim_m[2]];
+    var prac_no_inst_doublet_stim_2 = [doublet_stim_f[0]];//,doublet_stim_f[1]];
     var prac_doublet_stim = [doublet_stim_m[0]];
-    var test_doublet1_stim = doublet_stim_f.slice(2,5);
-    var test_doublet2_stim = doublet_stim_m.slice(3,5);
+    var test_doublet1_stim = doublet_stim_f.slice(1,5);
+    var test_doublet2_stim = doublet_stim_m.slice(2,5);
     var prac_triplet_stim = [triplet_stim_f[0]];
-    var prac_no_inst_triplet_stim_1 = [triplet_stim_f[1],triplet_stim_f[2]];
-    var prac_no_inst_triplet_stim_2 = [triplet_stim_m[0],triplet_stim_m[1]];
+    var prac_no_inst_triplet_stim_1 = [triplet_stim_f[1]];//,triplet_stim_f[2]];
+    var prac_no_inst_triplet_stim_2 = [triplet_stim_m[0]];//,triplet_stim_m[1]];
     //var test_triplet_all_stim = getTripletStimuli('F', 20,6);
-    var test_triplet1_stim = triplet_stim_m.slice(2, 5);
-    var test_triplet2_stim = triplet_stim_f.slice(3,5);
+    var test_triplet1_stim = triplet_stim_m.slice(1, 5);
+    var test_triplet2_stim = triplet_stim_f.slice(2,5);
 
     /*jsPsych.randomization.shuffle(prac_doublet_stim);
     jsPsych.randomization.shuffle(test_doublet1_stim);
@@ -440,11 +485,21 @@
     experiment.push(prac_doublet_block);
     experiment.push(prac2_ready_block);
     experiment.push(prac_triplet_block);
+    experiment.push(bad_examples_ready_block);
+    experiment.push(bad_examples_block1);
+    experiment.push(bad_examples_block2);
     experiment.push(prac_no_inst_ready_block);
     experiment.push(prac_no_inst_doublet_block_1);
     experiment.push(prac_no_inst_triplet_block_1);
     experiment.push(prac_no_inst_doublet_block_2);
     experiment.push(prac_no_inst_triplet_block_2);
+    experiment.push(face_images_explore_ready_block);
+    experiment.push(face_images_explore_block1);
+    experiment.push(face_images_explore_block2);
+    experiment.push(face_images_explore_block3);
+    experiment.push(face_images_explore_block4);
+    experiment.push(face_images_explore_block5);
+    experiment.push(face_images_explore_block6);
     experiment.push(test_ready_block);
     experiment.push(test_triplet1_block);
     experiment.push(break1_block);
