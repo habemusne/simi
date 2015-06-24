@@ -297,24 +297,29 @@
 
     /* define test block */
 
-    var prac_no_inst_doublet_stim_1 = getDoubletStimuli('F');
-    var prac_no_inst_doublet_stim_2 = getDoubletStimuli('M');
-    var prac_no_inst_triplet_stim_1 = getTripletStimuli('F');
-    var prac_no_inst_triplet_stim_2 = getTripletStimuli('M');
-    var prac_doublet_stim = getDoubletStimuli('M', 4);
-    var test_doublet_stim = getDoubletStimuli('F', 14);
-    var prac_triplet_stim = getTripletStimuli('M', 6);
-    var test_triplet_all_stim = getTripletStimuli('F', 18);
-    var test_triplet1_stim = test_triplet_all_stim.slice(
-      0, test_triplet_all_stim.length/2);
-    var test_triplet2_stim = test_triplet_all_stim.slice(
-      test_triplet_all_stim.length/2,test_triplet_all_stim.length);
+    var doublet_stim_m = getDoubletStimuli('M', 4);
+    //console.log(doublet_stim_m[0]);
+    var doublet_stim_f = getDoubletStimuli('F', 14);
+    var triplet_stim_m = getTripletStimuli('M', 6);
+    var triplet_stim_f = getTripletStimuli('F', 18);
+    var prac_no_inst_doublet_stim_1 = [doublet_stim_m[1],doublet_stim_m[2]];
+    var prac_no_inst_doublet_stim_2 = [doublet_stim_f[0],doublet_stim_f[1]];
+    var prac_doublet_stim = [doublet_stim_m[0]];
+    var test_doublet1_stim = doublet_stim_f.slice(2,5);
+    var test_doublet2_stim = doublet_stim_m.slice(3,5);
+    var prac_triplet_stim = [triplet_stim_f[0]];
+    var prac_no_inst_triplet_stim_1 = [triplet_stim_f[1],triplet_stim_f[2]];
+    var prac_no_inst_triplet_stim_2 = [triplet_stim_m[0],triplet_stim_m[1]];
+    //var test_triplet_all_stim = getTripletStimuli('F', 20,6);
+    var test_triplet1_stim = triplet_stim_m.slice(2, 5);
+    var test_triplet2_stim = triplet_stim_f.slice(3,5);
 
-    jsPsych.randomization.shuffle(prac_doublet_stim);
-    jsPsych.randomization.shuffle(test_doublet_stim);
-    jsPsych.randomization.shuffle(prac_triplet_stim);
-    jsPsych.randomization.shuffle(test_triplet1_stim);
-    jsPsych.randomization.shuffle(test_triplet2_stim);
+    /*jsPsych.randomization.shuffle(prac_doublet_stim);
+    jsPsych.randomization.shuffle(test_doublet1_stim);
+    jsPsych.randomization.shuffle(test_doublet2_stim);
+     jsPsych.randomization.shuffle(prac_triplet_stim);
+     jsPsych.randomization.shuffle(test_triplet1_stim);
+    jsPsych.randomization.shuffle(test_triplet2_stim);*/
 
 
     //practice with instruction blocks
@@ -367,9 +372,17 @@
     };
 
     //test blocks
-    var test_doublet_block = {
+    var test_doublet1_block = {
       type: 'similarity',
-      stimuli: test_doublet_stim,
+      stimuli: test_doublet1_stim,
+      labels: ['1', '2', '3', '4', '5', '6', '7','8','9'],
+      labelName: ['Maximally Dissimilar','','','','','','','','Maximally Similar'],
+      intervals: 9,
+      timing_post_trial: post_trial_gap
+    };
+    var test_doublet2_block = {
+      type: 'similarity',
+      stimuli: test_doublet2_stim,
       labels: ['1', '2', '3', '4', '5', '6', '7','8','9'],
       labelName: ['Maximally Dissimilar','','','','','','','','Maximally Similar'],
       intervals: 9,
@@ -430,7 +443,8 @@
     experiment.push(test_ready_block);
     experiment.push(test_triplet1_block);
     experiment.push(break1_block);
-    experiment.push(test_doublet_block);
+    experiment.push(test_doublet1_block);
+    experiment.push(test_doublet2_block);
     experiment.push(break2_block);
     experiment.push(test_triplet2_block);
     experiment.push(welcome_survey_new_block);
