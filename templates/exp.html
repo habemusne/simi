@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>My experiment</title>
+        <script type="text/javascript" src="/static/lib/jquery.js"></script>
         <script src="/static/lib/jquery-min.js" type="text/javascript"></script>
         <script src="/static/lib/bootstrap.min.js" type="text/javascript"></script>
         <script src="/static/lib/underscore-min.js" type="text/javascript"></script>
@@ -60,163 +61,23 @@
         return o;
     }
 
-    // Input: gender = 'F' / 'M'
-    // Output: images of specified gener in folder static/images/EclipseFace
-    function getAllImages_EclipseFace (gender, maxnum) {
-      images = [];
-      for (i = 1; i < maxnum + 1; ++i){
-        images.push('/static/images/EclipseFace/' + gender + i + '.png');
-      }
-      return images;
-    }
-
-    function generateUniqueRandomNums(numrands, start, end){
-      var pool = [];
-      for (i = start; i < end; ++i){
-        pool[i] = i;
-      }
-      randlist = [];
-      for (i = 0; i < numrands; ++i){
-        var index = Math.floor(pool.length * Math.random());
-        var drawn = pool.splice(index, 1);
-        randlist.push(drawn);
-      }
-      return randlist;
-    }
-
-    // Input: number of images used in the whole stimuli
-    // Output: array containing doublets of stimuli. Each pair 
-    //   does not occur more than once (regardless of the order of 
-    //   both images), and each pair does not contain the same image.
-    function getDoubletStimuli_EclipseFace (gender, num, numcatch) {
-      stimuli = [];
-      allimages = getAllImages(gender, num);
-      for (i = 0; i < allimages.length; ++i){
-        for (j = i + 1; j < allimages.length; ++j){
-          stimuli.push([allimages[i], allimages[j]]);
-        }
-      }
-      if (numcatch != 0){
-        randlist = generateUniqueRandomNums(numcatch, 10, stimuli.length);
-
-      }
-      return stimuli;
-    }
-
-    function getTripletStimuli_EclipseFace (gender, num, numcatch) {
-      stimuli = [];
-      allimages = getAllImages(gender, num);
-      for (i = 0; i < allimages.length; ++i){
-        for (j = i + 1; j < allimages.length; ++j){
-          for (k = j + 1; k < allimages.length; ++k){
-            arr = [allimages[i], allimages[j], allimages[k]];
-            jsPsych.randomization.shuffle(arr)
-            stimuli.push(arr);
-          }
-        }
-      }
-      console.log(stimuli.length);
-      return stimuli;
-    }
-
-    function getAllImages (gender, maxnum) {
-      images = [
-'Google_1_Donald_Meyers_13_oval.jpg','Google_1_Phillip_Browning_17_oval.jpg',
-'Angela_Upshaw_15_oval.jpg','Audrey_Rosenbaum_10_oval.jpg',
-'Google_1_Candice_Carraway_1_oval.jpg','Google_1_Marjorie_Petty_11_oval.jpg',
-'Google_1_Donald_Meyers_13_oval.jpg','Google_1_Marvin_Lavergne_5_oval_(2).jpg',
-'Google_1_Mark_Detwiler_9_oval.jpg','Google_1_Virginia_Stokes_5_oval.jpg',
-
-'Ana_Bahr_11_oval.jpg','Google_1_Lydia_Ngo_15_oval.jpg','Google_1_Vicky_Frey_1_oval.jpg',
-'Google_1_Jeanette_Driver_11_oval.jpg','Google_1_Elaine_Grady_9_oval.jpg','Arlene_Grande_19_oval.jpg',
-'Google_1_Eric_Williford_3_oval.jpg','Google_1_Sheila_Clemmons_3_oval.jpg','Google_1_Brittany_Kelley_17_oval.jpg',
-'Google_1_Jeanette_Braswell_15_oval.jpg','Google_1_Kristi_Marty_5_oval.jpg','Google_1_Lola_Shick_5_oval.jpg',
-'Google_1_Christopher_Holladay_15_oval.jpg','Google_1_Jo_Snook_7_oval.jpg','Google_1_Marjorie_Ferris_15_oval.jpg',
-
-'Google_1_Joshua_Regan_7_oval.jpg','Google_1_Jason_Haws_1_oval.jpg',
-'Google_1_Howard_Paulino_9_oval.jpg','Google_1_Stephen_Palmer_15_oval.jpg',
-'Google_1_Randy_Gary_3_oval.jpg','Google_1_Adam_Khan_3_oval.jpg',
-'Google_1_Samuel_Whittemore_3_oval.jpg','Google_1_Benjamin_Mcshane_15_oval.jpg',
-'Google_1_George_Spurgeon_13_oval.jpg','Google_1_Paul_Fernandes_5_oval.jpg',
-
-'Google_1_Joshua_Mcmillon_1_oval.jpg','Google_1_Colleen_Lowe_1_oval.jpg','Google_1_Keith_Worth_13_oval.jpg',
-'Google_1_Chris_Avelar_5_oval.jpg','Google_1_Karla_Santoro_5_oval.jpg','Google_1_Craig_Carroll_5_oval.jpg',
-'Google_1_Samuel_Chartier_17_oval.jpg','Google_1_Randy_Stanger_17_oval.jpg','Google_1_James_Howie_9_oval.jpg',
-'Google_1_Joe_Bristol_19_oval.jpg','Google_1_Jeffrey_Overton_8_oval.jpg','Google_1_Alan_Schlosser_17_oval.jpg',
-'Brian_Shively_13_oval.jpg','Google_1_Erika_Wyche_1_oval.jpg','Google_1_Shawn_Schuster_15_oval.jpg'
-      ];
-      for (i = 0; i < images.length; ++i){
-        images[i] = 'static/images/2kfaces_new/' + images[i];
-      }
-      return images;
-    }
-
-    function getDoubletStimuli (gender, num, numcatch) {
-      if (gender == 'M'){
-        stimuli = [
-['Google_1_Joshua_Regan_7_oval.jpg','Google_1_Jason_Haws_1_oval.jpg'],
-['Google_1_Howard_Paulino_9_oval.jpg','Google_1_Stephen_Palmer_15_oval.jpg'],
-['Google_1_Randy_Gary_3_oval.jpg','Google_1_Adam_Khan_3_oval.jpg'],
-['Google_1_Samuel_Whittemore_3_oval.jpg','Google_1_Benjamin_Mcshane_15_oval.jpg'],
-['Google_1_George_Spurgeon_13_oval.jpg','Google_1_Paul_Fernandes_5_oval.jpg']
-        ];
-      } else {
-        stimuli = [
-['Google_1_Donald_Meyers_13_oval.jpg','Google_1_Phillip_Browning_17_oval.jpg'],
-['Angela_Upshaw_15_oval.jpg','Audrey_Rosenbaum_10_oval.jpg'],
-['Google_1_Candice_Carraway_1_oval.jpg','Google_1_Marjorie_Petty_11_oval.jpg'],
-['Google_1_Donald_Meyers_13_oval.jpg','Google_1_Marvin_Lavergne_5_oval_(2).jpg'],
-['Google_1_Mark_Detwiler_9_oval.jpg','Google_1_Virginia_Stokes_5_oval.jpg']
-        ];
-      }
-      for (i = 0; i < stimuli.length; ++i){
-        stimuli[i][0] = 'static/images/2kfaces_new/' + stimuli[i][0];
-        stimuli[i][1] = 'static/images/2kfaces_new/' + stimuli[i][1];
-      }
-      
-      return stimuli;
-    }
-
-    function getTripletStimuli (gender, num, numcatch) {
-      stimuli = [];
-     if (gender == 'M') {
-        stimuli = [
-['Google_1_Joshua_Mcmillon_1_oval.jpg','Google_1_Colleen_Lowe_1_oval.jpg','Google_1_Keith_Worth_13_oval.jpg'],
-['Google_1_Chris_Avelar_5_oval.jpg','Google_1_Karla_Santoro_5_oval.jpg','Google_1_Craig_Carroll_5_oval.jpg'],
-['Google_1_Samuel_Chartier_17_oval.jpg','Google_1_Randy_Stanger_17_oval.jpg','Google_1_James_Howie_9_oval.jpg'],
-['Google_1_Joe_Bristol_19_oval.jpg','Google_1_Jeffrey_Overton_8_oval.jpg','Google_1_Alan_Schlosser_17_oval.jpg'],
-['Brian_Shively_13_oval.jpg','Google_1_Erika_Wyche_1_oval.jpg','Google_1_Shawn_Schuster_15_oval.jpg']
-        ];
-      } else {
-        stimuli = [
-['Ana_Bahr_11_oval.jpg','Google_1_Lydia_Ngo_15_oval.jpg','Google_1_Vicky_Frey_1_oval.jpg'],
-['Google_1_Jeanette_Driver_11_oval.jpg','Google_1_Elaine_Grady_9_oval.jpg','Arlene_Grande_19_oval.jpg'],
-['Google_1_Eric_Williford_3_oval.jpg','Google_1_Sheila_Clemmons_3_oval.jpg','Google_1_Brittany_Kelley_17_oval.jpg'],
-['Google_1_Jeanette_Braswell_15_oval.jpg','Google_1_Kristi_Marty_5_oval.jpg','Google_1_Lola_Shick_5_oval.jpg'],
-['Google_1_Christopher_Holladay_15_oval.jpg','Google_1_Jo_Snook_7_oval.jpg','Google_1_Marjorie_Ferris_15_oval.jpg'],
-        ];
-      }
-      for (i = 0; i < stimuli.length; ++i){
-        stimuli[i][0] = 'static/images/2kfaces_new/' + stimuli[i][0];
-        stimuli[i][1] = 'static/images/2kfaces_new/' + stimuli[i][1];
-        stimuli[i][2] = 'static/images/2kfaces_new/' + stimuli[i][2];
-      }
-            return stimuli;
-    }
+    
     //read a text file
     function readTextFile(file){
-      var rawFile = new XMLHttpRequest();
-      rawFile.open("GET", file, false);
-      rawFile.onreadystatechange = function (){
-        if(rawFile.readyState === 4){
-          if(rawFile.status === 200 || rawFile.status == 0){
-            var allText = rawFile.responseText;
-            alert(allText);
-          }
+        htmlobj=$.ajax({url:file,async:false});
+        var list = htmlobj.responseText;
+        var listArray = list.split(/\n/g);
+        for (a in listArray ) {
+            listArray[a] = listArray[a].split(","); 
+            for( b in listArray[a]){
+              listArray[a][b] = 'static/images/2kfaces_new/' + listArray[a][b];
+              listArray[a][b] = listArray[a][b].replace(new RegExp(" ", 'g'), "_");
+            }
         }
-      }
-      rawFile.send(null);
+        listArray = listArray.slice(0,50);
+        return listArray;
     }
+
 
     var post_trial_gap = function() {
       return Math.floor( Math.random() * 750 ) + 250;
@@ -228,104 +89,135 @@
       //text: "<p> Please </p>",
       questions: [question_age],
     };*/
+
+
+
     var welcome_survey_new_block = {
       type: "survey_new",
       questions: [question_age],
       text: "<div class='jspsych_target jspsych-display-element'style='text-align: left; width: 500px; margin-left: 30%; padding-top: 30px'> <div class='jspsych-survey-likert-preamble'>Please fill out this short survey </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My gender is <br><input type='radio' name='gender' id='Male' value='Male'><label for='Male'> Male</label><br> <input type='radio' name='gender' id='Female' value='Female'><label for='female'> Female</label><br> <input type='radio' name='gender' id='Other' value='Other'><label for='Other_gender'> Other</label><br> <!--<input type='radio' name='gender' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--> <!--<span class='zen_error' id='gender_error'></span>--> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My ethnicity is <br> <input type='radio' name='ethnicity' id='Hispanic or Latino' value='Hispanic or Latino'><label for='Male'> Hispanic or Latino </label><br> <input type='radio' name='ethnicity' id='Not Hispanic or Latino' value='Not Hispanic or Latino'><label for='female'> Not Hispanic or Latino </label><br> <input type='radio' name='ethnicity' id='Other' value='Other'><label for='Other'> Other </label><br> <!--<input type='radio' name='ethnicity' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--> <!--<span class='zen_error' id='ethnicity_error'></span>--> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My race is (select one or more)<br> <input type='checkbox' name='race' id='American Indian or Alaska Native' value='American Indian or Alaska Native'><label for='American Indian or Alaska Native'> American Indian or Alaska Native</label><br> <input type='checkbox' name='race' id='Asian' value='Asian'><label for='Asian'> Asian</label><br> <input type='checkbox' name='race' id='Black or African American' value='Black or African American'><label for='Black or African American'> Black or African American </label><br> <input type='checkbox' name='race' id='Native Hawaiian or Other Pacific Islander' value='Native Hawaiian or Other Pacific Islander'><label for='Native Hawaiian or Other Pacific Islander'> Native Hawaiian or Other Pacific Islander </label><br> <input type='checkbox' name='race' id='White' value='White'><label for='White'> White </label><br> <input type='checkbox' name='race' id='Other' value='Other'><label for='Other'> Other</label><br> <!--<input type='checkbox' name='race' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--> <!--<span class='zen_error' id='race_error'></span>--> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> The ethnicities of people I grew up with are (select one or more)<br> <input type='checkbox' name='comEthnicity' id='Hispanic or Latino' value='Hispanic or Latino'><label for='Hispanic or Latino'> Hispanic or Latino</label><br> <input type='checkbox' name='comEthnicity' id='Not Hispanic or Latino' value='Not Hispanic or Latino'><label for='Not Hispanic or Latino'> Not Hispanic or Latino</label><br> <input type='checkbox' name='comEthnicity' id='Other' value='Other'><label for='Other'> Other</label><br> <!--<input type='radio' name='comEthnicity' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--> <!--<span class='zen_error' id='comEthnicity_error'></span>--> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> The races of people I grew up with are (select one or more)<br> <input type='checkbox' name='comRace' id='American Indian or Alaska Native' value='American Indian or Alaska Native'><label for='American Indian or Alaska Native'> American Indian or Alaska Native</label><br> <input type='checkbox' name='comRace' id='Asian' value='Asian'><label for='Asian'> Asian</label><br> <input type='checkbox' name='comRace' id='Black or African American' value='Black or African American'><label for='Black or African American'> Black or African American </label><br> <input type='checkbox' name='comRace' id='Native Hawaiian or Other Pacific Islander' value='Native Hawaiian or Other Pacific Islander'><label for='Native Hawaiian or Other Pacific Islander'> Native Hawaiian or Other Pacific Islander </label><br> <input type='checkbox' name='comRace' id='White' value='White'><label for='White'> White </label><br> <input type='checkbox' name='comRace' id='Other' value='Other'><label for='Other'> Other</label><br> <!--<input type='checkbox' name='comRace' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--> <!--<span class='zen_error' id='comRace_error'></span>--> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My sexual orientation is <br> <input type='radio' name='sexual_ori' id='Bisexual' value='Bisexual'><label for='Bisexual'> Bisexual</label><br> <input type='radio' name='sexual_ori' id='Heterosexual' value='Heterosexual'><label for='heterosexual'> Heterosexual</label><br> <input type='radio' name='sexual_ori' id='Homosexual' value='Homosexual'><label for='Homosexual'> Homosexual</label><br> <input type='radio' name='sexual_ori' id='Other' value='Other'><label for='Other'> Other</label><br><input type='radio' name='comRace' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label></p> </div> </div>"
     };
-    /*var welcome_survey_block = {
-      type: "survey_select",
-      text: "<div class='jspsych_target jspsych-display-element'> <div class='jspsych-survey-likert-preamble'></div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> Please fill out this short survey </p> <br> </br> <p class='jspsych-survey-text'> <!--My gender is--></p> <select id='gender' name='gender' class='qstn-select'> <option value='empty'> My gender is </option> <option value='Male'>Male</option> <option value='Female'>Female</option> <option value='Not_say'>I prefer not to give this information </option> </select> </div>  <div class='jspsych-survey-text-question'> <select id='ethnicity' name='ethnicity' class='qstn-select'> <option value='empty'> My ethnicity is </option> <option value='Hispanic or Latino'> Hispanic or Latino</option> <option value='Not Hispanic or Latino'> Not Hispanic or Latino</option> <option value='Not_say'>I prefer not to give this information </option> </select> </div><div class='jspsych-survey-text-question'>  <select id='race' name='race' class='qstn-select'> <option value='empty'> My race is</option> <option value='American Indian or Alaska Native'> American Indian or Alaska Native</option> <option value='Asian'> Asian </option> <option value='Black or African American'> Black or African American</option> <option value='Native Hawaiian or Other Pacific Islander'> Native Hawaiian or Other Pacific Islander</option> <option value='White'> White</option> <option value='Not_say'>I prefer not to give this information </option> </select> </div>  <div class='jspsych-survey-text-question'> <select id='ethnicity' name='ethnicity' class='qstn-select'> <option value='empty'> The ethnicity of people I grew up with is </option> <option value='Hispanic or Latino'> Hispanic or Latino</option> <option value='Not Hispanic or Latino'> Not Hispanic or Latino</option> <option value='Not_say'>I prefer not to give this information </option> </select> </div>  <div class='jspsych-survey-text-question'> <select id='comRace' name='comRace' class='qstn-select'> <option value='empty'> The race of people I grew up with is </option> <option value='American Indian or Alaska Native'> American Indian or Alaska Native</option> <option value='Asian'> Asian </option> <option value='Black or African American'> Black or African American</option> <option value='Native Hawaiian or Other Pacific Islander'> Native Hawaiian or Other Pacific Islander</option> <option value='White'> White</option> <option value='Not_say'>I prefer not to give this information </option> </select> </div> <div class='jspsych-survey-text-question'> <select id='ethnicity' name='ethnicity' class='qstn-select'> <option value='empty'> My sexual orientation is </option> <option value='Bisexual'> Bisexual </option> <option value='Heterosexual'> Heterosexual</option> <option value='Homosexual'> Homosexual</option><option value='Other'> Other</option> <option value='Not_say'>I prefer not to give this information </option> </select> </div></div>"
-    };*/
-
-    /* define welcome message block */
-    var instruction1_block = {
-      type: "text",
-      text: "<div><h1>Instruction (1/3)</h1> <hr> <div class='well'> <p>In this experiment, you will see many faces and your task is to compare and judge face similarities.</p> <p>There are two types of tasks: face pair task and face triplet task</p> <div class='row'> <div class='col-md-6'> <h5><b>Face Pair Task</b></h5> <p>Rate the similarity level of the face pair from 1 to 9.</p> <p>1 -- Maximally dissimilar, 9 -- Maximally similar</p> <img src='/static/images/instru-p1.png' style='width:100%'/> </div> <div class='col-md-6'> <h5><b>Face Triplet Task</b></h5> <p>Decide which of the two face images is more similar to each other. You can click on the face image to indicate your choice.</p> <img src='/static/images/instru-p2.png' style='width:100%'/> </div> </div></div></div>"
-    };
-
-    var instruction2_block = {
-      type: "text",
-      text: "<div><h1>Instruction (2/3)</h1> <hr> <div class='well' > <p>The whole experiment will last approximately 30 mins. The timeline is as follows. <div style='text-align:center;''> <img src='/static/images/instru-p3_new.png' style='width:100%'/> </div></div></div>"
-    };
-
-    var instruction3_block = {
-      type: "text",
-      text: '<div><h1>Instructions (3/3)</h1> <hr> <div class="well" > <p>Each presentation will remain on the screen for 0.5 seconds before you can start to respond. After choice bottoms appear, indicate your choice as fast as you can, in no more than 3 seconds. You will see the next page after indicating your choice.</p> <p>If you respond too fast or too slow, you will hear a warning sound.</p> <p>Between the tasks, you will have a 1 min break.</p> <br/> <p>You will enter the practice session after this page. Press "Continue" to start your practice. Press "Back" to return to previous instruction pages.</p> </div></div>'
-    };
+    
 
     var prac1_ready_block = {
       type: "text",
-      text: '<div><strong>Judging face similarities</strong> <hr> <div class="well">  <p>You will be presented with a series of pairs of face images.  You will be judging the similarities between them.</p>  <p>Click the "Continue" button below to practice a couple of times.</p>  <p>In the first example, you will be asked to rate the similarity level of the face pair from 1 to 9.</p> <p>1 -- Maximally Dissimilar, 9 -- Maximally Similar</p> <br></div></div>',
+      text: '<div><h2><strong>Judging face similarities</strong></h2> <hr> <div class="well">  <p>You will be presented with a series of face images.  You will be judging the similarities between them.</p> <p> <em><strong> Try to focus on the face features and ignore the pose, expression and lighting influence.</strong></em> </p> <p>In the first example, you will be asked to rate how similar a face pair is from 1 to 9.</p> <p><strong>1</strong> indicates <strong>Maximally Dissimilar</strong>, <strong>9</strong> indicates <strong>Maximally Similar</strong></p> <p>Click the "Continue" button below to practice a couple of times.</p><br></div></div>',
         //"<p>Press any key to begin the practice for Doublet experiment.</p>",
       timing_post_trial: post_trial_gap
     };
-
+    
     var prac2_ready_block = {
       type: "text",
-      text: '<div class="well"> <p>Great Job! </p> <p> Next you will do the similar thing, but instead of seeing two faces, you are going to see <strong>three</strong> faces and click on the two images that look more similar to you.</p><br></div>',
+      text: '<div class="well"> <p>Great Job! </p> <p> Next you will do the similar thing, but instead of seeing two faces, you are going to see <strong>three</strong> faces and click on the two images that look most similar to you.</p><br></div>',
       timing_post_trial: post_trial_gap
     };
-    var face_images_explore_block = {
+
+    var bad_examples_ready_block = {
       type: "text",
-      text: '<div class="well"> <p>Good Job! </p> <p> Next, you will see a lot of face images, just to give you an idea how the range of variabilities these faces will have.</p><br></div>',
+      text: '<div class="well"> <p>Good Job! </p> <p> These two examples should give you an idea what the trials would be like.</p> <p> Keep in mind that you should <strong><em> focus on the faces themselves </em></strong> rather then the pose, expression and lighting condition of the faces.</p> <p> We will give you some examples of what you should pay attention to.</p><br></div>',
       timing_post_trial: post_trial_gap
     };
+
+    var bad_examples_block1 = {
+      type: "text",
+      text:"<div><h3>Focus on Faces rathar than Poses</h3> <hr> <div class='well'> <p>The two figures below illustrate that how people focus on the faces themselves rather than the poses.</p> <p>In Figure 1, even though the bottom two faces have similar poses, most people find that the top and left faces look most similar. In Figure 2, most people think that the top and rigth faces are most similar even though the two faces on the bottom are of similar poses.</p> <br> <div class='row'> <div class='col-md-6'>  <img src='/static/images/bad_examples/f1bad.JPG' style='width:100%'/> <p>Figure 1</p></div> <div class='col-md-6'> <img src='/static/images/bad_examples/m1bad.JPG' style='width:100%'/><p>Figure 2</p> </div> </div></div></div>"
+    };
+
+    var bad_examples_block2 = {
+      type: "text",
+      text:"<div><h3>Focus on Faces rather than Expressions</h3> <hr> <div class='well'> <p>The two figures below illustrate that how people focus on the faces themselves rather than the expressions.</p> <p>In Figure 1, even though the top face and the left face have similar expressions, most people find that the two faces at the bottom are most similar. In Figure 2, most people think that the top face and the left face are most similar even though the two faces on the bottom are of similar expressions.</p> <br> <div class='row'> <div class='col-md-6'>  <img src='/static/images/bad_examples/f2bad.JPG' style='width:100%'/> <p>Figure 1</p></div> <div class='col-md-6'> <img src='/static/images/bad_examples/m2bad.JPG' style='width:100%'/><p>Figure 2</p> </div> </div></div></div>"
+    };
+
     var prac_no_inst_ready_block = {
       type: "text",
-      text: '<div class="well"> <p> Now you are half way prepared. Practice a few more.</p> </div>',
+      text: '<div class="well"> <p> Now you are half way prepared. Practice a few more.</p> <br> </div>',
       timing_post_trial: post_trial_gap
     };
+
+    var face_images_explore_ready_block = {
+      type: "text",
+      text: '<div class="well"> <p>Terrific! That'+ "'s" +' the end of the pratice trials. </p> <p> Next, you will see some face examples, just to give you an idea how different these faces will be.</p><br></div>',
+      timing_post_trial: post_trial_gap
+    };
+    
     var test_ready_block = {
       type: "text",
-      text: '<div class="well"><p>Terrific! That'+ "'s" +' the end of the pratice trials. Now you will be presented with 200 trials like those you just practiced on, except that you will not receive instructions between trials. </p> <p>Remember, click on the faces that you think are more similar for trials with three faces, or rate the similarities between two faces for trials with two faces.</p> <p>The most important rule, <em> go with your guts!</em></p> <p>Click the button below to begin the experiment.</p></div>',
+      text: '<div class="well"><p>Here come the actual trials!</p> <p> Now you will be presented with 200 trials like those you just practiced on, except that you will not receive instructions between trials. </p>  <p>The most important rule, <strong><em> go with your gut!</em></strong></p> <p>Click the button below to begin the experiment.</p><br></div>',
       timing_post_trial: post_trial_gap
     };
 
     var break1_block = {
       type: "text",
-      text: '<div class="well"><p>You have just finished half of Triplet experiment. You will now begin Doublet experiment.</p></div>',
+      text: '<div class="well"><p>You have finished 1/4 of the experiment. </p><br></div>',
       timing_post_trial: post_trial_gap
     };
 
     var break2_block = {
       type: "text",
-      text: '<div class="well"><p>You have just finished Doublet experiment. You will now begin the second half of Triplet experiment.</p></div>',
+      text: '<div class="well"><p>You have finished 2/4 of the experiment.</p><br></div>',
+      timing_post_trial: post_trial_gap
+    };
+    var break3_block = {
+      type: "text",
+      text: '<div class="well"><p>You have finished 3/4 of the experiment.</p><br></div>',
+      timing_post_trial: post_trial_gap
+    };
+    
+    var complete_block = {
+      type: "text",
+      text: '<div class="well"><p>You have finished the whole experiment. Thank you for your participation.</p><br></div>',
       timing_post_trial: post_trial_gap
     };
 
-    var complete_block = {
+    var face_images_explore_block1 = {
       type: "text",
-      text: '<div class="well"><p>You have just finished the whole experiment. Thank you for your participation.</p></div>',
+      text: "<div><h3>Face Examples (1/6)</h3> <hr> <img src='/static/images/faceExamples/M1.jpg' style='width:100%'/><br> </div> ",
+      timing_post_trial: post_trial_gap
+    };
+
+
+    var face_images_explore_block2 = {
+      type: "text",
+      text: "<div><h3>Face Examples (2/6)</h3> <hr> <img src='/static/images/faceExamples/M2.jpg' style='width:100%'/> <br></div> ",
+      timing_post_trial: post_trial_gap
+    };
+    var face_images_explore_block3 = {
+      type: "text",
+      text: "<div><h3>Face Examples (3/6)</h3> <hr> <img src='/static/images/faceExamples/M3.jpg' style='width:100%'/><br> </div> ",
+      timing_post_trial: post_trial_gap
+    };
+    var face_images_explore_block4 = {
+      type: "text",
+      text: "<div><h3>Face Examples (4/6)</h3> <hr> <img src='/static/images/faceExamples/F1.jpg' style='width:100%'/> <br></div> ",
+      timing_post_trial: post_trial_gap
+    };
+    var face_images_explore_block5 = {
+      type: "text",
+      text: "<div><h3>Face Examples (5/6)</h3> <hr> <img src='/static/images/faceExamples/F2.jpg' style='width:100%'/> <br> </div> ",
+      timing_post_trial: post_trial_gap
+    };
+    var face_images_explore_block6 = {
+      type: "text",
+      text: "<div><h3>Face Examples (6/6)</h3> <hr> <img src='/static/images/faceExamples/F3.jpg' style='width:100%'/> <br> </div> ",
       timing_post_trial: post_trial_gap
     };
 
     /* define test block */
-
-    var doublet_stim_m = getDoubletStimuli('M', 4);
-    //console.log(doublet_stim_m[0]);
-    var doublet_stim_f = getDoubletStimuli('F', 14);
-    var triplet_stim_m = getTripletStimuli('M', 6);
-    var triplet_stim_f = getTripletStimuli('F', 18);
-    var prac_no_inst_doublet_stim_1 = [doublet_stim_m[1],doublet_stim_m[2]];
-    var prac_no_inst_doublet_stim_2 = [doublet_stim_f[0],doublet_stim_f[1]];
+    var doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feDou.txt");
+    var doublet_stim_m = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/maDou.txt");
+    var triplet_stim_m = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/maTri.txt");
+    var triplet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feTri.txt");
     var prac_doublet_stim = [doublet_stim_m[0]];
-    var test_doublet1_stim = doublet_stim_f.slice(2,5);
-    var test_doublet2_stim = doublet_stim_m.slice(3,5);
     var prac_triplet_stim = [triplet_stim_f[0]];
-    var prac_no_inst_triplet_stim_1 = [triplet_stim_f[1],triplet_stim_f[2]];
-    var prac_no_inst_triplet_stim_2 = [triplet_stim_m[0],triplet_stim_m[1]];
-    //var test_triplet_all_stim = getTripletStimuli('F', 20,6);
-    var test_triplet1_stim = triplet_stim_m.slice(2, 5);
-    var test_triplet2_stim = triplet_stim_f.slice(3,5);
-
-    /*jsPsych.randomization.shuffle(prac_doublet_stim);
-    jsPsych.randomization.shuffle(test_doublet1_stim);
-    jsPsych.randomization.shuffle(test_doublet2_stim);
-     jsPsych.randomization.shuffle(prac_triplet_stim);
-     jsPsych.randomization.shuffle(test_triplet1_stim);
-    jsPsych.randomization.shuffle(test_triplet2_stim);*/
-
+    var prac_no_inst_triplet_stim_1 = [triplet_stim_f[1]];
+    var prac_no_inst_triplet_stim_2 = [triplet_stim_m[0]];
+    var prac_no_inst_doublet_stim_1 = [doublet_stim_m[1]];
+    var prac_no_inst_doublet_stim_2 = [doublet_stim_f[0]];
+    
+    var test_doublet1_stim = doublet_stim_f.slice(1,3);
+    var test_doublet2_stim = doublet_stim_m.slice(2,4);
+    var test_triplet1_stim = triplet_stim_f.slice(2,4);
+    var test_triplet2_stim = triplet_stim_m.slice(1,3);
 
     //practice with instruction blocks
     var prac_doublet_block = {
@@ -418,45 +310,77 @@
     // };
 
     /* define debrief block */
-
-    var debrief_block = {
+    /*var debrief_block = {
       type: "text",
       text: function() {
         return "<p>Your average response time was <strong>" +
         getAverageResponseTime() + "ms</strong>. Press " +
         "any key to complete the experiment. Thank you!</p>";
       }
-    };
+    };*/
 
     /* create experiment definition array */
     var experiment = [];
-    //experiment.push(welcome_survey_age_block);
-    //experiment.push(welcome_survey_block);
-    
-    //experiment.push(instruction1_block);
-    //experiment.push(instruction2_block);
-    //experiment.push(instruction3_block);
     experiment.push(prac1_ready_block);
     experiment.push(prac_doublet_block);
     experiment.push(prac2_ready_block);
     experiment.push(prac_triplet_block);
+    experiment.push(bad_examples_ready_block);
+    experiment.push(bad_examples_block1);
+    experiment.push(bad_examples_block2);
     experiment.push(prac_no_inst_ready_block);
     experiment.push(prac_no_inst_doublet_block_1);
     experiment.push(prac_no_inst_triplet_block_1);
     experiment.push(prac_no_inst_doublet_block_2);
     experiment.push(prac_no_inst_triplet_block_2);
+    experiment.push(face_images_explore_ready_block);
+    experiment.push(face_images_explore_block1);
+    experiment.push(face_images_explore_block2);
+    experiment.push(face_images_explore_block3);
+    experiment.push(face_images_explore_block4);
+    experiment.push(face_images_explore_block5);
+    experiment.push(face_images_explore_block6);
     experiment.push(test_ready_block);
-    experiment.push(test_triplet1_block);
-    experiment.push(break1_block);
-    experiment.push(test_doublet1_block);
-    experiment.push(test_doublet2_block);
-    experiment.push(break2_block);
-    experiment.push(test_triplet2_block);
+
+    var douTriShuffle = [1,2,3,4];
+    jsPsych.randomization.shuffle(douTriShuffle);
+    for (var i = 0; i < douTriShuffle.length; i++){
+      switch(douTriShuffle[i]){
+        case 1:
+          experiment.push(test_doublet1_block);
+          break;
+        case 2:
+          experiment.push(test_doublet2_block);
+          break;
+        case 3:
+          experiment.push(test_triplet1_block);
+          break;
+        case 4:
+          experiment.push(test_triplet2_block);
+          break;
+        default:
+        ;
+      }
+      switch(i){
+        case 0:
+          experiment.push(break1_block);
+          break;
+        case 1:
+          experiment.push(break2_block);
+          break;
+        case 2:
+          experiment.push(break3_block);
+          break;
+        default:
+        ;
+      }
+    }
     experiment.push(welcome_survey_new_block);
     experiment.push(complete_block);
-    experiment.push(debrief_block);
+    //experiment.push(debrief_block);
 
-    jsPsych.preloadImages(getAllImages('F', 6), start)
+
+    start();
     var psiturk = new PsiTurk(uniqueId, adServerLoc, mode);
 
     /* start the experiment */

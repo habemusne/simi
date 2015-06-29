@@ -39,14 +39,14 @@
             // set the HTML of the display target to replaced_text.
             display_element.html(trial.text);
 
-            var after_response = function(info) {
+            /*var after_response = function(info) {
 
 
                 save_data(info.key, info.rt);
                 display_element.html(''); // clear the display
                 jsPsych.finishTrial();
 
-            };
+            };*/
 
             var mouse_listener = function(e) {
 
@@ -65,18 +65,7 @@
             } else {
                 //jsPsych.pluginAPI.getKeyboardResponse(after_response, trial.cont_key);
             }
-            function save_data(key, rt) {
-                question_data = [];
-                select_elements = $('.qstn-select');
-                for (i = 0; i < select_elements.length; ++i){
-                    question_data.push(select_elements[i].value);
-                }
-                jsPsych.data.write({
-                    "rt": rt,
-                    "key_press": key,
-                    "responses": JSON.stringify(question_data)
-                });
-            }
+
 
             // show preamble text
             display_element.append($('<div>', {
@@ -115,19 +104,28 @@
               var response_time = endTime - startTime;
 
               // create object to hold responses
-              var question_data = {};
+              var question_age = {};
               $("div.jspsych-survey-text-question").each(function(index) {
                 var id = "Q" + index;
                 var val = $(this).children('input').val();
                 var obje = {};
                 obje[id] = val;
-                $.extend(question_data, obje);
+                $.extend(question_age, obje);
               });
-
               // save data
+
+              var question_data = [];
+              select_elements = $('.qstn-select');
+              for (var i = 0; i < select_elements.length; ++i){
+                question_data.push(select_elements[i].value);
+                console.log(select_elements[i].value);
+              }
+              console.log(select_elements.length);
+              
               jsPsych.data.write({
                 "rt": response_time,
-                "responses": JSON.stringify(question_data)
+                "responses_age": JSON.stringify(question_age),
+                "responses_select": JSON.stringify(question_data)
               });
 
               display_element.html('');
