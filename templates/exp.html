@@ -60,37 +60,7 @@
         for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
         return o;
     }
-    function getAllImages (gender, maxnum) {
-      images = [
-'Google_1_Donald_Meyers_13_oval.jpg','Google_1_Phillip_Browning_17_oval.jpg',
-'Angela_Upshaw_15_oval.jpg','Audrey_Rosenbaum_10_oval.jpg',
-'Google_1_Candice_Carraway_1_oval.jpg','Google_1_Marjorie_Petty_11_oval.jpg',
-'Google_1_Donald_Meyers_13_oval.jpg','Google_1_Marvin_Lavergne_5_oval_(2).jpg',
-'Google_1_Mark_Detwiler_9_oval.jpg','Google_1_Virginia_Stokes_5_oval.jpg',
 
-'Ana_Bahr_11_oval.jpg','Google_1_Lydia_Ngo_15_oval.jpg','Google_1_Vicky_Frey_1_oval.jpg',
-'Google_1_Jeanette_Driver_11_oval.jpg','Google_1_Elaine_Grady_9_oval.jpg','Arlene_Grande_19_oval.jpg',
-'Google_1_Eric_Williford_3_oval.jpg','Google_1_Sheila_Clemmons_3_oval.jpg','Google_1_Brittany_Kelley_17_oval.jpg',
-'Google_1_Jeanette_Braswell_15_oval.jpg','Google_1_Kristi_Marty_5_oval.jpg','Google_1_Lola_Shick_5_oval.jpg',
-'Google_1_Christopher_Holladay_15_oval.jpg','Google_1_Jo_Snook_7_oval.jpg','Google_1_Marjorie_Ferris_15_oval.jpg',
-
-'Google_1_Joshua_Regan_7_oval.jpg','Google_1_Jason_Haws_1_oval.jpg',
-'Google_1_Howard_Paulino_9_oval.jpg','Google_1_Stephen_Palmer_15_oval.jpg',
-'Google_1_Randy_Gary_3_oval.jpg','Google_1_Adam_Khan_3_oval.jpg',
-'Google_1_Samuel_Whittemore_3_oval.jpg','Google_1_Benjamin_Mcshane_15_oval.jpg',
-'Google_1_George_Spurgeon_13_oval.jpg','Google_1_Paul_Fernandes_5_oval.jpg',
-
-'Google_1_Joshua_Mcmillon_1_oval.jpg','Google_1_Colleen_Lowe_1_oval.jpg','Google_1_Keith_Worth_13_oval.jpg',
-'Google_1_Chris_Avelar_5_oval.jpg','Google_1_Karla_Santoro_5_oval.jpg','Google_1_Craig_Carroll_5_oval.jpg',
-'Google_1_Samuel_Chartier_17_oval.jpg','Google_1_Randy_Stanger_17_oval.jpg','Google_1_James_Howie_9_oval.jpg',
-'Google_1_Joe_Bristol_19_oval.jpg','Google_1_Jeffrey_Overton_8_oval.jpg','Google_1_Alan_Schlosser_17_oval.jpg',
-'Brian_Shively_13_oval.jpg','Google_1_Erika_Wyche_1_oval.jpg','Google_1_Shawn_Schuster_15_oval.jpg'
-      ];
-      for (i = 0; i < images.length; ++i){
-        images[i] = 'static/images/2kfaces_new/' + images[i];
-      }
-      return images;
-    }
     
     //read a text file
     function readTextFile(file){
@@ -131,34 +101,39 @@
 
     var prac1_ready_block = {
       type: "text",
-      text: '<div><h2><strong>Judging face similarities</strong></h2> <hr> <div class="well">  <p>You will be presented with a series of pairs of face images.  You will be judging the similarities between them.</p> <p> <em><strong> Try to focus on the face features and ignore the pose, expression and lighting influence.</strong></em> </p> <p>In the first example, you will be asked to rate the similarity level of the face pair from 1 to 9.</p> <p>1 -- Maximally Dissimilar, 9 -- Maximally Similar</p> <p>Click the "Continue" button below to practice a couple of times.</p><br></div></div>',
+      text: '<div><h2><strong>Judging face similarities</strong></h2> <hr> <div class="well">  <p>You will be presented with a series of face images.  You will be judging the similarities between them.</p> <p> <em><strong> Try to focus on the face features and ignore the pose, expression and lighting influence.</strong></em> </p> <p>In the first example, you will be asked to rate how similar a face pair is from 1 to 9.</p> <p><strong>1</strong> indicates <strong>Maximally Dissimilar</strong>, <strong>9</strong> indicates <strong>Maximally Similar</strong></p> <p>Click the "Continue" button below to practice a couple of times.</p><br></div></div>',
         //"<p>Press any key to begin the practice for Doublet experiment.</p>",
       timing_post_trial: post_trial_gap
     };
     
     var prac2_ready_block = {
       type: "text",
-      text: '<div class="well"> <p>Great Job! </p> <p> Next you will do the similar thing, but instead of seeing two faces, you are going to see <strong>three</strong> faces and click on the two images that look more similar to you.</p><br></div>',
+      text: '<div class="well"> <p>Great Job! </p> <p> Next you will do the similar thing, but instead of seeing two faces, you are going to see <strong>three</strong> faces and click on the two images that look most similar to you.</p><br></div>',
       timing_post_trial: post_trial_gap
     };
+
     var bad_examples_ready_block = {
       type: "text",
-      text: '<div class="well"> <p>Good Job! </p> <p> These two examples should gave you an idea what the trials would be like.</p> <p> Keep in mind that you should <strong><em> focus on the face itself </em></strong> rather then the pose, expression and lighting of the face.</p> <p> We will give you some examples of what you should pay attention to.</p><br></div>',
+      text: '<div class="well"> <p>Good Job! </p> <p> These two examples should give you an idea what the trials would be like.</p> <p> Keep in mind that you should <strong><em> focus on the faces themselves </em></strong> rather then the pose, expression and lighting condition of the faces.</p> <p> We will give you some examples of what you should pay attention to.</p><br></div>',
       timing_post_trial: post_trial_gap
     };
+
     var bad_examples_block1 = {
       type: "text",
-      text:"<div><h3>Pose Difference Between Faces </h3> <hr> <div class='well'> <p>The two pairs of faces below is to demonstrate that you should focus on the face itself rather than pose.</p> <p>In figure 1, even though the left face and the right face has similar pose, most people find that the left face and the right face are most similar. In figure 2, most people think that the left face and the middle face are most similar</p> <br> <div class='row'> <div class='col-md-6'>  <img src='/static/images/bad_examples/F1.jpg' style='width:100%'/> <p>Figure 1</p></div> <div class='col-md-6'> <img src='/static/images/bad_examples/M1.jpg' style='width:100%'/><p>Figure 2</p> </div> </div></div></div>"
+      text:"<div><h3>Focus on Faces rathar than Poses</h3> <hr> <div class='well'> <p>The two figures below illustrate that how people focus on the faces themselves rather than the poses.</p> <p>In Figure 1, even though the bottom two faces have similar poses, most people find that the top and left faces look most similar. In Figure 2, most people think that the top and rigth faces are most similar even though the two faces on the bottom are of similar poses.</p> <br> <div class='row'> <div class='col-md-6'>  <img src='/static/images/bad_examples/f1bad.JPG' style='width:100%'/> <p>Figure 1</p></div> <div class='col-md-6'> <img src='/static/images/bad_examples/m1bad.JPG' style='width:100%'/><p>Figure 2</p> </div> </div></div></div>"
     };
+
     var bad_examples_block2 = {
       type: "text",
-      text:"<div><h3>Expression Difference Between Faces </h3> <hr> <div class='well'> <p>The two pairs of faces below is to demonstrate that you should focus on the face itself rather than expression.</p> <p>In figure 1, even though the left face and the middle face has similar expression, most people find that the middle face and the right face are most similar. In figure 2, most people think that the left face and the middle face are most similar</p> <br> <div class='row'> <div class='col-md-6'>  <img src='/static/images/bad_examples/F3.jpg' style='width:100%'/> <p>Figure 1</p></div> <div class='col-md-6'> <img src='/static/images/bad_examples/M2.jpg' style='width:100%'/><p>Figure 2</p> </div> </div></div></div>"
+      text:"<div><h3>Focus on Faces rather than Expressions</h3> <hr> <div class='well'> <p>The two figures below illustrate that how people focus on the faces themselves rather than the expressions.</p> <p>In Figure 1, even though the top face and the left face have similar expressions, most people find that the two faces at the bottom are most similar. In Figure 2, most people think that the top face and the left face are most similar even though the two faces on the bottom are of similar expressions.</p> <br> <div class='row'> <div class='col-md-6'>  <img src='/static/images/bad_examples/f2bad.JPG' style='width:100%'/> <p>Figure 1</p></div> <div class='col-md-6'> <img src='/static/images/bad_examples/m2bad.JPG' style='width:100%'/><p>Figure 2</p> </div> </div></div></div>"
     };
+
     var prac_no_inst_ready_block = {
       type: "text",
       text: '<div class="well"> <p> Now you are half way prepared. Practice a few more.</p> <br> </div>',
       timing_post_trial: post_trial_gap
     };
+
     var face_images_explore_ready_block = {
       type: "text",
       text: '<div class="well"> <p>Terrific! That'+ "'s" +' the end of the pratice trials. </p> <p> Next, you will see some face examples, just to give you an idea how different these faces will be.</p><br></div>',
@@ -173,25 +148,27 @@
 
     var break1_block = {
       type: "text",
-      text: '<div class="well"><p>You have just finished 1/4 of the experiment. </p><br></div>',
+      text: '<div class="well"><p>You have finished 1/4 of the experiment. </p><br></div>',
       timing_post_trial: post_trial_gap
     };
 
     var break2_block = {
       type: "text",
-      text: '<div class="well"><p>You have just finished 1/2 of the experiment.</p><br></div>',
+      text: '<div class="well"><p>You have finished 2/4 of the experiment.</p><br></div>',
       timing_post_trial: post_trial_gap
     };
     var break3_block = {
       type: "text",
-      text: '<div class="well"><p>You have just finished 3/4 of the experiment.</p><br></div>',
+      text: '<div class="well"><p>You have finished 3/4 of the experiment.</p><br></div>',
       timing_post_trial: post_trial_gap
     };
+    
     var complete_block = {
       type: "text",
-      text: '<div class="well"><p>You have just finished the whole experiment. Thank you for your participation.</p><br></div>',
+      text: '<div class="well"><p>You have finished the whole experiment. Thank you for your participation.</p><br></div>',
       timing_post_trial: post_trial_gap
     };
+
     var face_images_explore_block1 = {
       type: "text",
       text: "<div><h3>Face Examples (1/6)</h3> <hr> <img src='/static/images/faceExamples/M1.jpg' style='width:100%'/><br> </div> ",
@@ -224,6 +201,7 @@
       text: "<div><h3>Face Examples (6/6)</h3> <hr> <img src='/static/images/faceExamples/F3.jpg' style='width:100%'/> <br> </div> ",
       timing_post_trial: post_trial_gap
     };
+
     /* define test block */
     var doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feDou.txt");
     var doublet_stim_m = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/maDou.txt");
@@ -332,14 +310,14 @@
     // };
 
     /* define debrief block */
-    var debrief_block = {
+    /*var debrief_block = {
       type: "text",
       text: function() {
         return "<p>Your average response time was <strong>" +
         getAverageResponseTime() + "ms</strong>. Press " +
         "any key to complete the experiment. Thank you!</p>";
       }
-    };
+    };*/
 
     /* create experiment definition array */
     var experiment = [];
@@ -363,6 +341,7 @@
     experiment.push(face_images_explore_block5);
     experiment.push(face_images_explore_block6);
     experiment.push(test_ready_block);
+
     var douTriShuffle = [1,2,3,4];
     jsPsych.randomization.shuffle(douTriShuffle);
     for (var i = 0; i < douTriShuffle.length; i++){
@@ -398,9 +377,9 @@
     }
     experiment.push(welcome_survey_new_block);
     experiment.push(complete_block);
-    experiment.push(debrief_block);
+    //experiment.push(debrief_block);
 
-    //jsPsych.preloadImages(getAllImages('F', 6), start)
+
     start();
     var psiturk = new PsiTurk(uniqueId, adServerLoc, mode);
 
