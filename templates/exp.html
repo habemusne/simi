@@ -90,11 +90,6 @@
       questions: [question_age],
     };*/
 
-    /*var html_block = {
-      type:'html',
-      pages: [{url: "external_page.html", cont_btn: "submit", check_fn: check_submission}]
-    };*/
-
     var welcome_survey_new_block = {
       type: "survey_new",
       questions: [question_age],
@@ -324,7 +319,7 @@
 
     /* create experiment definition array */
     var experiment = [];
-    /*experiment.push(prac1_ready_block);
+    experiment.push(prac1_ready_block);
     experiment.push(prac_doublet_block);
     experiment.push(prac2_ready_block);
     experiment.push(prac_triplet_block);
@@ -377,7 +372,7 @@
         default:
         ;
       }
-    }*/
+    }
     experiment.push(welcome_survey_new_block);
     experiment.push(complete_block);
     //experiment.push(debrief_block);
