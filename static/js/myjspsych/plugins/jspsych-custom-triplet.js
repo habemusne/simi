@@ -113,7 +113,7 @@
         $('.top').unbind();
         $('.left').unbind();
         $('.right').unbind();
-        document.getElementById('pleasant').play();
+        //document.getElementById('pleasant').play();
         var endTime = (new Date()).getTime();
         var response_time = endTime - startTime;
 

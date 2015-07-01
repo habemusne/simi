@@ -100,8 +100,7 @@
 
     var prac1_ready_block = {
       type: "text",
-      text: '<div><h2><strong>Judging face similarities</strong></h2> <hr> <div class="well">  <p>You will be presented with a series of face images.  You will be judging the similarities between them.</p> <p> <em><strong> Try to focus on the face features and ignore the pose, expression and lighting influence.</strong></em> </p> <p>In the first example, you will be asked to rate how similar a face pair is from 1 to 9.</p> <p><strong>1</strong> indicates <strong>Maximally Dissimilar</strong>, <strong>9</strong> indicates <strong>Maximally Similar</strong></p> <p>Click the "Continue" button below to practice a couple of times.</p><br></div></div>',
-        //"<p>Press any key to begin the practice for Doublet experiment.</p>",
+      text: '<div class="well"> <p>In the first example, you will be asked to rate how similar a face pair is from 1 to 9.</p> <p><strong>1</strong> indicates <strong>Maximally Dissimilar</strong>, <strong>9</strong> indicates <strong>Maximally Similar</strong></p> <p> <em><strong> Try to focus on the face features and ignore the pose, expression and lighting influence.</strong></em> </p> <p>Click the "Continue" button below to practice a couple of times.</p><br></div>',
       timing_post_trial: post_trial_gap
     };
     
@@ -135,10 +134,16 @@
 
     var face_images_explore_ready_block = {
       type: "text",
-      text: '<div class="well"> <p>Terrific! That'+ "'s" +' the end of the pratice trials. </p> <p> Next, you will see some face examples, just to give you an idea how different these faces will be.</p><br></div>',
+      text: '<div><h2><strong>Judging face similarities</strong></h2> <hr><div class="well"> <p>You will be presented with a series of face images.  You will be judging the similarities between them.</p> <p> First, you will see some face examples, just to give you an idea how different these faces will be.</p><br></div></div>',
       timing_post_trial: post_trial_gap
     };
     
+    /*var face_images_explore_ready_block = {
+      type: "text",
+      text: '<div class="well"> <p>Terrific! That'+ "'s" +' the end of the pratice trials. </p> <p> Next, you will see some face examples, just to give you an idea how different these faces will be.</p><br></div>',
+      timing_post_trial: post_trial_gap
+    };*/
+
     var test_ready_block = {
       type: "text",
       text: '<div class="well"><p>Here come the actual trials!</p> <p> Now you will be presented with 200 trials like those you just practiced on, except that you will not receive instructions between trials. </p>  <p>The most important rule, <strong><em> go with your gut!</em></strong></p> <p>Click the button below to begin the experiment.</p><br></div>',
@@ -328,6 +333,13 @@
 
     /* create experiment definition array */
     var experiment = [];
+    experiment.push(face_images_explore_ready_block);
+    experiment.push(face_images_explore_block1);
+    experiment.push(face_images_explore_block2);
+    experiment.push(face_images_explore_block3);
+    experiment.push(face_images_explore_block4);
+    experiment.push(face_images_explore_block5);
+    experiment.push(face_images_explore_block6);
     experiment.push(prac1_ready_block);
     experiment.push(prac_doublet_block);
     experiment.push(prac2_ready_block);
@@ -340,13 +352,8 @@
     experiment.push(prac_no_inst_triplet_block_1);
     experiment.push(prac_no_inst_doublet_block_2);
     experiment.push(prac_no_inst_triplet_block_2);
-    experiment.push(face_images_explore_ready_block);
-    experiment.push(face_images_explore_block1);
-    experiment.push(face_images_explore_block2);
-    experiment.push(face_images_explore_block3);
-    experiment.push(face_images_explore_block4);
-    experiment.push(face_images_explore_block5);
-    experiment.push(face_images_explore_block6);
+    
+
     experiment.push(test_ready_block);
 
     var douTriShuffle = [1,2,3,4];

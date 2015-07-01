@@ -115,10 +115,21 @@
       function show_response_slider(display_element, trial) {
 
         var startTime = (new Date()).getTime();
+        display_element.append('<table id="likert_scale"> <tbody> <tr> <td style="text-align: center; width: 75px;">Maximally <br>dissimilar</td> <td style="padding-left: 30px; padding-right: 30px; width:80%;"> <form action="" style="text-align: center;"> <input id="scale_value" type="radio" name="scale_value" value="1"> <input id="scale_value" type="radio" name="scale_value" value="2"> <input id="scale_value" type="radio" name="scale_value" value="3"> <input id="scale_value" type="radio" name="scale_value" value="4"> <input id="scale_value" type="radio" name="scale_value" value="5"> <input id="scale_value" type="radio" name="scale_value" value="6"> <input id="scale_value" type="radio" name="scale_value" value="7"> <input id="scale_value" type="radio" name="scale_value" value="8"> <input id="scale_value" type="radio" name="scale_value" value="9"> </form> </td> <td style="text-align: center; width: 75px;">Maximally <br>similar</td> </tr> <tr> <td style="text-align: center; width: 75px;"> </td> <td style="padding-left: 30px; padding-right: 30px; width:80%;"> <form action="" style="text-align: center; margin-left: 4.5%;"> <li id="scalelabels"> 1 </li> <li id="scalelabels"> 2 </li> <li id="scalelabels"> 3 </li> <li id="scalelabels"> 4 </li> <li id="scalelabels"> 5 </li> <li id="scalelabels"> 6 </li> <li id="scalelabels"> 7 </li> <li id="scalelabels"> 8 </li> <li id="scalelabels"> 9 </li> </form> </td> <td style="text-align: center; width: 75px;"> </td> </tr> </tbody> </table>');
         
-        display_element.append('<table id="likert_scale"> <tbody> <tr> <td style="text-align: center; width: 75px;">Maximally <br>dissimilar</td> <td style="padding-left: 30px; padding-right: 30px; width:80%;"> <form action="" style="text-align: center;"> <input id="scale_value" type="radio" name="scale_value" value="1"> <input id="scale_value" type="radio" name="scale_value" value="2"> <input id="scale_value" type="radio" name="scale_value" value="3"> <input id="scale_value" type="radio" name="scale_value" value="4"> <input id="scale_value" type="radio" name="scale_value" value="5"> <input id="scale_value" type="radio" name="scale_value" value="6"> <input id="scale_value" type="radio" name="scale_value" value="7"> <input id="scale_value" type="radio" name="scale_value" value="8"> <input id="scale_value" type="radio" name="scale_value" value="9"> </form> </td> <td style="text-align: center; width: 75px;">Maximally <br>similar</td> </tr> </tbody> </table>');
+        $("input[name='scale_value']").change(function(){
+          // Do something interesting here
+          var score = getValue('scale_value');
+          var score_valid = ((parseInt(score)>=1) && (parseInt(score)<=9));
+          //console.log(score_valid);
+          if ( score_valid ){
+            setTimeout(function(){
+              wrapup_trial();
+            }, 500);
+          }
+        });
         
-
+        
         function getValue(name) {
           var rbs = document.getElementsByName(name);
           var iLen=rbs.length;
@@ -131,27 +142,14 @@
           return value;
         }
 
-        //  create button
-        display_element.append($('<button>', {
-          'id': 'next',
-          'class': 'sim',
-          'html': 'Submit Answer'
-        }));
-
         // if prompt is set, show prompt
         if (trial.prompt !== "") {
           display_element.append(trial.prompt);
         }
 
-        $("#next").click(function() {
+        function wrapup_trial(){
+          //document.getElementById('pleasant').play();
           var score = getValue('scale_value');
-          var score_valid = ((parseInt(score)>=1) && (parseInt(score)<=9));
-
-          if (!score_valid){
-            alert('Please rate similarity before submission');
-          }
-          else{
-          document.getElementById('pleasant').play();
           var endTime = (new Date()).getTime();
           var response_time = endTime - startTime;
 
@@ -175,8 +173,8 @@
           } else {
             jsPsych.finishTrial();
           }
+        
         }
-        });
       }
     };
 
