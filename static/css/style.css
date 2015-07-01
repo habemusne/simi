@@ -13,7 +13,7 @@ label {
 	margin-right:20%;
 }
 .img-left{
-	padding-right:20%;
+	padding-right:25%;
 }
 .right{
 	margin-left:20%;
@@ -21,7 +21,43 @@ label {
 .img-right{
 	padding-left:20%;
 }
-#sliderlabels > li{
+
+#scalelabels{
+	float:left;
+	display:inline;
+	position:relative;
+	width:10.5%;
+}
+#likert_scale {
+	display: block;
+	margin-top: 10%;
+	width: 710px;
+	border: 0px;
+}
+
+#scale_value {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.sim{
+	margin-top:5%;
+}
+
+
+
+/* not useful*/
+.text-warning{
+	color: #E74C3C;
+}
+
+.qstn-select{
+	width: 250px;
+	border: 0;
+	height:40px;
+	background-color:none;
+}
+#sliderlabels{
 	float:left;
 	display:inline;
 	position:relative;
@@ -41,20 +77,4 @@ label {
 	width:20%;
 	margin-right: 35%;
 }
-.sim{
-	margin-top:5%;
-}
-
-.text-warning{
-	color: #E74C3C;
-}
-
-.qstn-select{
-	width: 250px;
-	border: 0;
-	height:40px;
-	background-color:none;
-}
-
-
 
