@@ -91,7 +91,7 @@
               wrapup_trial();
             }
           }
-          console.log(pressed_set);
+          //console.log(pressed_set);
         }
 
         $('.top').click(function(){
@@ -122,7 +122,7 @@
           clearTimeout(setTimeoutHandlers[i]);
         }
 
-        var score = $("#slider").slider("value");
+        //var score = $("#slider").slider("value");
         jsPsych.data.write($.extend({}, {
           "pressed": JSON.stringify(pressed_set),
           "rt": response_time,
@@ -139,7 +139,6 @@
         }
       }
     };
-
     return plugin;
   })();
 })(jQuery);

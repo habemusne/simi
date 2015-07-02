@@ -42,9 +42,7 @@
           function save_data() {
             var question_data = {};
             question_data['gender'] = getValue('gender');
-            question_data['ethnicity'] = getValue('ethnicity');
             question_data['race'] = getValue('race');
-            question_data['comEth'] = getValue('comEthnicity');
             question_data['comRace'] = getValue('comRace');
             question_data['sexOri'] = getValue('sexual_ori');
             return question_data;
@@ -52,11 +50,11 @@
             
           function checkDemographics() {
             var pass = true;
-            if (getValue('gender').length === 0 || getValue('race').length === 0 ||getValue('comRace').length === 0 ) {
+            if (getValue('gender').length === 0  ||getValue('comRace').length === 0 ) {
               pass = false;
             } 
 
-            if (getValue('ethnicity').length === 0 || getValue('sexual_ori').length === 0 || getValue('comEthnicity').length === 0) {
+            if ( getValue('sexual_ori').length === 0 || getValue('race').length === 0) {
               pass = false;
             } 
             return pass;

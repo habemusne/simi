@@ -42,27 +42,21 @@
     <div id="jspsych_target" class="jspsych_target"></div>
   </body>
   <script>
-    function getAverageResponseTime() {
-
-      var trials = jsPsych.data.getTrialsOfType('similarity');
-
-      var sum_rt = 0;
-      var valid_trial_count = 0;
-      for (var i = 0; i < trials.length; i++) {
-        if (trials[i].response == 'go' && trials[i].rt > -1) {
-          sum_rt += trials[i].rt;
-          valid_trial_count++;
-        }
-      }
-      return Math.floor(sum_rt / valid_trial_count);
+ 
+    function getAllImages() {
+      var images = []
+      images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feDou.txt"));
+      images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/maDou.txt"));
+      images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/maTri.txt"));
+      images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feTri.txt"));
+      images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feDou2.txt"));
+      images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/maDou2.txt"));
+      images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/maTri2.txt"));
+      images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feTri2.txt"));
+      console.log(images);
+      return images;
     }
 
-    function shuffle(o){
-        for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-        return o;
-    }
-
-    
     //read a text file
     function readTextFile(file){
         htmlobj=$.ajax({url:file,async:false});
@@ -94,7 +88,7 @@
     var welcome_survey_new_block = {
       type: "survey_new",
       questions: [question_age],
-      text: "<div class='jspsych_target jspsych-display-element' style='text-align: left; width: 500px; margin-left: 30% auto; padding-top: 30px'> <div class='jspsych-survey-likert-preamble'>Please fill out this short survey </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My gender is <br> <input type='radio' name='gender' id='Male' value='Male'><label for='Male'> Male</label><br> <input type='radio' name='gender' id='Female' value='Female'><label for='female'> Female</label><br> <input type='radio' name='gender' id='Other' value='Other'><label for='Other_gender'> Other</label><br> <!--<input type='radio' name='gender' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--> <span class='zen_error' id='gender_error'></span> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My ethnicity is <br> <input type='radio' name='ethnicity' id='Hispanic or Latino' value='Hispanic or Latino'><label for='Male'> Hispanic or Latino </label><br> <input type='radio' name='ethnicity' id='Not Hispanic or Latino' value='Not Hispanic or Latino'><label for='female'> Not Hispanic or Latino </label><br> <input type='radio' name='ethnicity' id='Other' value='Other'><label for='Other'> Other </label><br> <!--<input type='radio' name='ethnicity' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--> <span class='zen_error' id='ethnicity_error'></span> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My race is (select one or more)<br> <input type='checkbox' name='race' id='American Indian or Alaska Native' value='American Indian or Alaska Native'><label for='American Indian or Alaska Native'> American Indian or Alaska Native</label><br> <input type='checkbox' name='race' id='Asian' value='Asian'><label for='Asian'> Asian</label><br> <input type='checkbox' name='race' id='Black or African American' value='Black or African American'><label for='Black or African American'> Black or African American </label><br> <input type='checkbox' name='race' id='Native Hawaiian or Other Pacific Islander' value='Native Hawaiian or Other Pacific Islander'><label for='Native Hawaiian or Other Pacific Islander'> Native Hawaiian or Other Pacific Islander </label><br> <input type='checkbox' name='race' id='White' value='White'><label for='White'> White </label><br> <input type='checkbox' name='race' id='Other' value='Other'><label for='Other'> Other</label><br> <!--<input type='checkbox' name='race' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--> <span class='zen_error' id='race_error'></span> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> The ethnicities of people I grew up with are (select one or more)<br> <input type='checkbox' name='comEthnicity' id='Hispanic or Latino' value='Hispanic or Latino'><label for='Hispanic or Latino'> Hispanic or Latino</label><br> <input type='checkbox' name='comEthnicity' id='Not Hispanic or Latino' value='Not Hispanic or Latino'><label for='Not Hispanic or Latino'> Not Hispanic or Latino</label><br> <input type='checkbox' name='comEthnicity' id='Other' value='Other'><label for='Other'> Other</label><br> <!--<input type='radio' name='comEthnicity' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--> <span class='zen_error' id='comEthnicity_error'></span> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> The races of people I grew up with are (select one or more)<br> <input type='checkbox' name='comRace' id='American Indian or Alaska Native' value='American Indian or Alaska Native'><label for='American Indian or Alaska Native'> American Indian or Alaska Native</label><br> <input type='checkbox' name='comRace' id='Asian' value='Asian'><label for='Asian'> Asian</label><br> <input type='checkbox' name='comRace' id='Black or African American' value='Black or African American'><label for='Black or African American'> Black or African American </label><br> <input type='checkbox' name='comRace' id='Native Hawaiian or Other Pacific Islander' value='Native Hawaiian or Other Pacific Islander'><label for='Native Hawaiian or Other Pacific Islander'> Native Hawaiian or Other Pacific Islander </label><br> <input type='checkbox' name='comRace' id='White' value='White'><label for='White'> White </label><br> <input type='checkbox' name='comRace' id='Other' value='Other'><label for='Other'> Other</label><br> <!--<input type='checkbox' name='comRace' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--> <span class='zen_error' id='comRace_error'></span> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My sexual orientation is <br> <input type='radio' name='sexual_ori' id='Bisexual' value='Bisexual'><label for='Bisexual'> Bisexual</label><br> <input type='radio' name='sexual_ori' id='Heterosexual' value='Heterosexual'><label for='heterosexual'> Heterosexual</label><br> <input type='radio' name='sexual_ori' id='Homosexual' value='Homosexual'><label for='Homosexual'> Homosexual</label><br> <input type='radio' name='sexual_ori' id='Other' value='Other'><label for='Other'> Other</label><br><input type='radio' name='comRace' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label></p> <span class='zen_error' id='sexual_ori_error'></span> </div> </div>"
+      text: "<div class='jspsych_target jspsych-display-element' style='text-align: left; width: 500px; margin-left: 30% auto; padding-top: 30px'> <div class='jspsych-survey-likert-preamble'>Please fill out this short survey </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My gender is <br> <input type='radio' name='gender' id='Male' value='Male'> <label for='Male'> Male</label> <br> <input type='radio' name='gender' id='Female' value='Female'> <label for='female'> Female</label> <br> <input type='radio' name='gender' id='Other' value='Other'> <label for='Other_gender'> Other</label> <br> <!--<input type='radio' name='gender' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--></p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My race / ethnicity is (select one or more) <br> <input type='checkbox' name='race' id='American Indian or Alaska Native' value='American Indian or Alaska Native'> <label for='American Indian or Alaska Native'> American Indian or Alaska Native</label> <br> <input type='checkbox' name='race' id='Asian' value='Asian'> <label for='Asian'> Asian</label> <br> <input type='checkbox' name='race' id='Black or African American' value='Black or African American'> <label for='Black or African American'> Black or African American </label> <br> <input type='checkbox' name='race' id='Hispanic' value='Hispanic'> <label for='Hispanic'> Hispanic </label> <br> <input type='checkbox' name='race' id='Native Hawaiian or Other Pacific Islander' value='Native Hawaiian or Other Pacific Islander'> <label for='Native Hawaiian or Other Pacific Islander'> Native Hawaiian or Other Pacific Islander </label> <br> <input type='checkbox' name='race' id='White_Not_Hispanic' value='White_Not_Hispanic'> <label for='White_Not_Hispanic'> White / Not Hispanic </label> <br> <input type='checkbox' name='race' id='Other' value='Other'> <label for='Other'> Other</label> <br> <!--<input type='checkbox' name='race' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--></p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> The races / ethnicities of people in the communities I've lived in are (select one or more) <br> <input type='checkbox' name='comRace' id='American Indian or Alaska Native' value='American Indian or Alaska Native'> <label for='American Indian or Alaska Native'> American Indian or Alaska Native</label> <br> <input type='checkbox' name='comRace' id='Asian' value='Asian'> <label for='Asian'> Asian</label> <br> <input type='checkbox' name='comRace' id='Black or African American' value='Black or African American'> <label for='Black or African American'> Black or African American </label> <br> <input type='checkbox' name='comRace' id='Hispanic' value='Hispanic'> <label for='Hispanic'> Hispanic </label> <br> <input type='checkbox' name='comRace' id='Native Hawaiian or Other Pacific Islander' value='Native Hawaiian or Other Pacific Islander'> <label for='Native Hawaiian or Other Pacific Islander'> Native Hawaiian or Other Pacific Islander </label> <br> <input type='checkbox' name='comRace' id='White_Not_Hispanic' value='White_Not_Hispanic'> <label for='White_Not_Hispanic'> White / Not Hispanic </label> <br> <input type='checkbox' name='comRace' id='Other' value='Other'> <label for='Other'> Other</label> <br> <!--<input type='checkbox' name='comRace' id='no_say' value='No_say'><label for='No_say'> I prefer not to disclose this information</label><br>--></p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My sexual orientation is <br> <input type='radio' name='sexual_ori' id='Bisexual' value='Bisexual'> <label for='Bisexual'> Bisexual</label> <br> <input type='radio' name='sexual_ori' id='Heterosexual' value='Heterosexual'> <label for='heterosexual'> Heterosexual</label> <br> <input type='radio' name='sexual_ori' id='Homosexual' value='Homosexual'> <label for='Homosexual'> Homosexual</label> <br> <input type='radio' name='sexual_ori' id='Other' value='Other'> <label for='Other'> Other</label> <br> <input type='radio' name='comRace' id='no_say' value='No_say'> <label for='No_say'> I prefer not to disclose this information</label> </p> </div> </div>"
     };
     
 
@@ -235,9 +229,6 @@
     var prac_doublet_block = {
       type: 'similarity_custom',
       stimuli: prac_doublet_stim,
-      //labels: ['1', '2', '3', '4', '5', '6', '7','8','9'],
-      //intervals: 9,
-      //labelName: ['Maximally Dissimilar','','','','','','','','Maximally Similar'],
       timing_post_trial: post_trial_gap
     };
 
@@ -253,17 +244,11 @@
     var prac_no_inst_doublet_block_1 = {
       type: 'similarity_custom',
       stimuli: prac_no_inst_doublet_stim_1,
-      //labels: ['1', '2', '3', '4', '5', '6', '7','8','9'],
-      //intervals: 9,
-      //labelName: ['Maximally Dissimilar','','','','','','','','Maximally Similar'],
       timing_post_trial: post_trial_gap
     };
     var prac_no_inst_doublet_block_2 = {
       type: 'similarity_custom',
       stimuli: prac_no_inst_doublet_stim_2,
-      //labels: ['1', '2', '3', '4', '5', '6', '7','8','9'],
-      //intervals: 9,
-      //labelName: ['Maximally Dissimilar','','','','','','','','Maximally Similar'],
       timing_post_trial: post_trial_gap
     };
     
@@ -284,17 +269,11 @@
     var test_doublet1_block = {
       type: 'similarity_custom',
       stimuli: test_doublet1_stim,
-      //labels: ['1', '2', '3', '4', '5', '6', '7','8','9'],
-      //labelName: ['Maximally Dissimilar','','','','','','','','Maximally Similar'],
-      //intervals: 9,
       timing_post_trial: post_trial_gap
     };
     var test_doublet2_block = {
       type: 'similarity_custom',
       stimuli: test_doublet2_stim,
-      //labels: ['1', '2', '3', '4', '5', '6', '7','8','9'],
-      //labelName: ['Maximally Dissimilar','','','','','','','','Maximally Similar'],
-      //intervals: 9,
       timing_post_trial: post_trial_gap
     };
 
@@ -321,15 +300,6 @@
     //   timing_post_trial: post_trial_gap
     // };
 
-    /* define debrief block */
-    /*var debrief_block = {
-      type: "text",
-      text: function() {
-        return "<p>Your average response time was <strong>" +
-        getAverageResponseTime() + "ms</strong>. Press " +
-        "any key to complete the experiment. Thank you!</p>";
-      }
-    };*/
 
     /* create experiment definition array */
     var experiment = [];
@@ -391,10 +361,10 @@
     }
     experiment.push(welcome_survey_new_block);
     experiment.push(complete_block);
-    //experiment.push(debrief_block);
 
 
-    start();
+    //start();
+    jsPsych.preloadImages(getAllImages(), start)
     var psiturk = new PsiTurk(uniqueId, adServerLoc, mode);
 
     /* start the experiment */
