@@ -22,6 +22,7 @@
 
       for (var i = 0; i < trials.length; i++) {
         trials[i] = {};
+        trials[i].text = (typeof params.text === 'undefined') ? "" : params.text;
         trials[i].x_path = params.stimuli[i][0];
         // if there is only a pair of stimuli, then the first is the target and is shown twice.
         // if there is a triplet, then the first is X, the second is the target, and the third is foil (useful for non-exact-match XAB).
@@ -55,6 +56,7 @@
 
       function dotrial(){
         trial = jsPsych.pluginAPI.evaluateFunctionParameters(trial);
+        display_element.html(trial.text);
         display_element.append($('<img>', {
           src: trial.x_path,
           "id": 'jspsych-xab-stimulus1',

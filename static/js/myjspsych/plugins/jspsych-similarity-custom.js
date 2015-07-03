@@ -20,6 +20,7 @@
       var trials = new Array(params.stimuli.length);
       for (var i = 0; i < trials.length; i++) {
         trials[i] = {};
+        trials[i].text = params.text;
         trials[i].a_path = params.stimuli[i][0];
         trials[i].b_path = params.stimuli[i][1];
         //trials[i].labels = (typeof params.labels === 'undefined') ? ["1", "2"] : params.labels;
@@ -48,6 +49,7 @@
 
       function dotrial() {
         trial = jsPsych.pluginAPI.evaluateFunctionParameters(trial);
+        display_element.html(trial.text);
         // show the images
         if (!trial.is_html) {
           display_element.append($('<img>', {
@@ -115,7 +117,7 @@
       function show_response_slider(display_element, trial) {
 
         var startTime = (new Date()).getTime();
-        display_element.append('<table id="likert_scale"> <tbody> <tr> <td style="text-align: center; width: 75px;">Maximally <br>dissimilar</td> <td class="radio_scale" > <form action="" style="text-align: center;"> <input id="scale_value" type="radio" name="scale_value" value="1"> <input id="scale_value" type="radio" name="scale_value" value="2"> <input id="scale_value" type="radio" name="scale_value" value="3"> <input id="scale_value" type="radio" name="scale_value" value="4"> <input id="scale_value" type="radio" name="scale_value" value="5"> <input id="scale_value" type="radio" name="scale_value" value="6"> <input id="scale_value" type="radio" name="scale_value" value="7"> <input id="scale_value" type="radio" name="scale_value" value="8"> <input id="scale_value" type="radio" name="scale_value" value="9"> </form> </td> <td style="text-align: center; width: 75px;">Maximally <br>similar</td> </tr> <tr> <td style="text-align: center; width: 75px;"> </td> <td class="radio_scale"> <form action="" style="text-align: center; margin-left: 5.6%;"> <li id="scalelabels"> 1 </li> <li id="scalelabels"> 2 </li> <li id="scalelabels"> 3 </li> <li id="scalelabels"> 4 </li> <li id="scalelabels"> 5 </li> <li id="scalelabels"> 6 </li> <li id="scalelabels"> 7 </li> <li id="scalelabels"> 8 </li> <li id="scalelabels"> 9 </li> </form> </td> <td style="text-align: center; width: 75px;"> </td> </tr> </tbody> </table>');
+        display_element.append('<table id="likert_scale"> <tbody> <tr> <td style="text-align: center; width: 75px;">Maximally <br>Dissimilar</td> <td class="radio_scale" > <form action="" style="text-align: center;"> <input id="scale_value" type="radio" name="scale_value" value="1"> <input id="scale_value" type="radio" name="scale_value" value="2"> <input id="scale_value" type="radio" name="scale_value" value="3"> <input id="scale_value" type="radio" name="scale_value" value="4"> <input id="scale_value" type="radio" name="scale_value" value="5"> <input id="scale_value" type="radio" name="scale_value" value="6"> <input id="scale_value" type="radio" name="scale_value" value="7"> <input id="scale_value" type="radio" name="scale_value" value="8"> <input id="scale_value" type="radio" name="scale_value" value="9"> </form> </td> <td style="text-align: center; width: 75px;">Maximally <br>Similar</td> </tr> <tr> <td style="text-align: center; width: 75px;"> </td> <td class="radio_scale"> <form action="" style="text-align: center; margin-left: 5.6%;"> <li id="scalelabels"> 1 </li> <li id="scalelabels"> 2 </li> <li id="scalelabels"> 3 </li> <li id="scalelabels"> 4 </li> <li id="scalelabels"> 5 </li> <li id="scalelabels"> 6 </li> <li id="scalelabels"> 7 </li> <li id="scalelabels"> 8 </li> <li id="scalelabels"> 9 </li> </form> </td> <td style="text-align: center; width: 75px;"> </td> </tr> </tbody> </table>');
         
         $("input[name='scale_value']").change(function(){
           // Do something interesting here

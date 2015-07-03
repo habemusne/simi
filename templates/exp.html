@@ -237,7 +237,7 @@
     };
 
 
-    var prac1_ready_block = {
+    /*var prac1_ready_block = {
       type: "text",
       text: '<div class="well"> <p>In the first example, you will be asked to rate how similar a face pair is from 1 to 9.</p> <p><strong>1</strong> indicates <strong>Maximally Dissimilar</strong>, <strong>9</strong> indicates <strong>Maximally Similar</strong></p> <p> <em><strong> Try to focus on the face features and ignore the pose, expression and lighting influence.</strong></em> </p> <p>Click the "Continue" button below to practice.</p><br></div>',
       text_append: '<div class="well"> <p>You can skip this part of the practice by pressing <em> Skip </em> shown below.</p></div>',
@@ -255,14 +255,14 @@
                 
               },
       timing_post_trial: post_trial_gap
-    };
+    };*/
     var prac1_end_block = {
       type: "text",
       text: '<div class="well"> <p>If you wish to read the instructions on doublet trials again, click <em>go back</em>. Otherwise, proceed to the next session.</p><br></div>',
       back_button: true,
       timing_post_trial: post_trial_gap
     };
-    var prac2_ready_block = {
+    /*var prac2_ready_block = {
       type: "text",
       text: '<div class="well"> <p>Great Job! </p> <p> Next you will do the similar thing, but instead of seeing two faces, you are going to see <strong>three</strong> faces and click on the two images that look most similar to you.</p><br></div>',
       text_append: '<div class="well"> <p>You can skip this part of the practice by pressing <em> Skip </em> shown below.</p></div>',
@@ -280,7 +280,7 @@
                 
               },
       timing_post_trial: post_trial_gap
-    };
+    };*/
     var prac2_end_block = {
       type: "text",
       text: '<div class="well"> <p>If you wish to read the instructions on triplet trials again, click <em>go back</em>. Otherwise, proceed to the next session.</p><br></div>',
@@ -332,7 +332,7 @@
     };
     var bad_examples_end_block = {
       type: "text",
-      text: '<div class="well"> <p>If you wish to take another look at the examples again, click <em>go back</em>. Otherwise, proceed to the next session.</p><br></div>',
+      text: '<div class="well"> <p>If you wish to take another look at the examples again, click <em>go back</em>. Otherwise, proceed to practice a few more.</p><br></div>',
       back_button: true,
       timing_post_trial: post_trial_gap
     };
@@ -421,11 +421,12 @@
     var prac_doublet_block = {
       type: 'similarity_custom',
       stimuli: prac_doublet_stim,
+      text: '<div style="text-align: left;"> <p>In the first example, you will be asked to rate how similar a face pair is from 1 to 9.</p> <p><strong>1</strong> indicates <strong>Maximally Dissimilar</strong>, <strong>9</strong> indicates <strong>Maximally Similar</strong></p> <p> <em><strong> Try to focus on the face features and ignore the pose, expression and lighting influence.</strong></em></p></div><br><br>',
       timing_post_trial: post_trial_gap
     };
     var instruction_doublet_chunk = {
         chunk_type: 'while',
-        timeline: [prac1_ready_block,prac_doublet_block,prac1_end_block],
+        timeline: [prac_doublet_block,prac1_end_block],
         continue_function: function(){
           var back_button = document.getElementById('Back').clicked;
             $('.well').remove();
@@ -441,12 +442,13 @@
     var prac_triplet_block = {
       type: 'custom_triplet',
       stimuli: prac_triplet_stim,
+      text: '<div style="text-align: left;"> <p>Great Job! </p> <p> Next you will do the similar thing, but instead of seeing two faces, you are going to see <strong>three</strong> faces and click on the two images that look most similar to you.</p><br><br></div>',
       prompt: "Click on the two faces that you think are most similar.",
       timing_post_trial: post_trial_gap
     };
     var instruction_triplet_chunk = {
         chunk_type: 'while',
-        timeline: [prac2_ready_block,prac_triplet_block,prac2_end_block],
+        timeline: [prac_triplet_block,prac2_end_block],
         continue_function: function(){
           var back_button = document.getElementById('Back').clicked;
             $('.well').remove();
@@ -528,7 +530,6 @@
     experiment.push(instruction_doublet_chunk);
     experiment.push(instruction_triplet_chunk);
     experiment.push(bad_examples_chunk);
-    experiment.push(prac_no_inst_ready_block);
     experiment.push(prac_no_inst_doublet_block_1);
     experiment.push(prac_no_inst_triplet_block_1);
     experiment.push(prac_no_inst_doublet_block_2);
