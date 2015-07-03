@@ -106,7 +106,7 @@
 		};
 
 		core.preloadImages = function(images, callback_complete, callback_load) {
-
+			$(document.documentElement).append($('<pre id="jspsych-data-display" style="text-align: center;"><font size="5">loading...</font></pre>'));
 			// flatten the images array
 			images = flatten(images);
 
@@ -121,6 +121,7 @@
 					n_loaded++;
 					loadfn(n_loaded);
 					if (n_loaded == images.length) {
+						$(document.documentElement).children("pre").remove();
 						finishfn();
 					}
 				};
