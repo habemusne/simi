@@ -16,12 +16,13 @@
 
         plugin.create = function(params) {
 
-            params = jsPsych.pluginAPI.enforceArray(params, ['text','cont','back_button','skip_button','loop_num']);
+            params = jsPsych.pluginAPI.enforceArray(params, ['text','text_append','cont','back_button','skip_button','loop_num']);
 
             var trials = new Array(params.text.length);
             for (var i = 0; i < trials.length; i++) {
                 trials[i] = {};
                 trials[i].text = params.text[i]; // text of all trials
+                trials[i].text_append = (typeof params.text_append == 'undefined' ? "" : params.text_append); // text of all trials
                 trials[i].cont = (typeof params.cont == 'undefined' ? "Continue" : params.cont); // keycode to press to advance screen, default is all keys.
                 trials[i].back_button = (typeof params.back_button == 'undefined' ? false : params.back_button);
                 trials[i].skip_button = (typeof params.skip_button == 'undefined' ? false : params.skip_button);
@@ -41,6 +42,11 @@
             
             
             // set the HTML of the display target to replaced_text.
+            
+            if(trial.loop_num>0){
+            trial.text = trial.text + trial.text_append;
+            }
+
             display_element.html(trial.text);
 
             var after_response = function(info) {
@@ -116,7 +122,50 @@
                     jsPsych.finishTrial(); 
                 });
             }
+            else if(trial.skip_button && trial.loop_num > 0){
+                display_element.append($('<button>', {
+                    'id': 'jspsych-survey-text-next',
+                    'class': 'jspsych-survey-text',
+                    'value': 'Continue',
+                    'clicked': false
+                }));
+                $("#jspsych-survey-text-next").html(trial.cont);
+                $("#jspsych-survey-text-next").click(function() {
+                    // measure response time
+                    var endTime = (new Date()).getTime();
+                    var response_time = endTime - startTime;
+                    jsPsych.data.write({
+                        "rt": response_time
+                    });
+                    this.clicked = true;
+                    //display_element.html('');
+                    // next trial
+                    jsPsych.finishTrial(); 
+                });
+                
+                display_element.append($('<button>', {
+                    'id': 'Skip',
+                    'class': 'jspsych-survey-text',
+                    'style': 'margin-left: 20%;',//' visibility: hidden;',
+                    'value': 'Skip',
+                    'clicked': false,
+                    //'number_loop': -1
+                }));
+                $("#Skip").html('Skip');
 
+                $("#Skip").click(function() {
+                    //console.log('Back');
+                    var endTime = (new Date()).getTime();
+                    var response_time = endTime - startTime;
+                    jsPsych.data.write({
+                        "rt": response_time
+                    });
+                    this.clicked = true;
+                    //display_element.html('');
+                    jsPsych.finishTrial();                   
+                });
+                
+            }
             
             
             else{
@@ -139,29 +188,7 @@
             }
 
 
-            if(trial.skip_button && trial.loop_num > 0){
-                display_element.append($('<button>', {
-                    'id': 'Skip',
-                    'class': 'jspsych-survey-text',
-                    'style': 'margin-left: 20%;',//' visibility: hidden;',
-                    'value': 'Skip',
-                    'clicked': false,
-                    //'number_loop': -1
-                }));
-                $("#Skip").html('Skip');
-
-                $("#Skip").click(function() {
-                    //console.log('Back');
-                    var endTime = (new Date()).getTime();
-                    var response_time = endTime - startTime;
-                    jsPsych.data.write({
-                        "rt": response_time
-                    });
-                    this.clicked = true;
-                    //display_element.html('');
-                    jsPsych.finishTrial();                   
-                });
-            }
+            
             var startTime = (new Date()).getTime();
 
 
