@@ -96,7 +96,7 @@
 
     var face_images_explore_ready_block = {
       type: "text",
-      text: '<div><h2 class="emp"> Face Similarities Test</h2> <hr> <div class="well"> <p style="margin-top: 30px; margin-bottom: 30px;">In this test, you will be shown a series of face images. You will then be asked to judge the similarities between them. There are <span class="emp">two different types of trials</span>, rating similarities between two face images and selecting the most similar pairs among three faces.</p> <p style="margin-top: 30px; margin-bottom: 30px;">There will be a short <span class="emp">practice session </span>  before the actual test to familiarize you with what you will have to do. In the actual test, you will not receive any instructions.</p>  <p style="margin-top: 30px; margin-bottom: 30px;">First, you will be presented with some face examples, just to give you an idea how different these faces will be.</p></div></div>',
+      text: '<div><h2 class="emp"> Face Similarities Test</h2> <hr> <div class="well"> <p style="margin-top: 30px; margin-bottom: 30px;">In this test, you will be shown a series of face images. You will then be asked to judge the similarities between them.</p> <p style="margin-top: 30px; margin-bottom: 30px;">There are <span class="emp">two different types of trials</span>, rating similarities between two face images and selecting the most similar pairs among three faces.</p> <p style="margin-top: 30px; margin-bottom: 30px;">There will be a short <span class="emp">practice session </span>  before the actual test to familiarize you with what you need to do. In the actual test, there will be no instructions.</p>  <p style="margin-top: 30px; margin-bottom: 30px;">First, let us have a look at some face examples, just to give you an idea how different these faces will be.</p></div></div>',
       timing_post_trial: post_trial_gap
     };
 
@@ -237,14 +237,14 @@
 
     var prac1_end_block = {
       type: "text",
-      text: '<div class="well"> <p>If you wish to read the previous instructions again, click  <span class="emp">Go Back</span>.</p> <p>Otherwise, click continue to proceed.</p><br></div>',
+      text: '<div class="well"> <p>If you wish to read the previous instructions again, click  <span class="emp">Go Back</span>.</p> <p>Otherwise, click <span class="emp">Continue</span> to proceed.</p><br></div>',
       back_button: true,
       timing_post_trial: post_trial_gap
     };
 
     var prac2_end_block = {
       type: "text",
-      text: '<div class="well"> <p>If you wish to read the previous instructions again, click  <span class="emp">Go Back</span>.</p> <p>Otherwise, click continue to proceed.</p><br></div>',
+      text: '<div class="well"> <p>If you wish to read the previous instructions again, click  <span class="emp">Go Back</span>.</p> <p>Otherwise, click <span class="emp">Continue</span> to proceed.</p><br></div>',
       back_button: true,
       timing_post_trial: post_trial_gap
     };
@@ -275,7 +275,7 @@
 
     var bad_examples_block2 = {
       type: "text",
-      text:"<div class='well'><h3 class='emp'>Focus on Faces rather than Expressions</h3> <hr>  <p>The two figures below illustrate that how people focus on the faces themselves rather than expressions.</p> <p>In Figure 1, even though the top face and the left face have similar expressions, most people find that the two faces at the bottom are most similar. In Figure 2, most people think that the top face and the left face are most similar even though the two faces on the bottom are of similar expressions.</p> <br> <div class='row'> <div class='col-md-6'>  <img src='/static/images/bad_examples/f2bad.JPG' style='width:100%'/> <p>Figure 1</p></div> <div class='col-md-6'> <img src='/static/images/bad_examples/m2bad.JPG' style='width:100%'/><p>Figure 2</p> </div> </div></div>",
+      text:"<div class='well'><h3 class='emp'>Focus on Faces rather than Expressions</h3> <hr>  <p>The two figures below illustrate that how people focus on the faces themselves rather than expressions.</p> <p>In Figure 1, even though the top face and the left face have similar expressions, most people find that the two faces at the bottom are most similar. In Figure 2, most people think that the top face and the left face are most similar even though the top one and the right one are of similar expressions.</p> <br> <div class='row'> <div class='col-md-6'>  <img src='/static/images/bad_examples/f2bad.JPG' style='width:100%'/> <p>Figure 1</p></div> <div class='col-md-6'> <img src='/static/images/bad_examples/m2bad.JPG' style='width:100%'/><p>Figure 2</p> </div> </div></div>",
       skip_button: true,
       loop_num: 0,
       on_finish: function(){
@@ -293,7 +293,7 @@
     };
     var bad_examples_end_block = {
       type: "text",
-      text: '<div class="well"> <p>If you wish to take another look at the examples again, click <span class="emp">Go Back</span>.</p> <p>Otherwise, click continue to practice a few more.</p><br></div>',
+      text: '<div class="well"> <p>If you wish to take another look at the examples, click <span class="emp">Go Back</span>.</p> <p>Otherwise, click <span class="emp">Continue</span> to proceed.</p><br></div>',
       back_button: true,
       timing_post_trial: post_trial_gap
     };
@@ -321,36 +321,33 @@
 
     var test_ready_block = {
       type: "text",
-      text: "<div class='well'><br><p style='text-align: center; font-weight: bold; color: #3f6479; font-size: 24px;'> Great Job! :) </p><br><p>Here come the actual trials!</p><p> Now you will be presented with 200 trials. It'll be the same as the practice you just took, except that you will not receive any instructions between trials. </p>  <p>The most important rule, <strong style='color: #3f6479;'><em> go with your gut!</em></strong></p> <p>When you're ready, press the button below to begin the test.</p><br></div>",
+      text: "<div class='well'><br><p style='text-align: center; font-weight: bold; color: #3f6479; font-size: 24px;'> Great Job! :) </p><br><p>Here come the actual trials!</p><p> Now you will be presented with 200 trials separated in four phases. It'll be the same as the practice you just took, except that you will not receive any instructions between trials. </p>  <p>The most important rule, <strong style='color: #3f6479;'><em> go with your gut!</em></strong></p> <p>When you're ready, press the button below to begin the test. </p><br></div>",
       cont: 'Start Experiment',
       timing_post_trial: post_trial_gap
     };
 
     var break1_block = {
       type: "text",
-      text: '<div class="well"><p>You have finished 1/4 of the experiment. </p><br></div>',
+      text: '<div class="well"><p>You have finished <span class="emp">1/4</span> of the experiment. </p><br></div>',
       timing_post_trial: post_trial_gap
     };
 
     var break2_block = {
       type: "text",
-      text: '<div class="well"><p class="emp">Take a short break!</p> <p>You have finished 1/2 of the experiment.</p> <p>Click continue when you are ready. </p> <br></div>',
+      text: '<div class="well"><p class="emp">Well done!</p> <p>You have finished 1/2 of the experiment. Take a short break!</p> <p>Click <span class="emp">Continue</span> when you are ready to proceed. </p> <br></div>',
       timing_post_trial: post_trial_gap
     };
     var break3_block = {
       type: "text",
-      text: '<div class="well"><p>You have finished 3/4 of the experiment.</p><br></div>',
+      text: '<div class="well"><p>You have finished <span class="emp">3/4</span> of the experiment.</p><br></div>',
       timing_post_trial: post_trial_gap
     };
     
     var complete_block = {
       type: "text",
-      text: '<div class="well"><p class="emp" style="font-size: 24px;">Thank you!</p> <p>You have finished the whole experiment.</p><br></div>',
+      text: '<div class="well"><p class="emp" style="font-size: 24px;">Thank you for your participation!</p> <p>You have finished the whole experiment.</p><br></div>',
       timing_post_trial: post_trial_gap
     };
-
- 
-
 
 
     /* define test block */
@@ -382,7 +379,7 @@
     var prac_doublet_block = {
       type: 'similarity_custom',
       stimuli: prac_doublet_stim,
-      text: '<div style="text-align: left; margin-top:30px;"> <p>In the first example, you will be asked to rate how similar a face pair is from <span class="emp">1</span> to <span class="emp">9</sapn>.</p> <p><span class="emp">1</span> indicates <span class="emp">Maximally Dissimilar</span>, <span class="emp">9</span> indicates <span class="emp">Maximally Similar</span></p> <p> <em class="emp">Try to focus on the face features and ignore the pose, expression and lighting influence.</em></p></div><br><br>',
+      text: '<div style="text-align: left; margin-top:30px;"> <p>In the first example, your task is to rate how similar a face pair is from <span class="emp">1</span> to <span class="emp">9</sapn>.</p> <p><span class="emp">1</span> indicates <span class="emp">Maximally Dissimilar</span>, <span class="emp">9</span> indicates <span class="emp">Maximally Similar</span></p> <p> <em class="emp">Try to focus on the face features and ignore the pose, expression and lighting influence.</em></p></div><br><br>',
       timing_post_trial: post_trial_gap
     };
     var instruction_doublet_chunk = {
@@ -403,7 +400,7 @@
     var prac_triplet_block = {
       type: 'custom_triplet',
       stimuli: prac_triplet_stim,
-      text: '<div style="text-align: left; margin-top: 30px;"> <p class="emp" style="font-size: 22px;">Nice work! </p> <p> Now you will do the similar thing, but instead of two faces, there are <span class="emp">three</span> faces below. The task is to select two images that look most similar to you.</p><br><br></div>',
+      text: '<div style="text-align: left; margin-top: 30px;"> <p class="emp" style="font-size: 22px;">Nice work! </p> <p> Now you will do a similar task, but instead of two faces, there are <span class="emp">three</span> faces below. Your task is to <span class="emp">select the two images</span> that look <span class="emp">most similar</span> to you.</p><br><br></div>',
       prompt: "Click on the two faces that you think are most similar.",
       timing_post_trial: post_trial_gap
     };
