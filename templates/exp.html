@@ -46,10 +46,10 @@
  
     function getAllImages() {
       var images = []
-      images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feDou1.txt"));
-      images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/maDou1.txt"));
-      images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/maTri1.txt"));
-      images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feTri1.txt"));
+      images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feDou.txt"));
+      images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/maDou.txt"));
+      images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/maTri.txt"));
+      images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feTri.txt"));
       images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feDou2.txt"));
       images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/maDou2.txt"));
       images = images.concat(readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/maTri2.txt"));
@@ -351,10 +351,10 @@
 
 
     /* define test block */
-    var prac_doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feDou1.txt");
-    var prac_doublet_stim_m = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/maDou1.txt");
-    var prac_triplet_stim_m = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/maTri1.txt");
-    var prac_triplet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feTri1.txt");
+    var prac_doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feDou.txt");
+    var prac_doublet_stim_m = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/maDou.txt");
+    var prac_triplet_stim_m = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/maTri.txt");
+    var prac_triplet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feTri.txt");
     jsPsych.randomization.shuffle(prac_doublet_stim_f);
     jsPsych.randomization.shuffle(prac_doublet_stim_m);
     jsPsych.randomization.shuffle(prac_triplet_stim_f);
