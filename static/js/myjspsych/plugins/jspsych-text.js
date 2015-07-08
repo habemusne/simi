@@ -16,7 +16,7 @@
 
         plugin.create = function(params) {
 
-            params = jsPsych.pluginAPI.enforceArray(params, ['text','text_append','cont','back_button','skip_button','loop_num']);
+            params = jsPsych.pluginAPI.enforceArray(params, ['text']);//,'text_append','cont','back_button','skip_button','loop_num']);
 
             var trials = new Array(params.text.length);
             for (var i = 0; i < trials.length; i++) {
@@ -76,7 +76,7 @@
             } else {
                 //jsPsych.pluginAPI.getKeyboardResponse(after_response, trial.cont_key);
             }
-            console.log(trial.skip_button);
+            //console.log(trial.skip_button);
             
 
             // add Continue button
@@ -91,7 +91,7 @@
                 $("#Back").html('Go Back');
 
                 $("#Back").click(function() {
-                    console.log('Back');
+                    //console.log('Back');
                     var endTime = (new Date()).getTime();
                     var response_time = endTime - startTime;
                     jsPsych.data.write({
@@ -142,7 +142,7 @@
                     // next trial
                     jsPsych.finishTrial(); 
                 });
-                
+
                 display_element.append($('<button>', {
                     'id': 'Skip',
                     'class': 'jspsych-survey-text',

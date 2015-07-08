@@ -21,6 +21,7 @@
       for (var i = 0; i < trials.length; i++) {
         trials[i] = {};
         trials[i].number = (i+1).toString();
+        trials[i].total = trials.length.toString();
         trials[i].text = (typeof params.text === 'undefined') ? "" : params.text;
         trials[i].phase = (typeof params.phase === 'undefined') ? "" : params.phase.toString();
         trials[i].a_path = params.stimuli[i][0];
@@ -50,7 +51,7 @@
         trial = jsPsych.pluginAPI.evaluateFunctionParameters(trial);
         display_element.html(trial.text);
         if (trial.phase.length >= 1){
-          display_element.append('<div> <p> <span class="emp">Phase:</span> ' + trial.phase + ' of 4</p> <p><span class="emp">Progress:</span> '+trial.number +' of 50</p><br></div>');
+          display_element.append('<div> <p> <span class="emp">Phase:</span> ' + trial.phase + ' of 4 </p> <p><span class="emp">Progress:</span> '+trial.number +' of '+trial.total+'</p><br></div>');
         }
         
         // show the images
