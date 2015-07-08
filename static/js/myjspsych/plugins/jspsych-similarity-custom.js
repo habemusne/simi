@@ -20,12 +20,11 @@
       var trials = new Array(params.stimuli.length);
       for (var i = 0; i < trials.length; i++) {
         trials[i] = {};
-        trials[i].text = params.text;
+        trials[i].number = (i+1).toString();
+        trials[i].text = (typeof params.text === 'undefined') ? "" : params.text;
+        trials[i].phase = (typeof params.phase === 'undefined') ? "" : params.phase.toString();
         trials[i].a_path = params.stimuli[i][0];
         trials[i].b_path = params.stimuli[i][1];
-        //trials[i].labels = (typeof params.labels === 'undefined') ? ["1", "2"] : params.labels;
-        //trials[i].labelName = (typeof params.labelName === 'undefined') ? ["Not at all similar", "Identical"] : params.labelName;
-        //trials[i].intervals = params.intervals || 100;
         trials[i].show_ticks = (typeof params.show_ticks === 'undefined') ? false : params.show_ticks;
 
         trials[i].show_response = params.show_response || "SECOND_STIMULUS";
@@ -50,6 +49,10 @@
       function dotrial() {
         trial = jsPsych.pluginAPI.evaluateFunctionParameters(trial);
         display_element.html(trial.text);
+        if (trial.phase.length >= 1){
+          display_element.append('<div> <p> <span class="emp">Phase:</span> ' + trial.phase + ' of 4</p> <p><span class="emp">Progress:</span> '+trial.number +' of 50</p><br></div>');
+        }
+        
         // show the images
         if (!trial.is_html) {
           display_element.append($('<img>', {

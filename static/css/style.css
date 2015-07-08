@@ -6,6 +6,10 @@ body{
 label {
 	padding-left: 10px;
 }
+.emp{
+	color: #3f6479;
+	font-weight: bold;
+}
 .well > p{
 	text-align: left;
 }

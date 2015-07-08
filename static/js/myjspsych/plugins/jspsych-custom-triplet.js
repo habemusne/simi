@@ -22,6 +22,7 @@
 
       for (var i = 0; i < trials.length; i++) {
         trials[i] = {};
+        trials[i].number = (i+1).toString();
         trials[i].text = (typeof params.text === 'undefined') ? "" : params.text;
         trials[i].x_path = params.stimuli[i][0];
         // if there is only a pair of stimuli, then the first is the target and is shown twice.
@@ -33,6 +34,7 @@
           trials[i].a_path = params.stimuli[i][1];
           trials[i].b_path = params.stimuli[i][2];
         }
+        trials[i].phase = (typeof params.phase === 'undefined') ? "" : params.phase.toString();
         trials[i].left_key = params.left_key || 81; // defaults to 'q'
         trials[i].right_key = params.right_key || 80; // defaults to 'p'
         // timing parameters
@@ -57,6 +59,9 @@
       function dotrial(){
         trial = jsPsych.pluginAPI.evaluateFunctionParameters(trial);
         display_element.html(trial.text);
+        if (trial.phase.length >= 1){
+          display_element.append('<div> <p> <span class="emp">Phase:</span> ' + trial.phase + ' of 4</p> <p><span class="emp">Progress:</span> '+trial.number +' of 50</p><br></div>');
+        }
         display_element.append($('<img>', {
           src: trial.x_path,
           "id": 'jspsych-xab-stimulus1',
