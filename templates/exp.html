@@ -52,11 +52,10 @@
         for (a in listArray ) {
             listArray[a] = listArray[a].split(","); 
             for( b in listArray[a]){
-              listArray[a][b] = 'static/images/2kfaces_new/' + listArray[a][b];
-              //listArray[a][b] = listArray[a][b].replace(new RegExp(" ", 'g'), "_");
+              listArray[a][b] = 'static/images/2kFemale/' + listArray[a][b];
             }
         }
-        listArray = listArray.slice(0,50);
+        listArray = listArray.slice(0,listArray.length-1);
         return listArray;
     }
 
@@ -80,7 +79,7 @@
 
     var face_images_explore_block4 = {
       type: "text",
-      text: "<div class='im'><h3>Face Examples (1/3)</h3> <hr> <img src='/static/images/faceExamples/F1.jpg' style='width:100%'/> <br></div> ",
+      text: "<div class='im'><h3>Face Examples (1/3)</h3> <hr> <img src='/static/images/faceExamples/femaleExp1.jpg' style='width:100%'/> <br></div> ",
       skip_button: true,
       loop_num: 0,
       on_finish: function(){
@@ -98,7 +97,7 @@
     };
     var face_images_explore_block5 = {
       type: "text",
-      text: "<div class='im'><h3>Face Examples (2/3)</h3> <hr> <img src='/static/images/faceExamples/F2.jpg' style='width:100%'/> <br> </div> ",
+      text: "<div class='im'><h3>Face Examples (2/3)</h3> <hr> <img src='/static/images/faceExamples/femaleExp2.jpg' style='width:100%'/> <br> </div> ",
       skip_button: true,
       loop_num: 0,
       on_finish: function(){
@@ -116,7 +115,7 @@
     };
     var face_images_explore_block6 = {
       type: "text",
-      text: "<div class='im'><h3>Face Examples (3/3)</h3> <hr> <img src='/static/images/faceExamples/F3.jpg' style='width:100%'/> <br> </div> ",
+      text: "<div class='im'><h3>Face Examples (3/3)</h3> <hr> <img src='/static/images/faceExamples/femaleExp3.jpg' style='width:100%'/> <br> </div> ",
       skip_button: true,
       loop_num: 0,
       on_finish: function(){
@@ -202,22 +201,20 @@
 
 
     /* define test block */
-    var prac_doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feDou5.txt");
+    var prac_doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feDouSample.txt");
     jsPsych.randomization.shuffle(prac_doublet_stim_f);
-    var doublet_stim_f1 = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feDou1.txt");
-    var doublet_stim_f2 = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feDou2.txt");
-    var doublet_stim_f3 = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feDou3.txt");
-    var doublet_stim_f4 = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feDou4.txt");
+    var doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/feDouSample.txt");
+    var doublet_stim_f1 = doublet_stim_f.slice(0,50);
+    var doublet_stim_f2 = doublet_stim_f.slice(50,100);
+    var doublet_stim_f3 = doublet_stim_f.slice(100,150);
+    var doublet_stim_f4 = doublet_stim_f.slice(150,200);
     var prac_doublet_stim = [prac_doublet_stim_f[0]];
     var prac_no_inst_doublet_stim = prac_doublet_stim_f.slice(1,6);
 
     function getAllImages() {
       var images = []
       images = images.concat(prac_doublet_stim_f);
-      images = images.concat(doublet_stim_f1);
-      images = images.concat(doublet_stim_f2);
-      images = images.concat(doublet_stim_f3);
-      images = images.concat(doublet_stim_f4);
+      images = images.concat(doublet_stim_f);
       return images;
     }
     
