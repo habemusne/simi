@@ -1,13 +1,14 @@
 <!doctype html>
 <html>
+ <head>
+    <title>My experiment</title>
   <head>
     <title>My experiment</title>
         <script type="text/javascript" src="/static/lib/jquery.js"></script>
         <script src="/static/lib/jquery-min.js" type="text/javascript"></script>
         <script src="/static/lib/bootstrap.min.js" type="text/javascript"></script>
         <script src="/static/lib/underscore-min.js" type="text/javascript"></script>
-        <script src="/static/lib/backbone-min.js" type="text/javascript"></script>
-        
+        <script src="/static/lib/backbone-min.js" type="text/javascript"></script>   
         <script src="/static/js/myjspsych/jspsych.js" type="text/javascript"></script>
         <script src="/static/js/myjspsych/plugins/jspsych-text.js" type="text/javascript"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
@@ -73,7 +74,7 @@
 
     var face_images_explore_ready_block = {
       type: "text",
-      text: '<div><h2 class="emp"> Face Similarities Test</h2> <hr> <div class="well"> <p style="margin-top: 30px; margin-bottom: 30px;">In this test, you will be shown a series of face images. You will then be asked rate similarities between them. </p> <p style="margin-top: 30px; margin-bottom: 30px;">There will be a short <span class="emp">practice session </span>  before the actual test to familiarize you with what you need to do. In the actual test, there will be no instructions.</p>  <p style="margin-top: 30px; margin-bottom: 30px;">First, let us have a look at some face examples, just to give you an idea how different these faces will be.</p></div></div>',
+      text: '<div><h2 class="emp"> Face Similarities Test</h2> <hr> <div class="well"> <p style="margin-top: 30px; margin-bottom: 30px;">In this test, you will be shown a series of face images. Your task is to rate the similarities between them. </p> <p style="margin-top: 30px; margin-bottom: 30px;">There will be a short <span class="emp">practice session </span>  before the actual test to familiarize you with the task. </p>  <p style="margin-top: 30px; margin-bottom: 30px;">First, let us look at some face examples, just to give you an idea of how different these faces will be.</p></div></div>',
       timing_post_trial: post_trial_gap
     };
 
@@ -171,7 +172,7 @@
 
     var test_ready_block = {
       type: "text",
-      text: "<div class='well'><br><p style='text-align: center; font-weight: bold; color: #3f6479; font-size: 24px;'> Great Job! :) </p><br><p>Here come the actual trials!</p><p> Now you will be presented with 200 trials separated in four phases. It'll be the same as the practice you just took, except that you will not receive any instructions between trials. </p>  <p>The most important rule, <strong style='color: #3f6479;'><em> go with your gut!</em></strong></p> <p>When you're ready, press the button below to begin the test. </p><br></div>",
+      text: "<div class='well'><br><p style='text-align: center; font-weight: bold; color: #3f6479; font-size: 24px;'> Great Job! :) </p><br><p>Here come the actual trials!</p><p> Now you will be presented with around 200 trials separated in four phases. It'll be the same as the practice you just took, except that you will not receive any instructions between trials. It will take around 20 to 30 minutes. </p>  <p>The most important rule, <strong style='color: #3f6479;'><em> go with your gut!</em></strong></p> <p>When you're ready, press the button below to begin the test. </p><br></div>",
       cont: 'Start Experiment',
       timing_post_trial: post_trial_gap
     };
@@ -227,7 +228,7 @@
     var prac_doublet_block = {
       type: 'similarity_custom',
       stimuli: prac_doublet_stim,
-      text: '<div style="text-align: left; margin-top:30px;"> <p>In the first example, your task is to rate how similar a face pair is from <span class="emp">1</span> to <span class="emp">9</sapn>.</p> <p><span class="emp">1</span> indicates <span class="emp">Maximally Dissimilar</span>, <span class="emp">9</span> indicates <span class="emp">Maximally Similar</span></p> <p> <em class="emp">Try to focus on the face features and ignore the pose, expression and lighting influence.</em></p></div><br><br>',
+      text: '<div style="text-align: left; margin-top:30px;"> <p>In this example, your need to rate how similar a face pair is from <span class="emp">1</span> to <span class="emp">9</sapn>.</p> <p><span class="emp">1</span> indicates <span class="emp">Maximally Dissimilar</span>, <span class="emp">9</span> indicates <span class="emp">Maximally Similar</span></p> <p> <em class="emp">Try to focus on the face features and ignore the pose, expression and lighting influence.</em></p></div><br><br>',
       timing_post_trial: post_trial_gap
     };
     var instruction_doublet_chunk = {
