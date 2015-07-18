@@ -28,10 +28,15 @@
             var ids = uniqueId.split(":"); 
             var workerId = ids[0];
             var assignmentId = ids[1];
-            console.log(workerId);
-            console.log(assignmentId);
             var adServerLoc = "{{ adServerLoc }}"; // the location of your ad (so you can send user back at end of experiment)
             var mode = "{{ mode }}"; // is this running live, sandbox, or in debug mode?
+            htmlobj = $.ajax({
+              url: "http://52.27.151.244/give_counter.php",
+              async: false,
+              method: "POST",
+              data: { assignmentID: '1', workerID: '2', hitID: '3'}
+            });
+          console.log('Current counter: ' + htmlobj.responseText);
         </script>
         
         <!-- utils.js and psiturk.js provide the basic psiturk functionality -->
