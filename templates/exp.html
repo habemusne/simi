@@ -24,6 +24,12 @@
         <script type="text/javascript">
             // These fields provided by the psiTurk Server
             var uniqueId = "{{ uniqueId }}"; // a unique string identifying the worker/task
+            //console.log(typeof uniqueId);
+            var ids = uniqueId.split(":"); 
+            var workerId = ids[0];
+            var assignmentId = ids[1];
+            console.log(workerId);
+            console.log(assignmentId);
             var adServerLoc = "{{ adServerLoc }}"; // the location of your ad (so you can send user back at end of experiment)
             var mode = "{{ mode }}"; // is this running live, sandbox, or in debug mode?
         </script>
@@ -205,10 +211,11 @@
     var prac_doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set10rep1.txt");
     jsPsych.randomization.shuffle(prac_doublet_stim_f);
     var doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set10rep1.txt");
-    var doublet_stim_f1 = doublet_stim_f.slice(0,50);
-    var doublet_stim_f2 = doublet_stim_f.slice(50,100);
-    var doublet_stim_f3 = doublet_stim_f.slice(100,150);
-    var doublet_stim_f4 = doublet_stim_f.slice(150,200);
+    
+    var doublet_stim_f1 = doublet_stim_f.slice(0,53);
+    var doublet_stim_f2 = doublet_stim_f.slice(53,106);
+    var doublet_stim_f3 = doublet_stim_f.slice(106,158);
+    var doublet_stim_f4 = doublet_stim_f.slice(158,210);
     var prac_doublet_stim = [prac_doublet_stim_f[0]];
     var prac_no_inst_doublet_stim = prac_doublet_stim_f.slice(1,6);
 
@@ -277,7 +284,7 @@
 
     /* create experiment definition array */
     var experiment = [];
-   experiment.push(face_images_explore_ready_block);
+    /*experiment.push(face_images_explore_ready_block);
     experiment.push(face_example_chunk);
     experiment.push(instruction_doublet_chunk);
     experiment.push(prac_no_inst_doublet_block);
@@ -320,7 +327,7 @@
         ;
       }
     }
-    experiment.push(welcome_survey_new_block);
+    experiment.push(welcome_survey_new_block);*/
     experiment.push(complete_block);
 
 
