@@ -223,6 +223,13 @@
     var doublet_stim_f4 = doublet_stim_f.slice(158,210);
     var prac_doublet_stim = [prac_doublet_stim_f[0]];
     var prac_no_inst_doublet_stim = prac_doublet_stim_f.slice(1,6);
+    var temp = prac_doublet_stim_f[40];
+    var catch_1 = temp[0];
+    var catch_1 = [[catch_1, catch_1]];
+    var catch_2 = temp[1];
+    var catch_2 = [[catch_2, catch_2]]; 
+    console.log(catch_2);
+
 
     function getAllImages() {
       var images = []
@@ -231,10 +238,10 @@
       return images;
     }
     
-    var test_doublet1_stim = doublet_stim_f1;//.slice(0,2);
-    var test_doublet2_stim = doublet_stim_f2;//.slice(0,2);
-    var test_doublet3_stim = doublet_stim_f3;//.slice(0,2);
-    var test_doublet4_stim = doublet_stim_f4;//.slice(0,2);
+    var test_doublet1_stim = doublet_stim_f1.slice(0,2);
+    var test_doublet2_stim = doublet_stim_f2.slice(0,2);
+    var test_doublet3_stim = doublet_stim_f3.slice(0,2);
+    var test_doublet4_stim = doublet_stim_f4.slice(0,2);
 
     //practice with instruction blocks
     var prac_doublet_block = {
@@ -271,16 +278,28 @@
       stimuli: test_doublet1_stim,
       timing_post_trial: post_trial_gap
     };
+    var catch_1_block = {
+      type: 'similarity_custom',
+      stimuli: catch_1,
+      timing_post_trial: post_trial_gap
+    };
+    /*
     var test_doublet2_block = {
       type: 'similarity_custom',
       stimuli: test_doublet2_stim,
       timing_post_trial: post_trial_gap
-    };
+    };*/
     var test_doublet3_block = {
       type: 'similarity_custom',
       stimuli: test_doublet3_stim,
       timing_post_trial: post_trial_gap
     };
+    /*var catch_2_block = {
+      type: 'similarity_custom',
+      stimuli: catch_2,
+      timing_post_trial: post_trial_gap
+    };*/
+
     var test_doublet4_block = {
       type: 'similarity_custom',
       stimuli: test_doublet4_stim,
@@ -289,7 +308,7 @@
 
     /* create experiment definition array */
     var experiment = [];
-    /*experiment.push(face_images_explore_ready_block);
+    experiment.push(face_images_explore_ready_block);
     experiment.push(face_example_chunk);
     experiment.push(instruction_doublet_chunk);
     experiment.push(prac_no_inst_doublet_block);
@@ -332,7 +351,7 @@
         ;
       }
     }
-    experiment.push(welcome_survey_new_block);*/
+    experiment.push(welcome_survey_new_block);
     experiment.push(complete_block);
 
 
