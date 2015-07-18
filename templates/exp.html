@@ -278,22 +278,22 @@
       stimuli: catch_1,
       timing_post_trial: post_trial_gap
     };
-    /*
+    
     var test_doublet2_block = {
       type: 'similarity_custom',
       stimuli: test_doublet2_stim,
       timing_post_trial: post_trial_gap
-    };*/
+    };
     var test_doublet3_block = {
       type: 'similarity_custom',
       stimuli: test_doublet3_stim,
       timing_post_trial: post_trial_gap
     };
-    /*var catch_2_block = {
+    var catch_2_block = {
       type: 'similarity_custom',
       stimuli: catch_2,
       timing_post_trial: post_trial_gap
-    };*/
+    };
 
     var test_doublet4_block = {
       type: 'similarity_custom',
@@ -334,13 +334,13 @@
       }
       switch(i){
         case 0:
-          //experiment.push(break1_block);
+          experiment.push(catch_1_block);
           break;
         case 1:
           experiment.push(break2_block);
           break;
         case 2:
-          //experiment.push(break3_block);
+          experiment.push(catch_2_block);
           break;
         default:
         ;
