@@ -226,10 +226,10 @@
       return images;
     }
     
-    var test_doublet1_stim = doublet_stim_f1;//.slice(0,2);
-    var test_doublet2_stim = doublet_stim_f2;//.slice(0,2);
-    var test_doublet3_stim = doublet_stim_f3;//.slice(0,2);
-    var test_doublet4_stim = doublet_stim_f4;//.slice(0,2);
+    var test_doublet1_stim = doublet_stim_f1.slice(0,2);
+    var test_doublet2_stim = doublet_stim_f2.slice(0,2);
+    var test_doublet3_stim = doublet_stim_f3.slice(0,2);
+    var test_doublet4_stim = doublet_stim_f4.slice(0,2);
 
     //practice with instruction blocks
     var prac_doublet_block = {
@@ -284,7 +284,7 @@
 
     /* create experiment definition array */
     var experiment = [];
-    /*experiment.push(face_images_explore_ready_block);
+    experiment.push(face_images_explore_ready_block);
     experiment.push(face_example_chunk);
     experiment.push(instruction_doublet_chunk);
     experiment.push(prac_no_inst_doublet_block);
@@ -327,7 +327,7 @@
         ;
       }
     }
-    experiment.push(welcome_survey_new_block);*/
+    experiment.push(welcome_survey_new_block);
     experiment.push(complete_block);
 
 
