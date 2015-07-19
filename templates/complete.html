@@ -31,22 +31,5 @@
 	</body>
 </html>
 <script>
-  // This script increments the counter by 1
-  htmlobj = $.ajax({
-    url: "http://52.27.151.244/update_counter.php",
-    async: false,
-    method: "POST",
-    data: { assignmentID: 1, workerID: 2, hitID: 3}
-  });
-  console.log('Updated counter: ' + htmlobj.responseText);
-
-  //This script gets the counter value
-  htmlobj = $.ajax({
-    url: "http://52.7.51.217/give_counter.php",
-    async: false,
-    method: "POST",
-    data: { assignmentID: 1, workerID: 2, hitID: 3}
-  });
-  console.log('Current counter: ' + htmlobj.responseText);
-
+ 
 </script>
