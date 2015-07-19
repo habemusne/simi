@@ -22,21 +22,7 @@
         <script src="/static/js/myjspsych/plugins/jspsych-call-function.js" type="text/javascript"></script>
         <script src="/static/js/myjspsych/plugins/jspsych-html.js" type="text/javascript"></script>        
         <script type="text/javascript">
-            // These fields provided by the psiTurk Server
-            var uniqueId = "{{ uniqueId }}"; // a unique string identifying the worker/task
-            //console.log(typeof uniqueId);
-            var ids = uniqueId.split(":"); 
-            var workerId = ids[0];
-            var assignmentId = ids[1];
-            var adServerLoc = "{{ adServerLoc }}"; // the location of your ad (so you can send user back at end of experiment)
-            var mode = "{{ mode }}"; // is this running live, sandbox, or in debug mode?
-            htmlobj = $.ajax({
-              url: "http://52.27.151.244/give_counter.php",
-              async: false,
-              method: "POST",
-              data: { assignmentID: '1', workerID: '2', hitID: '3'}
-            });
-          console.log('Current counter: ' + htmlobj.responseText);
+            
         </script>
         
         <!-- utils.js and psiturk.js provide the basic psiturk functionality -->
@@ -55,6 +41,32 @@
     <div id="jspsych_target" class="jspsych_target"></div>
   </body>
   <script>
+    // These fields provided by the psiTurk Server
+    var uniqueId = "{{ uniqueId }}"; // a unique string identifying the worker/task
+    //console.log(typeof uniqueId);
+    var ids = uniqueId.split(":"); 
+    var workerId = ids[0];
+    var assignmentId = ids[1];
+    var adServerLoc = "{{ adServerLoc }}"; // the location of your ad (so you can send user back at end of experiment)
+    var mode = "{{ mode }}"; // is this running live, sandbox, or in debug mode?
+    htmlobj = $.ajax({
+      url: "http://52.27.151.244/update_counter.php",
+      async: false,
+      method: "POST",
+      data: { assignmentID: assignmentId, workerID: workerId, hitID: '3'}
+    });
+    console.log('Updated counter: ' + htmlobj.responseText);
+
+
+    htmlobj = $.ajax({
+      url: "http://52.27.151.244/give_counter.php",
+      async: false,
+      method: "POST",
+      data: { assignmentID: assignmentId, workerID: workerId, hitID: '3'}
+    });
+    var outputCounter = htmlobj.responseText;
+    console.log('Current counter: ' + outputCounter);
+    var counter = parseInt(outputCounter.split(' ')[3]);
 
     //read a text file
     function readTextFile(file){
@@ -70,7 +82,6 @@
         listArray = listArray.slice(0,listArray.length-1);
         return listArray;
     }
-
 
     var post_trial_gap = function() {
       return Math.floor( Math.random() * 750 );
@@ -213,9 +224,11 @@
 
 
     /* define test block */
-    var prac_doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set10rep1.txt");
+    var setNumber = Math.ceil(counter/5);
+    var repNumber = counter%5;
+    var prac_doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set"+setNumber.toString()+"rep"+repNumber.toString()+".txt");
     jsPsych.randomization.shuffle(prac_doublet_stim_f);
-    var doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set10rep1.txt");
+    var doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set"+setNumber.toString()+"rep"+repNumber.toString()+".txt");
     
     var doublet_stim_f1 = doublet_stim_f.slice(0,53);
     var doublet_stim_f2 = doublet_stim_f.slice(53,106);
@@ -228,8 +241,6 @@
     var catch_1 = [[catch_1, catch_1]];
     var catch_2 = temp[1];
     var catch_2 = [[catch_2, catch_2]]; 
-    console.log(catch_2);
-
 
     function getAllImages() {
       var images = []
@@ -283,22 +294,22 @@
       stimuli: catch_1,
       timing_post_trial: post_trial_gap
     };
-    /*
+    
     var test_doublet2_block = {
       type: 'similarity_custom',
       stimuli: test_doublet2_stim,
       timing_post_trial: post_trial_gap
-    };*/
+    };
     var test_doublet3_block = {
       type: 'similarity_custom',
       stimuli: test_doublet3_stim,
       timing_post_trial: post_trial_gap
     };
-    /*var catch_2_block = {
+    var catch_2_block = {
       type: 'similarity_custom',
       stimuli: catch_2,
       timing_post_trial: post_trial_gap
-    };*/
+    };
 
     var test_doublet4_block = {
       type: 'similarity_custom',
