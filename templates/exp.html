@@ -227,10 +227,10 @@
     jsPsych.randomization.shuffle(prac_doublet_stim_f);
     var doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set"+setNumber.toString()+"rep"+repNumber.toString()+".txt");
     
-    var doublet_stim_f1 = doublet_stim_f.slice(0,33);
-    var doublet_stim_f2 = doublet_stim_f.slice(0,33);
-    var doublet_stim_f3 = doublet_stim_f.slice(0,33);
-    var doublet_stim_f4 = doublet_stim_f.slice(0,33);
+    var doublet_stim_f1 = doublet_stim_f.slice(0,3);
+    var doublet_stim_f2 = doublet_stim_f.slice(0,3);
+    var doublet_stim_f3 = doublet_stim_f.slice(0,3);
+    var doublet_stim_f4 = doublet_stim_f.slice(0,3);
     jsPsych.randomization.shuffle(doublet_stim_f1);
     jsPsych.randomization.shuffle(doublet_stim_f2);
     jsPsych.randomization.shuffle(doublet_stim_f3);
@@ -252,10 +252,10 @@
       return images;
     }
     
-    var test_doublet1_stim = doublet_stim_f1.slice(0,2);
-    var test_doublet2_stim = doublet_stim_f2.slice(0,2);
-    var test_doublet3_stim = doublet_stim_f3.slice(0,2);
-    var test_doublet4_stim = doublet_stim_f4.slice(0,2);
+    var test_doublet1_stim = doublet_stim_f1;//.slice(0,2);
+    var test_doublet2_stim = doublet_stim_f2;//.slice(0,2);
+    var test_doublet3_stim = doublet_stim_f3;//.slice(0,2);
+    var test_doublet4_stim = doublet_stim_f4;//.slice(0,2);
 
     //practice with instruction blocks
     var prac_doublet_block = {
