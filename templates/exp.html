@@ -37,6 +37,7 @@
         <div id="jspsych_target" class="jspsych_target"></div>
   </body>
   <script>
+  
     // These fields provided by the psiTurk Server
     var uniqueId = "{{ uniqueId }}"; // a unique string identifying the worker/task
     //console.log(typeof uniqueId);
@@ -221,15 +222,21 @@
 
     /* define test block */
     var setNumber = Math.ceil(counter/5);
-    var repNumber = counter%5;
+    var repNumber = counter%5+1;
     var prac_doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set"+setNumber.toString()+"rep"+repNumber.toString()+".txt");
     jsPsych.randomization.shuffle(prac_doublet_stim_f);
     var doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set"+setNumber.toString()+"rep"+repNumber.toString()+".txt");
     
-    var doublet_stim_f1 = doublet_stim_f.slice(0,53);
-    var doublet_stim_f2 = doublet_stim_f.slice(53,106);
-    var doublet_stim_f3 = doublet_stim_f.slice(106,158);
-    var doublet_stim_f4 = doublet_stim_f.slice(158,210);
+    var doublet_stim_f1 = doublet_stim_f.slice(0,33);
+    var doublet_stim_f2 = doublet_stim_f.slice(0,33);
+    var doublet_stim_f3 = doublet_stim_f.slice(0,33);
+    var doublet_stim_f4 = doublet_stim_f.slice(0,33);
+    jsPsych.randomization.shuffle(doublet_stim_f1);
+    jsPsych.randomization.shuffle(doublet_stim_f2);
+    jsPsych.randomization.shuffle(doublet_stim_f3);
+    jsPsych.randomization.shuffle(doublet_stim_f4);    
+
+
     var prac_doublet_stim = [prac_doublet_stim_f[0]];
     var prac_no_inst_doublet_stim = prac_doublet_stim_f.slice(1,6);
     var temp = prac_doublet_stim_f[40];
