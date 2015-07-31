@@ -47,7 +47,7 @@
     var adServerLoc = "{{ adServerLoc }}"; // the location of your ad (so you can send user back at end of experiment)
     var mode = "{{ mode }}"; // is this running live, sandbox, or in debug mode?
     htmlobj = $.ajax({
-      url: "http://52.27.151.244/update_counter.php",
+      url: "http://52.27.151.244/update_counterDebug.php",
       async: false,
       method: "POST",
       data: { assignmentID: assignmentId, workerID: workerId, hitID: '3'}
@@ -56,7 +56,7 @@
 
 
     htmlobj = $.ajax({
-      url: "http://52.27.151.244/give_counter.php",
+      url: "http://52.27.151.244/give_counterDebug.php",
       async: false,
       method: "POST",
       data: { assignmentID: assignmentId, workerID: workerId, hitID: '3'}
