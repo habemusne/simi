@@ -12,7 +12,7 @@ organization_name = University of California San Diego
 browser_exclude_rule = MSIE, mobile, tablet
 
 [Database Parameters]
-database_url = sqlite:///amandaTest1.db
+database_url = sqlite:///linzyTest1.db
 table_name = turkdemo
 
 [Server Parameters]
