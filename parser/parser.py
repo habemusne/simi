@@ -54,9 +54,11 @@ def get_triplet_data(raw_json):
 def get_doublet_data(raw_json):
     doublets = []
     last = 0
-    for entry in raw_json['data']:
+    for i in range(len(raw_json['data'])):
+        entry = raw_json['data'][i]
         if 'similarity_custom' in entry['trialdata']['trial_type']:
             doublet = {}
+            predoublet = {}
             doublet['stimuli'] = ujson.loads(entry['trialdata']['stimulus'])
             doublet['stimuli'][1] = doublet['stimuli'][1][24:-4]
             doublet['stimuli'][0] = doublet['stimuli'][0][24:-4]
@@ -70,7 +72,14 @@ def get_doublet_data(raw_json):
                 doublet['score'] = entry['trialdata']['sim_score'][0]
             doublet['react_time'] = entry['trialdata']['rt']
             doublet['trial_index_global'] = entry['trialdata']['trial_index_global']
-            if (doublet['stimuli'][0] == '27' and doublet['stimuli'][1] == '40' and doublet['trial_index_global'] < 15):
+            if (last > 0):
+                predoublet['stimuli'] = ujson.loads(pre['trialdata']['stimulus'])
+                predoublet['stimuli'][1] = predoublet['stimuli'][1][24:-4]
+                predoublet['stimuli'][0] = predoublet['stimuli'][0][24:-4]
+            if (last == 0):
+                doublet['type'] = '0'
+                last = int(doublet['trial_index_global'])
+            elif(last > 0 and doublet['stimuli'][0] == predoublet['stimuli'][0] and doublet['stimuli'][1] == predoublet['stimuli'][1] and doublet['trial_index_global'] < 15):
                 doublet['type'] = '0'
                 last = int(doublet['trial_index_global'])
             elif (int(doublet['trial_index_global']) <last+7):
@@ -80,6 +89,7 @@ def get_doublet_data(raw_json):
             else:
                 doublet['type'] = '2'
             doublets.append(doublet)
+            pre = entry
     return doublets
 
 def parse(raw_json):

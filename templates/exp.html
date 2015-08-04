@@ -223,8 +223,8 @@
     /* define test block */
     var setNumber = Math.ceil(counter/5);
     var repNumber = counter%5+1;
-    var prac_doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set"+setNumber.toString()+"rep"+repNumber.toString()+".txt");
-    jsPsych.randomization.shuffle(prac_doublet_stim_f);
+    var prac_doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set1rep1.txt");
+    //jsPsych.randomization.shuffle(prac_doublet_stim_f);
     var doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set"+setNumber.toString()+"rep"+repNumber.toString()+".txt");
     
     var doublet_stim_f1 = doublet_stim_f.slice(0,33);
