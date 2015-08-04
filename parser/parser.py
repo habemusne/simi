@@ -38,8 +38,6 @@ def get_triplet_data(raw_json):
             triplet['stimuli'][0] = triplet['stimuli'][0][24:-4]
             triplet['stimuli'][2] = triplet['stimuli'][2][24:-4]
             triplet['pressed'] = ujson.loads(entry['trialdata']['pressed'])
-            triplet['pressed'][1] = triplet['pressed'][1][24:-4]
-            triplet['pressed'][0] = triplet['pressed'][0][24:-4]
             triplet['react_time'] = entry['trialdata']['rt']
             triplet['trial_index_global'] = entry['trialdata']['trial_index_global']
             if (int(triplet['trial_index_global']) == 5):
@@ -54,9 +52,10 @@ def get_triplet_data(raw_json):
     return triplets
 
 def get_doublet_data(raw_json):
-    doublets = []    
+    doublets = []
+    last = 0
     for entry in raw_json['data']:
-        if 'similarity' in entry['trialdata']['trial_type']:
+        if 'similarity_custom' in entry['trialdata']['trial_type']:
             doublet = {}
             doublet['stimuli'] = ujson.loads(entry['trialdata']['stimulus'])
             doublet['stimuli'][1] = doublet['stimuli'][1][24:-4]
@@ -71,9 +70,10 @@ def get_doublet_data(raw_json):
                 doublet['score'] = entry['trialdata']['sim_score'][0]
             doublet['react_time'] = entry['trialdata']['rt']
             doublet['trial_index_global'] = entry['trialdata']['trial_index_global']
-            if (int(doublet['trial_index_global']) == 5):
+            if (doublet['stimuli'][0] == '27' and doublet['stimuli'][1] == '40' and doublet['trial_index_global'] < 15):
                 doublet['type'] = '0'
-            elif (int(doublet['trial_index_global']) <12):
+                last = int(doublet['trial_index_global'])
+            elif (int(doublet['trial_index_global']) <last+7):
                 doublet['type'] = '1'
             elif (doublet['stimuli'][1] == doublet['stimuli'][0]):
                 doublet['type'] = '3'
@@ -100,12 +100,12 @@ if __name__=='__main__':
     workerCounter = 1
     output_file_name_with_path = 'experiment_data/'
     with open(output_file_name_with_path +'subjectData.csv', 'w') as f:
-        f.write('workerCounter,assignmentId,workerId,hitId,age,gender,sexual orientation,race,community \n')
+        f.write('workerCounter,assignmentId,workerId,hitId,age,gender,sexual orientation,race,community\n')
     with open(output_file_name_with_path + 'doublet.csv', 'w') as f:
-        f.write('workerCounter,assignmentId,workerId,hitId,trial type,reaction time,score,stimulus1,stimulus2 \n')
+        f.write('workerCounter,assignmentId,workerId,hitId,trial type,global index,reaction time,score,stimulus1,stimulus2\n')
     '''
     with open(output_file_name_with_path + 'triplet.csv', 'w') as f:
-        f.write('workerCounter,assignmentId,workerId,hitId,trial type,reaction time,pressed,stimulus1,stimulus2,stimulus3  \n')
+        f.write('workerCounter,assignmentId,workerId,hitId,trial type,global index,reaction time,pressed,stimulus1,stimulus2,stimulus3  \n')
     '''
     for raw_json in raw_jsons:
         data = parse(raw_json)
@@ -114,7 +114,7 @@ if __name__=='__main__':
             for entry in data['doublet_data']:
                 f.write(str(workerCounter) + ',' + str(data['subject_data']['assignmentId']) + ',' +\
                         str(data['subject_data']['workerId']) + ',' +\
-                        str(data['subject_data']['hitId']) + ',' + str(entry['type']) + ',' + str(entry['react_time']) +\
+                        str(data['subject_data']['hitId']) + ',' + str(entry['type']) + ',' + str(entry['trial_index_global']) + ','+ str(entry['react_time']) +\
                     ',' + str(entry['score']) + ',')
                 concat_str = ""
                 for stimulus in entry['stimuli']:
@@ -125,7 +125,7 @@ if __name__=='__main__':
             for entry in data['triplet_data']:
                 f.write(str(workerCounter) + ',' + str(data['subject_data']['assignmentId']) + ',' +\
                        str(data['subject_data']['workerId']) + ',' +\
-                       str(data['subject_data']['hitId']) + ',' + str(entry['type']) + ',' + str(entry['react_time']) + ',')
+                       str(data['subject_data']['hitId']) + ',' + str(entry['type']) + ',' +str(entry['trial_index_global']) + ','+ str(entry['react_time']) + ',')
                 for pressed_image in entry['pressed']:
                     f.write(str(pressed_image) + ',')
                 concat_str = ""

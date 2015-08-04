@@ -258,12 +258,15 @@
     var test_doublet4_stim = doublet_stim_f4.slice(0,1);
 
     //practice with instruction blocks
+    var trial_num = 0;
     var prac_doublet_block = {
       type: 'similarity_custom',
       stimuli: prac_doublet_stim,
       text: '<div style="text-align: left; margin-top:30px;"> <p>In this example, your need to rate how similar a face pair is from <span class="emp">1</span> to <span class="emp">9</sapn>.</p> <p><span class="emp">1</span> indicates <span class="emp">Maximally Dissimilar</span>, <span class="emp">9</span> indicates <span class="emp">Maximally Similar</span></p> <p> <em class="emp">Try to focus on the face features and ignore the pose, expression and lighting influence.</em></p></div><br><br>',
-      timing_post_trial: post_trial_gap
+      timing_post_trial: post_trial_gap,
+      trial_num: trial_num
     };
+    trial_num +=1;
     var instruction_doublet_chunk = {
         chunk_type: 'while',
         timeline: [prac_doublet_block,prac1_end_block],
@@ -283,44 +286,52 @@
     var prac_no_inst_doublet_block = {
       type: 'similarity_custom',
       stimuli: prac_no_inst_doublet_stim,
-      timing_post_trial: post_trial_gap
+      timing_post_trial: post_trial_gap,
+      trial_num: trial_num
     };
-
+    trial_num +=1;
     //test blocks
     var test_doublet1_block = {
       type: 'similarity_custom',
       stimuli: test_doublet1_stim,
-      timing_post_trial: post_trial_gap
+      timing_post_trial: post_trial_gap,
+      trial_num: trial_num
     };
     var catch_1_block = {
       type: 'similarity_custom',
       stimuli: catch_1,
-      timing_post_trial: post_trial_gap
+      timing_post_trial: post_trial_gap,
+      trial_num: 3
     };
     
     var test_doublet2_block = {
       type: 'similarity_custom',
       stimuli: test_doublet2_stim,
-      timing_post_trial: post_trial_gap
+      timing_post_trial: post_trial_gap,
+      trial_num: trial_num
     };
     var test_doublet3_block = {
       type: 'similarity_custom',
       stimuli: test_doublet3_stim,
-      timing_post_trial: post_trial_gap
+      timing_post_trial: post_trial_gap,
+      trial_num: trial_num
     };
     var catch_2_block = {
       type: 'similarity_custom',
       stimuli: catch_2,
-      timing_post_trial: post_trial_gap
+      timing_post_trial: post_trial_gap,
+      trial_num: 3
     };
 
     var test_doublet4_block = {
       type: 'similarity_custom',
       stimuli: test_doublet4_stim,
-      timing_post_trial: post_trial_gap
+      timing_post_trial: post_trial_gap,
+      trial_num: trial_num
     };
 
     /* create experiment definition array */
+
     var experiment = [];
     experiment.push(face_images_explore_ready_block);
     experiment.push(face_example_chunk);
