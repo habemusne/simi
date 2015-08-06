@@ -43,7 +43,7 @@ if (isset($assignmentID) && isset($workerID) && isset($hitID)){
       $counter = 0;
     }
     $writing_data = ( (string)$counter).' '.$workerID;
-    $counter_file = fopen('counter.txt', 'w');
+    $counter_file = fopen('counterDebug.txt', 'w');
     $write_file = fwrite($counter_file, $writing_data);
     fclose($counter_file);
   }
