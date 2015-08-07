@@ -134,7 +134,7 @@
               var response_time = endTime - startTime;
               var select_data = save_data();
               $.extend(answer, select_data);
-              //console.log(JSON.stringify(answer));
+              console.log(JSON.stringify(answer));
               //console.log(response_time);
 
               // save data  
