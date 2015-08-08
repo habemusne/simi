@@ -14,7 +14,7 @@ end
 
 %% Read columns of data as strings:
 % For more information, see the TEXTSCAN documentation.
-formatSpec = '%s%*s%*s%*s%s%s%s%s%s%[^\n\r]';
+formatSpec = '%s%*s%*s%*s%s%*s%s%s%s%s%[^\n\r]';
 
 %% Open the text file.
 fileID = fopen(filename,'r');
@@ -90,7 +90,7 @@ stim2 = cell2mat(raw(:, 6));
 
 subInd = subInd(2:end);
 trialType = trialType(2:end);
-RT = RT(2:end);
+RT = RT(2:end)/1000;
 rating = rating(2:end);
 stim1 = stim1(2:end);
 stim2 = stim2(2:end);
