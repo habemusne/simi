@@ -15,15 +15,16 @@ Column 5: trial type
 	    1   practice
 	    2   actual trial
 	    3   catchy question
-Column 6: react_time (in ms)
-Column 7: similarity score
+Column 6: set number
+Column 7: react_time (in ms)
+Column 8: similarity score
 	  for catchy question:
 	  	true   means the subject provides the correct answer
 		false   otherwise
 	  for actual trial question:
 		1   maximally dissimilar
 		9   maximally similar
-Column 8 & 9: two stimuli (image index)
+Column 9 & 10: two stimuli (image index)
 
 
 Triplet Data:
@@ -36,9 +37,14 @@ Column 5: trial type
 	    1   practice
 	    2   actual trial
 	    3   catchy question
-Column 6: react_time (in ms)
-Column 7 & 8: two images pressed by worker. Each is denoted by one of the words {top, left, right}.
-Column 9, 10 & 11: three stimuli (image index)
+Column 6: set number
+Column 7: react_time (in ms)
+Column 8 & 9: two images pressed by worker(image index) 
+column 10 & 11: the location of two images above
+	    0   top 
+	    1   left
+	    2   right
+Column 12, 13 & 14: three stimuli (image index)
 
 Subject Data:
 Column 1: worker counter (indicate the sequence of the worker taking the experiment)

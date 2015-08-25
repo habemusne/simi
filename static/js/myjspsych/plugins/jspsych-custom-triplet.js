@@ -25,6 +25,9 @@
         trials[i].number = (i+1).toString();
         trials[i].total = trials.length.toString();
         trials[i].text = (typeof params.text === 'undefined') ? "" : params.text;
+        trials[i].phase = (typeof params.phase === 'undefined') ? "" : params.phase.toString();
+        trials[i].trial_num = (typeof params.trial_num === 'undefined') ? "" : params.trial_num.toString();
+        trials[i].set_num = (typeof params.set_num === 'undefined') ? "" : params.set_num.toString();
         trials[i].x_path = params.stimuli[i][0];
         // if there is only a pair of stimuli, then the first is the target and is shown twice.
         // if there is a triplet, then the first is X, the second is the target, and the third is foil (useful for non-exact-match XAB).
@@ -61,7 +64,7 @@
         trial = jsPsych.pluginAPI.evaluateFunctionParameters(trial);
         display_element.html(trial.text);
         if (trial.phase.length >= 1){
-          display_element.append('<div> <p> <span class="emp">Phase:</span> ' + trial.phase + ' of 4</p> <p><span class="emp">Progress:</span> '+trial.number +' of '+trial.total+'</p><br></div>');
+          display_element.append('<div> <p> <span class="emp">Phase:</span> ' + trial.phase + ' of 6</p> <p><span class="emp">Progress:</span> '+trial.number +' of '+trial.total+'</p><br></div>');
         }
         display_element.append($('<img>', {
           src: trial.x_path,
@@ -91,10 +94,23 @@
 
         press_counter = 0;
         pressed_set = [];
-        var report_pressed = function(pressed_img_class_name){
-          if (pressed_set.indexOf(pressed_img_class_name) == -1){
+        response = [];
+        var report_pressed = function(pressed_img_class_number){
+          switch (pressed_img_class_number){
+            case '0':
+              response.push(trial.x_path);
+              break;
+            case '1':
+              response.push(trial.a_path);
+              break;
+            case '2':
+              response.push(trial.b_path);
+            default:
+              ;
+          }
+          if (pressed_set.indexOf(pressed_img_class_number) == -1){
             press_counter += 1;
-            pressed_set.push(pressed_img_class_name);
+            pressed_set.push(pressed_img_class_number);
             if (press_counter >= 2){
               wrapup_trial();
             }
@@ -104,15 +120,15 @@
 
         $('.top').click(function(){
           $('.top').css({'border-width': '3', 'border-color': '#E74C3C', 'border-style': 'solid'});
-          report_pressed('top');
+          report_pressed('0');
         });
         $('.left').click(function(){
           $('.left').css({'border-width': '3', 'border-color': '#E74C3C', 'border-style': 'solid'});
-          report_pressed('left');
+          report_pressed('1');
         });
         $('.right').click(function(){
           $('.right').css({'border-width': '3', 'border-color': '#E74C3C', 'border-style': 'solid'});
-          report_pressed('right');
+          report_pressed('2');
         });
         
       }
@@ -133,8 +149,11 @@
         //var score = $("#slider").slider("value");
         jsPsych.data.write($.extend({}, {
           "pressed": JSON.stringify(pressed_set),
+          "response": JSON.stringify(response),
           "rt": response_time,
-          "stimulus": JSON.stringify([trial.x_path, trial.a_path, trial.b_path])
+          "stimulus": JSON.stringify([trial.x_path, trial.a_path, trial.b_path]),
+          "type": trial.trial_num,
+          "set": trial.set_num
         }, trial.data));
         // goto next trial in block
         if (trial.timing_post_trial > 0) {

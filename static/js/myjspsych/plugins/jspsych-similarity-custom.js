@@ -25,6 +25,7 @@
         trials[i].text = (typeof params.text === 'undefined') ? "" : params.text;
         trials[i].phase = (typeof params.phase === 'undefined') ? "" : params.phase.toString();
         trials[i].trial_num = (typeof params.trial_num === 'undefined') ? "" : params.trial_num.toString();
+        trials[i].set_num = (typeof params.set_num === 'undefined') ? "" : params.set_num.toString();
         trials[i].a_path = params.stimuli[i][0];
         trials[i].b_path = params.stimuli[i][1];
         trials[i].show_ticks = (typeof params.show_ticks === 'undefined') ? false : params.show_ticks;
@@ -52,7 +53,7 @@
         trial = jsPsych.pluginAPI.evaluateFunctionParameters(trial);
         display_element.html(trial.text);
         if (trial.phase.length >= 1){
-          display_element.append('<div> <p> <span class="emp">Phase:</span> ' + trial.phase + ' of 4 </p> <p><span class="emp">Progress:</span> '+trial.number +' of '+trial.total+'</p></div>');
+          display_element.append('<div> <p> <span class="emp">Phase:</span> ' + trial.phase + ' of 6 </p> <p><span class="emp">Progress:</span> '+trial.number +' of '+trial.total+'</p></div>');
         }
         
         // show the images
@@ -179,7 +180,8 @@
             "catchy_answer": catchy,
             "rt": response_time,
             "stimulus": JSON.stringify([trial.a_path, trial.b_path]),
-            "type": trial.trial_num
+            "type": trial.trial_num,
+            "set": trial.set_num
           }, trial.data));
           // goto next trial in block
           display_element.html('');

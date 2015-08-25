@@ -13,20 +13,28 @@ label {
 .well > p{
 	text-align: left;
 }
+.top{
+	width:25%;
+  	height:auto;
+}
 .left{
-	margin-right:20%;
+	width:27%;
+  	height:auto;
+	margin-right:23%;
 }
 .img-left{
-	width:30%;
+	width:27%;
   	height:auto;
 	margin-right:15%;
 	margin-left:2%;
 }
 .right{
-	margin-left:20%;
+	width:27%;
+  	height:auto;
+	margin-left:23%;
 }
 .img-right{
-	width:30%;
+	width:27%;
   	height:auto;
 	margin-left:20%;
 }

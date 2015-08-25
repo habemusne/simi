@@ -90,10 +90,10 @@
       questions: [question_age],
       text: "<div class='jspsych_target jspsych-display-element' style='text-align: left; width: 500px; margin-left: 30% auto; padding-top: 30px'> <div class='jspsych-survey-likert-preamble'>Please fill out this short survey </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My gender is <br> <input type='radio' name='gender' id='Female' value='1'> <label for='Female'> Female</label> <br> <input type='radio' name='gender' id='Male' value='2'> <label for='Male'> Male</label> <br> <input type='radio' name='gender' id='Other' value='0'> <label for='Other_gender'> Other</label> <br> <!--<input type='radio' name='gender' id='no_say' value='3'><label for='No_say'> I prefer not to disclose this information</label><br>--> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My race / ethnicity is (select one or more) <br> <input type='checkbox' name='race' id='American Indian or Alaska Native' value='1'> <label for='American Indian or Alaska Native'> American Indian or Alaska Native</label> <br> <input type='checkbox' name='race' id='Asian' value='2'> <label for='Asian'> Asian</label> <br> <input type='checkbox' name='race' id='Black or African American' value='3'> <label for='Black or African American'> Black or African American </label> <br> <input type='checkbox' name='race' id='Hispanic' value='4'> <label for='Hispanic'> Hispanic </label> <br> <input type='checkbox' name='race' id='Native Hawaiian or Other Pacific Islander' value='5'> <label for='Native Hawaiian or Other Pacific Islander'> Native Hawaiian or Other Pacific Islander </label> <br> <input type='checkbox' name='race' id='White_Not_Hispanic' value='6'> <label for='White_Not_Hispanic'> White / Not Hispanic </label> <br> <input type='checkbox' name='race' id='Other' value='0'> <label for='Other'> Other</label> <br> <!--<input type='checkbox' name='race' id='no_say' value='7'><label for='No_say'> I prefer not to disclose this information</label><br>--> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> The races / ethnicities of people in the communities I've lived in are (select one or more) <br> <input type='checkbox' name='comRace' id='American Indian or Alaska Native' value='1'> <label for='American Indian or Alaska Native'> American Indian or Alaska Native</label> <br> <input type='checkbox' name='comRace' id='Asian' value='2'> <label for='Asian'> Asian</label> <br> <input type='checkbox' name='comRace' id='Black or African American' value='3'> <label for='Black or African American'> Black or African American </label> <br> <input type='checkbox' name='comRace' id='Hispanic' value='4'> <label for='Hispanic'> Hispanic </label> <br> <input type='checkbox' name='comRace' id='Native Hawaiian or Other Pacific Islander' value='5'> <label for='Native Hawaiian or Other Pacific Islander'> Native Hawaiian or Other Pacific Islander </label> <br> <input type='checkbox' name='comRace' id='White_Not_Hispanic' value='6'> <label for='White_Not_Hispanic'> White / Not Hispanic </label> <br> <input type='checkbox' name='comRace' id='Other' value='0'> <label for='Other'> Other</label> <br> <!--<input type='checkbox' name='comRace' id='no_say' value='7'><label for='No_say'> I prefer not to disclose this information</label><br>--> </p> </div> <div class='jspsych-survey-text-question'> <p class='jspsych-survey-text'> My sexual orientation is <br> <input type='radio' name='sexual_ori' id='Bisexual' value='1'> <label for='Bisexual'> Bisexual</label> <br> <input type='radio' name='sexual_ori' id='Heterosexual' value='2'> <label for='heterosexual'> Heterosexual</label> <br> <input type='radio' name='sexual_ori' id='Homosexual' value='3'> <label for='Homosexual'> Homosexual</label> <br> <input type='radio' name='sexual_ori' id='Other' value='0'> <label for='Other'> Other</label> <br> <input type='radio' name='sexual_ori' id='no_say' value='4'> <label for='No_say'> I prefer not to disclose this information</label> </p> </div> </div>"
     };
-
+   
     var face_images_explore_ready_block = {
       type: "text",
-      text: '<div><h2 class="emp"> Face Similarities Test</h2> <hr> <div class="well"> <p style="margin-top: 30px; margin-bottom: 30px;">In this test, you will be shown a series of face images. Your task is to rate the similarities between them. </p> <p style="margin-top: 30px; margin-bottom: 30px;">There will be a short <span class="emp">practice session </span>  before the actual test to familiarize you with the task. </p>  <p style="margin-top: 30px; margin-bottom: 30px;">First, let us look at some face examples, just to give you an idea of how different these faces will be.</p></div></div>',
+      text: '<div> <h2 class="emp"> Face Similarities Test</h2> <hr> <div class="well"> <p>In this experiment, you will be shown a series of face images. Your task is to compare and judge the similarities between them.</p> <p>There will be two types of tasks: face pair task and face triplet task</p> <div class="row"> <div class="col-md-6"> <h5><b>Face Pair Task</b></h5> <p>Rate the similarity level of the face pair from 1 to 9.</p> <p>1 -- Maximally dissimilar, 9 -- Maximally similar</p><img src="/static/images/faceExamples/trial1.png" style="width:100%"/> </div> <div class="col-md-6"> <h5><b>Face Triplet Task</b></h5> <p> You will see 3 faces and decide which of the two face images is the most similar to each other. You can click on the face images to indicate your choice.</p> <img src="/static/images/faceExamples/trial2.png" style="width:100%"/></div> </div> <p style="margin-top: 30px;">There will be a short <span class="emp">practice session </span>  before the actual test to familiarize you with the tasks. </p>  <p style="margin-bottom: 30px;">First, let us look at some face examples, just to give you an idea of how different these faces will be.</p></div></div>',
       timing_post_trial: post_trial_gap
     };
 
@@ -155,7 +155,7 @@
 
     var face_images_explore_end_block = {
       type: "text",
-      text: '<div class="well"> <p>If you wish to see the face examples again, click  <span class="emp">Go Back</span>.</p> <p>Otherwise, click <span class="emp">Continue</span> to proceed to practice.</p><br></div>',
+      text: '<div class="well"> <p>If you wish to see the face examples again, click  <span class="emp">Go Back</span>.</p> <p>Otherwise, click <span class="emp">Continue</span>.</p><br></div>',
       back_button: true,
       timing_post_trial: post_trial_gap
     };
@@ -175,10 +175,73 @@
             } 
         }
     };
-
+    var bad_examples_ready_block = {
+        type: "text",
+        text: '<div class="well"> <p>Good Job! </p> <p> These two examples should give you an idea what the trials would be like.</p> <p> Keep in mind that you should <span class="emp"> focus on the faces themselves </span> rather then the pose, expression and lighting condition of the faces.</p> <p> We will give you some examples of what you should pay attention to.</p><br></div>',
+        timing_post_trial: post_trial_gap
+      };
+    var bad_examples_block1 = {
+        type: "text",
+        text:"<div class = 'title'><h3>Focus on Faces rathar than Poses</h3> <hr> <div class='well'> <p>The two figures below illustrate that how people focus on the faces themselves rather than the poses.</p> <p>In Figure 1, even though the bottom two faces have similar poses, most people find that the top and left faces look most similar. In Figure 2, most people think that the top and rigth faces are most similar even though the two faces on the bottom are of similar poses.</p> <br> <div class='row'> <div class='col-md-6'>  <img src='/static/images/bad_examples/f1bad.JPG' style='width:100%'/> <p>Figure 1</p></div> <div class='col-md-6'> <img src='/static/images/bad_examples/m1bad.JPG' style='width:100%'/><p>Figure 2</p> </div> </div></div></div>",
+        skip_button: true,
+        loop_num: 0,
+        on_finish: function(){
+                  if(this.loop_num++ > 0){
+                    var skip = document.getElementById('Skip').clicked;
+                    $('.well').remove();
+                    $('.title').remove();
+                    $('.jspsych-survey-text').remove();
+                    if(skip){
+                      jsPsych.endCurrentChunk();
+                    }
+                  }
+                  
+                },
+        timing_post_trial: post_trial_gap
+     };
+     var bad_examples_block2 = {
+       type: "text",
+       text:"<div class = 'title'><h3>Focus on Faces rather than Expressions</h3> <hr> <div class='well'> <p>The two figures below illustrate that how people focus on the faces themselves rather than the expressions.</p> <p>In Figure 1, even though the top face and the left face have similar expressions, most people find that the two faces at the bottom are most similar. In Figure 2, most people think that the top face and the left face are most similar even though the two faces on the bottom are of similar expressions.</p> <br> <div class='row'> <div class='col-md-6'>  <img src='/static/images/bad_examples/f2bad.JPG' style='width:100%'/> <p>Figure 1</p></div> <div class='col-md-6'> <img src='/static/images/bad_examples/m2bad.JPG' style='width:100%'/><p>Figure 2</p> </div> </div></div></div>",
+        skip_button: true,
+        loop_num: 0,
+        on_finish: function(){
+                  if(this.loop_num++ > 0){
+                    var skip = document.getElementById('Skip').clicked;
+                    $('.well').remove();
+                    $('.title').remove();
+                    $('.jspsych-survey-text').remove();
+                    if(skip){
+                      jsPsych.endCurrentChunk();
+                    }
+                  }
+                  
+                },
+       timing_post_trial: post_trial_gap
+     }
+     var bad_examples_end_block = {
+      type: "text",
+      text: '<div class="well"> <p>If you wish to see the examples again, click  <span class="emp">Go Back</span>.</p> <p>Otherwise, click <span class="emp">Continue</span>.</p><br></div>',
+      back_button: true,
+      timing_post_trial: post_trial_gap
+    };
+    var bad_examples_chunk = {
+        chunk_type: 'while',
+        timeline: [bad_examples_block1,bad_examples_block2,bad_examples_end_block],
+        continue_function: function(){
+          var back_button = document.getElementById('Back').clicked;
+            $('.well').remove();
+            $('.jspsych-survey-text').remove();
+            if( back_button){
+              return true;
+            }
+            else{
+              return false;
+            } 
+        }
+    };
     var prac1_end_block = {
       type: "text",
-      text: '<div class="well"> <p>If you wish to read the previous instructions again, click  <span class="emp">Go Back</span>.</p> <p>Otherwise, click <span class="emp">Continue</span> to practice a few more.</p><br></div>',
+      text: '<div class="well"> <p>If you wish to read the previous instructions again, click  <span class="emp">Go Back</span>.</p> <p>Otherwise, click <span class="emp">Continue</span> to proceed.</p><br></div>',
       back_button: true,
       timing_post_trial: post_trial_gap
     };
@@ -196,23 +259,12 @@
       timing_post_trial: post_trial_gap
     };
 
-    var break1_block = {
-      type: "text",
-      text: '<div class="well"><p>You have finished <span class="emp">1/4</span> of the experiment. </p><br></div>',
-      timing_post_trial: post_trial_gap
-    };
-
     var break2_block = {
       type: "text",
       text: '<div class="well"><p class="emp">Well done!</p> <p>You have finished 1/2 of the experiment. Take a short break!</p> <p>Click <span class="emp">Continue</span> when you are ready to proceed. </p> <br></div>',
       timing_post_trial: post_trial_gap
     };
-    var break3_block = {
-      type: "text",
-      text: '<div class="well"><p>You have finished <span class="emp">3/4</span> of the experiment.</p><br></div>',
-      timing_post_trial: post_trial_gap
-    };
-    
+
     var complete_block = {
       type: "text",
       text: '<div class="well"><p class="emp" style="font-size: 24px;">Thank you for your participation!</p> <p>You have finished the whole experiment.</p><br></div>',
@@ -221,50 +273,78 @@
 
 
     /* define test block */
-    var setNumber = Math.ceil(counter/5);
+    var setNumber = 999;//Math.ceil(counter/5);
     var repNumber = counter%5+1;
     var prac_doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set1rep1.txt");
-    //jsPsych.randomization.shuffle(prac_doublet_stim_f);
-    var doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set"+setNumber.toString()+"rep"+repNumber.toString()+".txt");
-    
-    var doublet_stim_f1 = doublet_stim_f.slice(0,33);
-    var doublet_stim_f2 = doublet_stim_f.slice(0,33);
-    var doublet_stim_f3 = doublet_stim_f.slice(0,33);
-    var doublet_stim_f4 = doublet_stim_f.slice(0,33);
-    jsPsych.randomization.shuffle(doublet_stim_f1);
-    jsPsych.randomization.shuffle(doublet_stim_f2);
-    jsPsych.randomization.shuffle(doublet_stim_f3);
-    jsPsych.randomization.shuffle(doublet_stim_f4);    
-
-
-    var prac_doublet_stim = [prac_doublet_stim_f[0]];
-    var prac_no_inst_doublet_stim = prac_doublet_stim_f.slice(1,6);
-    var temp = prac_doublet_stim_f[40];
-    var catch_1 = temp[0];
-    var catch_1 = [[catch_1, catch_1]];
-    var catch_2 = temp[1];
-    var catch_2 = [[catch_2, catch_2]]; 
+    var prac_triplet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/august/tripletPractice.txt");
+    var doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/august/doubletPilot.txt");
+    var triplet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/august/tripletPilot.txt");
 
     function getAllImages() {
       var images = []
       images = images.concat(prac_doublet_stim_f);
+      images = images.concat(prac_triplet_stim_f);
       images = images.concat(doublet_stim_f);
+      images = images.concat(triplet_stim_f);
       return images;
     }
     
-    var test_doublet1_stim = doublet_stim_f1.slice(0,1);
-    var test_doublet2_stim = doublet_stim_f2.slice(0,1);
-    var test_doublet3_stim = doublet_stim_f3.slice(0,1);
-    var test_doublet4_stim = doublet_stim_f4.slice(0,1);
+    var prac_doublet_stim = [prac_doublet_stim_f[0]];
+    var prac_triplet_stim = [prac_triplet_stim_f[0]];
+    var prac_no_inst_doublet_stim = prac_doublet_stim_f.slice(2,4);
+    var prac_no_inst_triplet_stim = prac_triplet_stim_f.slice(2,4);
+
+
+    function getRandomInt (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    //catchy question
+    max = prac_triplet_stim_f.length;
+    var catchy_index = getRandomInt (1, max);
+    var doublet_catchy = []
+    var triplet_catchy = []
+    var doublet_stim = []
+    var triplet_stim = []
+    var temp = prac_triplet_stim_f[catchy_index];
+    temp.push(prac_triplet_stim_f[catchy_index+1]);
+    max = prac_doublet_stim_f.length;
+
+    for ( var i = 0; i< 4; i++){
+      catchy_index = getRandomInt (0, max);
+      doublet_stim[i] = doublet_stim_f;
+      triplet_stim[i] = triplet_stim_f;
+      doublet_stim[i].push([temp[i],temp[i]]);
+      triplet_stim[i].push(prac_doublet_stim_f[catchy_index]);
+      doublet_stim[i] = jsPsych.randomization.repeat(doublet_stim[i],1);
+      triplet_stim[i] = jsPsych.randomization.repeat(triplet_stim[i],1);
+    }
+   
+    var test_doublet1_stim = doublet_stim[0].concat(doublet_stim[3]);
+    var test_doublet2_stim = doublet_stim[1].concat(doublet_stim[2]);
+    var test_triplet1_stim = triplet_stim[0];
+    var test_triplet2_stim = triplet_stim[1];
+    var test_triplet3_stim = triplet_stim[2];
+    var test_triplet4_stim = triplet_stim[3];
+ 
+
+
+    test_doublet1_stim = test_doublet1_stim.slice(0,2);
+    test_doublet2_stim = test_doublet2_stim.slice(0,2);
+    test_triplet2_stim = test_triplet2_stim.slice(0,2);
+    test_triplet3_stim = test_triplet3_stim.slice(0,2);
+    test_triplet4_stim = test_triplet4_stim.slice(0,2);
+    test_triplet1_stim = test_triplet1_stim.slice(0,2);
 
     //practice with instruction blocks
     var trial_num = 0;
     var prac_doublet_block = {
       type: 'similarity_custom',
       stimuli: prac_doublet_stim,
-      text: '<div style="text-align: left; margin-top:30px;"> <p>In this example, your need to rate how similar a face pair is from <span class="emp">1</span> to <span class="emp">9</sapn>.</p> <p><span class="emp">1</span> indicates <span class="emp">Maximally Dissimilar</span>, <span class="emp">9</span> indicates <span class="emp">Maximally Similar</span></p> <p> <em class="emp">Try to focus on the face features and ignore the pose, expression and lighting influence.</em></p></div><br><br>',
+      text: '<div style="text-align: left; margin-top:30px;"> <p>In this example, your need to rate how similar a face pair is from <span class="emp">1</span> to <span class="emp">9</sapn>.</p> <p><span class="emp">1</span> indicates <span class="emp">Maximally Dissimilar</span>, <span class="emp">9</span> indicates <span class="emp">Maximally Similar</span></p> <p> If you see two identical faces, please click the <span class="emp">identical</span> button.</p> <p> <em class="emp">Try to focus on the face features and ignore the pose, expression and lighting influence.</em></p></div><br><br>',
       timing_post_trial: post_trial_gap,
-      trial_num: trial_num
+      trial_num: trial_num,
+      set_num: 1
     };
     trial_num +=1;
     var instruction_doublet_chunk = {
@@ -282,53 +362,106 @@
             } 
         }
     };
+    var prac_triplet_block = {
+      type: 'custom_triplet',
+      stimuli: prac_triplet_stim,
+      text: '<div style="text-align: left; margin-top:30px;"> <p>In this example, you will do the similar thing, but instead of rating you will <span class="emp">click on the two images</span> that look most similar to you.</div>',
+      timing_post_trial: post_trial_gap,
+      trial_num: trial_num,
+      set_num: 1
+    };
+    var instruction_triplet_chunk = {
+        chunk_type: 'while',
+        timeline: [prac_triplet_block,prac1_end_block],
+        continue_function: function(){
+          var back_button = document.getElementById('Back').clicked;
+            $('.well').remove();
+            $('.jspsych-survey-text').remove();
+            if( back_button){
+              return true;
+            }
+            else{
+              return false;
+            } 
+        }
+    };
     //practice with no instruction blocks
     var prac_no_inst_doublet_block = {
       type: 'similarity_custom',
       stimuli: prac_no_inst_doublet_stim,
       timing_post_trial: post_trial_gap,
-      trial_num: trial_num
+      trial_num: trial_num,
+      set_num: 1
+    };
+    var prac_no_inst_triplet_block = {
+      type: 'custom_triplet',
+      stimuli: prac_no_inst_triplet_stim,
+      timing_post_trial: post_trial_gap,
+      trial_num: trial_num,
+      set_num: 1
     };
     trial_num +=1;
+    phase_num  = 1;
     //test blocks
+    var test_triplet1_block = {
+      type: 'custom_triplet',
+      stimuli: test_triplet1_stim,
+      timing_post_trial: post_trial_gap,
+      trial_num: trial_num,
+      phase: phase_num,
+      set_num:setNumber
+    };  
+    phase_num +=1;
     var test_doublet1_block = {
       type: 'similarity_custom',
       stimuli: test_doublet1_stim,
       timing_post_trial: post_trial_gap,
-      trial_num: trial_num
+      trial_num: trial_num,
+      phase: phase_num,
+      set_num:setNumber
     };
-    var catch_1_block = {
-      type: 'similarity_custom',
-      stimuli: catch_1,
+    phase_num +=1;
+    var test_triplet2_block = {
+      type: 'custom_triplet',
+      stimuli: test_triplet2_stim,
       timing_post_trial: post_trial_gap,
-      trial_num: 3
+      trial_num: trial_num,
+      phase: phase_num,
+      set_num:setNumber
     };
-    
+    phase_num +=1;
     var test_doublet2_block = {
       type: 'similarity_custom',
       stimuli: test_doublet2_stim,
       timing_post_trial: post_trial_gap,
-      trial_num: trial_num
+      trial_num: trial_num,
+      phase: phase_num,
+      set_num:setNumber
     };
-    var test_doublet3_block = {
-      type: 'similarity_custom',
-      stimuli: test_doublet3_stim,
+    phase_num +=1;
+
+    var test_triplet3_block = {
+      type: 'custom_triplet',
+      stimuli: test_triplet3_stim,
       timing_post_trial: post_trial_gap,
-      trial_num: trial_num
+      trial_num: trial_num,
+      phase: phase_num,
+      set_num:setNumber
     };
-    var catch_2_block = {
-      type: 'similarity_custom',
-      stimuli: catch_2,
+    phase_num +=1;
+    var test_triplet4_block = {
+      type: 'custom_triplet',
+      stimuli: test_triplet4_stim,
       timing_post_trial: post_trial_gap,
-      trial_num: 3
+      trial_num: trial_num,
+      phase: phase_num,
+      set_num:setNumber
     };
 
-    var test_doublet4_block = {
-      type: 'similarity_custom',
-      stimuli: test_doublet4_stim,
-      timing_post_trial: post_trial_gap,
-      trial_num: trial_num
-    };
+    var trial_chunk = {
+    chunk_type: 'linear',
+    timeline: [test_triplet1_block, test_doublet1_block,test_triplet2_block,break2_block,test_doublet2_block,test_triplet3_block,test_triplet4_block]
+    }
 
     /* create experiment definition array */
 
@@ -336,46 +469,13 @@
     experiment.push(face_images_explore_ready_block);
     experiment.push(face_example_chunk);
     experiment.push(instruction_doublet_chunk);
+    experiment.push(instruction_triplet_chunk);
+    experiment.push(bad_examples_ready_block);
+    experiment.push(bad_examples_chunk);
     experiment.push(prac_no_inst_doublet_block);
+    experiment.push(prac_no_inst_triplet_block);
     experiment.push(test_ready_block);
-
-    var douTriShuffle = [1,2,3,4];
-    jsPsych.randomization.shuffle(douTriShuffle);
-    for (var i = 0; i < douTriShuffle.length; i++){
-      switch(douTriShuffle[i]){
-        case 1:
-          test_doublet1_block.phase = i+1;
-          experiment.push(test_doublet1_block);
-          break;
-        case 2:
-          test_doublet2_block.phase = i+1;
-          experiment.push(test_doublet2_block);
-          break;
-        case 3:
-          test_doublet3_block.phase = i+1;
-          experiment.push(test_doublet3_block);
-          break;
-        case 4:
-          test_doublet4_block.phase = i+1;
-          experiment.push(test_doublet4_block);
-          break;
-        default:
-        ;
-      }
-      switch(i){
-        case 0:
-          experiment.push(catch_1_block);
-          break;
-        case 1:
-          experiment.push(break2_block);
-          break;
-        case 2:
-          experiment.push(catch_2_block);
-          break;
-        default:
-        ;
-      }
-    }
+    experiment.push(trial_chunk);
     experiment.push(welcome_survey_new_block);
     experiment.push(complete_block);
 
