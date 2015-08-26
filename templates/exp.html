@@ -65,20 +65,20 @@
     console.log('Current counter: ' + outputCounter);
     var counter = parseInt(outputCounter.split(' ')[3]);
 
-    //read a text file
+        //read a text file
     function readTextFile(file){
-        htmlobj=$.ajax({url:file,async:false});
-        var list = htmlobj.responseText;
-        var listArray = list.split(/\n/g);
-        for (a in listArray ) {
-            listArray[a] = listArray[a].split(","); 
-            for( b in listArray[a]){
-              listArray[a][b] = 'static/images/2kFemale/' + listArray[a][b];
-            }
-        }
-        listArray = listArray.slice(0,listArray.length-1);
-        return listArray;
-    }
+       htmlobj=$.ajax({url:file,async:false});
+       var list = htmlobj.responseText;
+       var listArray = list.split(/\n/g);
+       for (a in listArray ) {
+           listArray[a] = listArray[a].split(","); 
+           for( b in listArray[a]){
+             listArray[a][b] = 'static/images/2kFemale/' + listArray[a][b];
+           }
+       }
+       listArray = listArray.slice(0,listArray.length-1);
+       return listArray;
+   }
 
     var post_trial_gap = function() {
       return Math.floor( Math.random() * 750 );
@@ -275,11 +275,10 @@
     /* define test block */
     var setNumber = 999;//Math.ceil(counter/5);
     var repNumber = counter%5+1;
-    var prac_doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set1rep1.txt");
-    var prac_triplet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/august/tripletPractice.txt");
     var doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/august/doubletPilot.txt");
     var triplet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/august/tripletPilot.txt");
-
+    var prac_doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set10rep1.txt");
+    var prac_triplet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/august/tripletPractice.txt");
     function getAllImages() {
       var images = []
       images = images.concat(prac_doublet_stim_f);
@@ -307,34 +306,31 @@
     var doublet_stim = []
     var triplet_stim = []
     var temp = prac_triplet_stim_f[catchy_index];
-    temp.push(prac_triplet_stim_f[catchy_index+1]);
+    temp.push(prac_triplet_stim_f[catchy_index+1][0]);
     max = prac_doublet_stim_f.length;
 
     for ( var i = 0; i< 4; i++){
       catchy_index = getRandomInt (0, max);
-      doublet_stim[i] = doublet_stim_f;
-      triplet_stim[i] = triplet_stim_f;
+      doublet_stim[i] = [].concat(doublet_stim_f);
+      triplet_stim[i] = [].concat(triplet_stim_f);
       doublet_stim[i].push([temp[i],temp[i]]);
       triplet_stim[i].push(prac_doublet_stim_f[catchy_index]);
       doublet_stim[i] = jsPsych.randomization.repeat(doublet_stim[i],1);
       triplet_stim[i] = jsPsych.randomization.repeat(triplet_stim[i],1);
     }
-   
     var test_doublet1_stim = doublet_stim[0].concat(doublet_stim[3]);
     var test_doublet2_stim = doublet_stim[1].concat(doublet_stim[2]);
     var test_triplet1_stim = triplet_stim[0];
     var test_triplet2_stim = triplet_stim[1];
     var test_triplet3_stim = triplet_stim[2];
     var test_triplet4_stim = triplet_stim[3];
- 
 
-
-    test_doublet1_stim = test_doublet1_stim.slice(0,2);
+    /*test_doublet1_stim = test_doublet1_stim.slice(0,2);
     test_doublet2_stim = test_doublet2_stim.slice(0,2);
     test_triplet2_stim = test_triplet2_stim.slice(0,2);
     test_triplet3_stim = test_triplet3_stim.slice(0,2);
     test_triplet4_stim = test_triplet4_stim.slice(0,2);
-    test_triplet1_stim = test_triplet1_stim.slice(0,2);
+    test_triplet1_stim = test_triplet1_stim.slice(0,2);*/
 
     //practice with instruction blocks
     var trial_num = 0;
