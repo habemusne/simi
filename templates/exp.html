@@ -93,7 +93,7 @@
    
     var face_images_explore_ready_block = {
       type: "text",
-      text: '<div> <h2 class="emp"> Face Similarities Test</h2> <hr> <div class="well"> <p>In this experiment, you will be shown a series of face images. Your task is to compare and judge the similarities between them.</p> <p>There will be two types of tasks: face pair task and face triplet task</p> <div class="row"> <div class="col-md-6"> <h5><b>Face Pair Task</b></h5> <p>Rate the similarity level of the face pair from 1 to 9.</p> <p>1 -- Maximally dissimilar, 9 -- Maximally similar</p><img src="/static/images/faceExamples/trial1.png" style="width:100%"/> </div> <div class="col-md-6"> <h5><b>Face Triplet Task</b></h5> <p> You will see 3 faces and decide which of the two face images is the most similar to each other. You can click on the face images to indicate your choice.</p> <img src="/static/images/faceExamples/trial2.png" style="width:100%"/></div> </div> <p style="margin-top: 30px;">There will be a short <span class="emp">practice session </span>  before the actual test to familiarize you with the tasks. </p>  <p style="margin-bottom: 30px;">First, let us look at some face examples, just to give you an idea of how different these faces will be.</p></div></div>',
+      text: '<div> <h2 class="emp"> Face Similarities Test</h2> <hr> <div class="well"> <p>In this HIT, your task is to judge the similarities between faces.</p> <p>There are two types of tasks: <span class = "emp">Face Pair Task</span> and <span class="emp">Face Triplet Task</span></p> <div class="row"> <div class="col-md-6"> <h5><b>Face Pair Task</b></h5> <p>You will see a face pair. <b>Rate how similar they are on a 1 - 9 scale.</b> 1 -- Maximally Dissimilar, 9 -- Maximally Similar</p><img src="/static/images/faceExamples/trial1.png" style="width:100%"/> </div> <div class="col-md-6"> <h5><b>Face Triplet Task</b></h5> <p> You will see 3 faces. <b>Click on the two faces that you think are most similar</b> to each other. </p> <img src="/static/images/faceExamples/trial2.png" style="width:100%"/></div> </div> <p style="margin-bottom: 30px;">We will walk you through the task. </p><p>First, you will see some <span class="emp">face examples</span>.</p><p>Next there will be a <span class="emp">practice session </span> to warm you up.</p> <p>Then comes the <span class="emp">actual task</span>. You will be the judge of various faces!</p> </div></div>',
       timing_post_trial: post_trial_gap
     };
 
@@ -155,7 +155,7 @@
 
     var face_images_explore_end_block = {
       type: "text",
-      text: '<div class="well"> <p>If you wish to see the face examples again, click  <span class="emp">Go Back</span>.</p> <p>Otherwise, click <span class="emp">Continue</span>.</p><br></div>',
+      text: '<div class="well"> <p>If you wish to see the face examples again, click  <span class="emp">Go Back</span>.</p> <p>Otherwise, click <span class="emp">Continue</span> to proceed.</p><br></div>',
       back_button: true,
       timing_post_trial: post_trial_gap
     };
@@ -177,12 +177,12 @@
     };
     var bad_examples_ready_block = {
         type: "text",
-        text: '<div class="well"> <p>Good Job! </p> <p> These two examples should give you an idea what the trials would be like.</p> <p> Keep in mind that you should <span class="emp"> focus on the faces themselves </span> rather then the pose, expression and lighting condition of the faces.</p> <p> We will give you some examples of what you should pay attention to.</p><br></div>',
+        text: '<div class="well"> <p>Good Job! </p> <p> Now you know what the task is.</p> <p> Keep in mind that you should <span class="emp"> focus on the faces themselves </span> rather then the pose, expression and lighting condition of the faces.</p> <p> We will show you two examples of what you should pay attention to.</p><br></div>',
         timing_post_trial: post_trial_gap
       };
     var bad_examples_block1 = {
         type: "text",
-        text:"<div class = 'title'><h3>Focus on Faces rathar than Poses</h3> <hr> <div class='well'> <p>The two figures below illustrate that how people focus on the faces themselves rather than the poses.</p> <p>In Figure 1, even though the bottom two faces have similar poses, most people find that the top and left faces look most similar. In Figure 2, most people think that the top and rigth faces are most similar even though the two faces on the bottom are of similar poses.</p> <br> <div class='row'> <div class='col-md-6'>  <img src='/static/images/bad_examples/f1bad.JPG' style='width:100%'/> <p>Figure 1</p></div> <div class='col-md-6'> <img src='/static/images/bad_examples/m1bad.JPG' style='width:100%'/><p>Figure 2</p> </div> </div></div></div>",
+        text:"<div class = 'title'><h3>Focus on Faces rathar than Poses</h3> <hr> <div class='well'> <p>In Figure 1, you should choose the top and left faces even though the bottom two faces have similar poses. </p><p>In Figure 2, you should choose the top and right faces even though the two bottom faces have similar poses.</p> <br> <div class='row'> <div class='col-md-6'>  <img src='/static/images/bad_examples/f1bad.JPG' style='width:100%'/> <p>Figure 1</p></div> <div class='col-md-6'> <img src='/static/images/bad_examples/m1bad.JPG' style='width:100%'/><p>Figure 2</p> </div> </div></div></div>",
         skip_button: true,
         loop_num: 0,
         on_finish: function(){
@@ -201,7 +201,7 @@
      };
      var bad_examples_block2 = {
        type: "text",
-       text:"<div class = 'title'><h3>Focus on Faces rather than Expressions</h3> <hr> <div class='well'> <p>The two figures below illustrate that how people focus on the faces themselves rather than the expressions.</p> <p>In Figure 1, even though the top face and the left face have similar expressions, most people find that the two faces at the bottom are most similar. In Figure 2, most people think that the top face and the left face are most similar even though the two faces on the bottom are of similar expressions.</p> <br> <div class='row'> <div class='col-md-6'>  <img src='/static/images/bad_examples/f2bad.JPG' style='width:100%'/> <p>Figure 1</p></div> <div class='col-md-6'> <img src='/static/images/bad_examples/m2bad.JPG' style='width:100%'/><p>Figure 2</p> </div> </div></div></div>",
+       text:"<div class = 'title'><h3>Focus on Faces rather than Expressions</h3> <hr> <div class='well'> <p>In Figure 1, you should choose the two faces at the bottom even though the top and left faces have similar expressions. </p> <p>In Figure 2, you should choose the top face and the left face even though the two faces on the bottom are of similar expressions.</p> <br> <div class='row'> <div class='col-md-6'>  <img src='/static/images/bad_examples/f2bad.JPG' style='width:100%'/> <p>Figure 1</p></div> <div class='col-md-6'> <img src='/static/images/bad_examples/m2bad.JPG' style='width:100%'/><p>Figure 2</p> </div> </div></div></div>",
         skip_button: true,
         loop_num: 0,
         on_finish: function(){
@@ -220,7 +220,7 @@
      }
      var bad_examples_end_block = {
       type: "text",
-      text: '<div class="well"> <p>If you wish to see the examples again, click  <span class="emp">Go Back</span>.</p> <p>Otherwise, click <span class="emp">Continue</span>.</p><br></div>',
+      text: '<div class="well"> <p>If you wish to see the examples again, click  <span class="emp">Go Back</span>.</p> <p>Otherwise, click <span class="emp">Continue</span> to have some <span class="emp">warm up practices</span>. </p><br></div>',
       back_button: true,
       timing_post_trial: post_trial_gap
     };
@@ -254,7 +254,7 @@
 
     var test_ready_block = {
       type: "text",
-      text: "<div class='well'><br><p style='text-align: center; font-weight: bold; color: #3f6479; font-size: 24px;'> Great Job! :) </p><br><p>Here come the actual trials!</p><p> Now you will be presented with around 200 trials separated in four phases. It'll be the same as the practice you just took, except that you will not receive any instructions between trials. It will take around 20 to 30 minutes. </p>  <p>The most important rule, <strong style='color: #3f6479;'><em> go with your gut!</em></strong></p> <p>When you're ready, press the button below to begin the test. </p><br></div>",
+      text: "<div class='well'><br><p style='text-align: center; font-weight: bold; color: #3f6479; font-size: 24px;'> Great Job! :) </p><br><p>Now you are ready for the actual trials!</p><p> You will be presented with around 200 trials separated in four phases. It'll be the same task as what you just practiced, except that there are instructions between trials. There will be a short break in the half way point.</p>  <p>Remember the most important rule: <strong style='color: #3f6479;'><em> Go with your gut and respond consistently!</em></strong></p> <p>When you're ready, press the <b>Start Experiment</b> button below to begin the test. </p><br></div>",
       cont: 'Start Experiment',
       timing_post_trial: post_trial_gap
     };
@@ -337,7 +337,7 @@
     var prac_doublet_block = {
       type: 'similarity_custom',
       stimuli: prac_doublet_stim,
-      text: '<div style="text-align: left; margin-top:30px;"> <p>In this example, your need to rate how similar a face pair is from <span class="emp">1</span> to <span class="emp">9</sapn>.</p> <p><span class="emp">1</span> indicates <span class="emp">Maximally Dissimilar</span>, <span class="emp">9</span> indicates <span class="emp">Maximally Similar</span></p> <p> If you see two identical faces, please click the <span class="emp">identical</span> button.</p> <p> <em class="emp">Try to focus on the face features and ignore the pose, expression and lighting influence.</em></p></div><br><br>',
+      text: '<div style="text-align: left; margin-top:30px;"> <p>This is an example of a <span class = "emp">Face Pair Task</span>, your need to rate how similar a face pair is from <span class="emp">1</span> to <span class="emp">9</sapn>.</p> <p><span class="emp">1</span> indicates <span class="emp">Maximally Dissimilar</span>, <span class="emp">9</span> indicates <span class="emp">Maximally Similar</span></p> <p> If you see two identical faces, please click the <span class="emp">identical</span> button.</p> <p> <em class="emp">Try to focus on the face features and ignore the pose, expression and lighting influence.</em></p></div><br><br>',
       timing_post_trial: post_trial_gap,
       trial_num: trial_num,
       set_num: 1
@@ -361,7 +361,7 @@
     var prac_triplet_block = {
       type: 'custom_triplet',
       stimuli: prac_triplet_stim,
-      text: '<div style="text-align: left; margin-top:30px;"> <p>In this example, you will do the similar thing, but instead of rating you will <span class="emp">click on the two images</span> that look most similar to you.</div>',
+      text: '<div style="text-align: left; margin-top:30px;"> <p>This is an example of a <span class="emp">Face Triplet Task</span>, you need to <span class="emp">click on the two images</span> that look most similar to you.</div>',
       timing_post_trial: post_trial_gap,
       trial_num: trial_num,
       set_num: 1
