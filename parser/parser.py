@@ -38,32 +38,35 @@ def get_triplet_data(raw_json):
             triplet['stimuli'][0] = triplet['stimuli'][0][24:-4]
             triplet['stimuli'][2] = triplet['stimuli'][2][24:-4]
             triplet['pressed'] = ujson.loads(entry['trialdata']['pressed'])
+            triplet['response'] = ujson.loads(entry['trialdata']['response'])
+            triplet['response'][1] = triplet['response'][1][24:-4]
+            triplet['response'][0] = triplet['response'][0][24:-4]
+            triplet['type'] = entry['trialdata']['type']
+            if (triplet['stimuli'][0] == triplet['stimuli'][1] or triplet['stimuli'][0] == triplet['stimuli'][2] or triplet['stimuli'][1] == triplet['stimuli'][2]):
+                triplet['type'] = '3'
+                if (triplet['response'][0]==triplet['response'][1]):
+                    triplet['pressed'] = ['true','true']
+                else:
+                    triplet['pressed'] = ['false','false']
             triplet['react_time'] = entry['trialdata']['rt']
             triplet['trial_index_global'] = entry['trialdata']['trial_index_global']
-            if (int(triplet['trial_index_global']) == 5):
-                triplet['type'] = '0'
-            elif (int(triplet['trial_index_global']) <12):
-                triplet['type'] = '1'
-            elif (triplet['stimuli'][1] == triplet['stimuli'][0]):
-                triplet['type'] = '3'
-            else:
-                triplet['type'] = '2'
+            triplet['set'] = entry['trialdata']['set']
             triplets.append(triplet)
     return triplets
 
 def get_doublet_data(raw_json):
     doublets = []
     last = 0
-    for i in range(len(raw_json['data'])):
-        entry = raw_json['data'][i]
+    for entry in raw_json['data']:
         if 'similarity_custom' in entry['trialdata']['trial_type']:
             doublet = {}
-            predoublet = {}
             doublet['stimuli'] = ujson.loads(entry['trialdata']['stimulus'])
             doublet['stimuli'][1] = doublet['stimuli'][1][24:-4]
             doublet['stimuli'][0] = doublet['stimuli'][0][24:-4]
+            doublet['type'] = entry['trialdata']['type']
             if (doublet['stimuli'][1] == doublet['stimuli'][0]):
                 doublet['score'] = entry['trialdata']['catchy_answer']
+                doublet['type'] = '3'
                 if (len(doublet['score'])< 1):
                     doublet['score'] = 'false'
                 else:
@@ -72,24 +75,9 @@ def get_doublet_data(raw_json):
                 doublet['score'] = entry['trialdata']['sim_score'][0]
             doublet['react_time'] = entry['trialdata']['rt']
             doublet['trial_index_global'] = entry['trialdata']['trial_index_global']
-            if (last > 0):
-                predoublet['stimuli'] = ujson.loads(pre['trialdata']['stimulus'])
-                predoublet['stimuli'][1] = predoublet['stimuli'][1][24:-4]
-                predoublet['stimuli'][0] = predoublet['stimuli'][0][24:-4]
-            if (last == 0):
-                doublet['type'] = '0'
-                last = int(doublet['trial_index_global'])
-            elif(last > 0 and doublet['stimuli'][0] == predoublet['stimuli'][0] and doublet['stimuli'][1] == predoublet['stimuli'][1] and doublet['trial_index_global'] < 15):
-                doublet['type'] = '0'
-                last = int(doublet['trial_index_global'])
-            elif (int(doublet['trial_index_global']) <last+7):
-                doublet['type'] = '1'
-            elif (doublet['stimuli'][1] == doublet['stimuli'][0]):
-                doublet['type'] = '3'
-            else:
-                doublet['type'] = '2'
+            
+            doublet['set'] = entry['trialdata']['set']
             doublets.append(doublet)
-            pre = entry
     return doublets
 
 def parse(raw_json):
@@ -112,11 +100,11 @@ if __name__=='__main__':
     with open(output_file_name_with_path +'subjectData.csv', 'w') as f:
         f.write('workerCounter,assignmentId,workerId,hitId,age,gender,sexual orientation,race,community\n')
     with open(output_file_name_with_path + 'doublet.csv', 'w') as f:
-        f.write('workerCounter,assignmentId,workerId,hitId,trial type,global index,reaction time,score,stimulus1,stimulus2\n')
-    '''
+        f.write('workerCounter,assignmentId,workerId,hitId,trial type,set,global index,reaction time,score,stimulus1,stimulus2\n')
+
     with open(output_file_name_with_path + 'triplet.csv', 'w') as f:
-        f.write('workerCounter,assignmentId,workerId,hitId,trial type,global index,reaction time,pressed,stimulus1,stimulus2,stimulus3  \n')
-    '''
+        f.write('workerCounter,assignmentId,workerId,hitId,trial type,set,global index,reaction time,response1,response2,responseLoc1,responseLoc2,stimulus1,stimulus2,stimulus3\n')
+
     for raw_json in raw_jsons:
         data = parse(raw_json)
         #output_folder_name = str(workerCounter)
@@ -124,25 +112,28 @@ if __name__=='__main__':
             for entry in data['doublet_data']:
                 f.write(str(workerCounter) + ',' + str(data['subject_data']['assignmentId']) + ',' +\
                         str(data['subject_data']['workerId']) + ',' +\
-                        str(data['subject_data']['hitId']) + ',' + str(entry['type']) + ',' + str(entry['trial_index_global']) + ','+ str(entry['react_time']) +\
+                        str(data['subject_data']['hitId']) + ',' + str(entry['type']) + ','+str(entry['set']) + ',' + str(entry['trial_index_global']) + ','+ str(entry['react_time']) +\
                     ',' + str(entry['score']) + ',')
                 concat_str = ""
                 for stimulus in entry['stimuli']:
                     concat_str += str(stimulus) + ','
                 f.write(concat_str[:-1] + '\n')
-        '''
+
         with open(output_file_name_with_path + 'triplet.csv', 'a') as f:
             for entry in data['triplet_data']:
                 f.write(str(workerCounter) + ',' + str(data['subject_data']['assignmentId']) + ',' +\
                        str(data['subject_data']['workerId']) + ',' +\
-                       str(data['subject_data']['hitId']) + ',' + str(entry['type']) + ',' +str(entry['trial_index_global']) + ','+ str(entry['react_time']) + ',')
-                for pressed_image in entry['pressed']:
+                       str(data['subject_data']['hitId']) + ',' + str(entry['type']) + ','+str(entry['set'])+ ',' +str(entry['trial_index_global']) + ','+ str(entry['react_time']) + ',')
+                for pressed_image in entry['response']:
                     f.write(str(pressed_image) + ',')
+                concat_str = ""
+                for loc in entry['pressed']:
+                    f.write(str(loc) + ',')
                 concat_str = ""
                 for stimulus in entry['stimuli']:
                     concat_str += str(stimulus) + ','
                 f.write(concat_str[:-1] + '\n')
-        '''
+
         with open('experiment_data/subjectData.csv', 'a') as f:
             f.write(str(workerCounter) + ',' + str(data['subject_data']['assignmentId']) + ',' +\
                     str(data['subject_data']['workerId']) + ',' +\
