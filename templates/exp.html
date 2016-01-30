@@ -47,7 +47,7 @@
     var adServerLoc = "{{ adServerLoc }}"; // the location of your ad (so you can send user back at end of experiment)
     var mode = "{{ mode }}"; // is this running live, sandbox, or in debug mode?
     htmlobj = $.ajax({
-      url: "http://52.27.151.244/update_counterDebug.php",
+      url: "http://52.24.142.90/update_counterDebug.php",
       async: false,
       method: "POST",
       data: { assignmentID: assignmentId, workerID: workerId, hitID: '3'}
@@ -56,14 +56,14 @@
 
 
     htmlobj = $.ajax({
-      url: "http://52.27.151.244/give_counterDebug.php",
+      url: "http://52.24.142.90/give_counterDebug.php",
       async: false,
       method: "POST",
       data: { assignmentID: assignmentId, workerID: workerId, hitID: '3'}
     });
-    var outputCounter = htmlobj.responseText;
-    console.log('Current counter: ' + outputCounter);
-    var counter = parseInt(outputCounter.split(' ')[3]);
+    // var outputCounter = htmlobj.responseText;
+    // console.log('Current counter: ' + outputCounter);
+    // var counter = parseInt(outputCounter.split(' ')[3]);
 
         //read a text file
     function readTextFile(file){
@@ -274,7 +274,7 @@
 
     /* define test block */
     var setNumber = 999;//Math.ceil(counter/5);
-    var repNumber = counter%5+1;
+    // var repNumber = counter%5+1;
     var doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/august/doubletPilot.txt");
     var triplet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/august/tripletPilot.txt");
     var prac_doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set10rep1.txt");
