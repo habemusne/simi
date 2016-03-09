@@ -309,17 +309,17 @@
     var test_triplet2_stim = [];
     for (var j = 0; j< 4; j++){
       max = prac_triplet_stim_f.length;
-      var catchy_index = getRandomInt (1, max);
+      var catchy_index = getRandomInt (1, max-1);
       var temp = prac_triplet_stim_f[catchy_index];
       temp = temp.concat([prac_triplet_stim_f[catchy_index+1][0]]);
       console.log(temp);
         for ( var i = 0; i< 4; i++){
           doublet_stim[i] = [].concat(doublet_stim_f);
           triplet_stim[i] = [].concat(triplet_stim_f);
-          doublet_stim[i].push([temp[i],temp[i]]);
+          doublet_stim[i]= doublet_stim[i].concat([temp[i],temp[i]]);
           catchy_max = prac_doublet_stim_f.length;
           catchyTriplet_index = getRandomInt (0, catchy_max);
-          triplet_stim[i].push(prac_doublet_stim_f[catchyTriplet_index]);
+          triplet_stim[i] = triplet_stim[i].concat([prac_doublet_stim_f[catchyTriplet_index]]);
           doublet_stim[i] = jsPsych.randomization.shuffle(doublet_stim[i]);
           triplet_stim[i] = jsPsych.randomization.shuffle(triplet_stim[i]);
         }
