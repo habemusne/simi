@@ -316,7 +316,7 @@
         for ( var i = 0; i< 4; i++){
           doublet_stim[i] = [].concat(doublet_stim_f);
           triplet_stim[i] = [].concat(triplet_stim_f);
-          doublet_stim[i]= doublet_stim[i].concat([temp[i],temp[i]]);
+          doublet_stim[i]= doublet_stim[i].concat([[temp[i],temp[i]]]);
           catchy_max = prac_doublet_stim_f.length;
           catchyTriplet_index = getRandomInt (0, catchy_max);
           triplet_stim[i] = triplet_stim[i].concat([prac_doublet_stim_f[catchyTriplet_index]]);
