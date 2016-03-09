@@ -26,8 +26,10 @@
         trials[i].total = trials.length.toString();
         trials[i].text = (typeof params.text === 'undefined') ? "" : params.text;
         trials[i].phase = (typeof params.phase === 'undefined') ? "" : params.phase.toString();
+        trials[i].total_phase = (typeof params.total_phase === 'undefined') ? "" : params.total_phase.toString();
         trials[i].trial_num = (typeof params.trial_num === 'undefined') ? "" : params.trial_num.toString();
         trials[i].set_num = (typeof params.set_num === 'undefined') ? "" : params.set_num.toString();
+        trials[i].pay = (typeof params.pay === 'undefined') ? "" : params.pay;
         trials[i].x_path = params.stimuli[i][0];
         // if there is only a pair of stimuli, then the first is the target and is shown twice.
         // if there is a triplet, then the first is X, the second is the target, and the third is foil (useful for non-exact-match XAB).
@@ -64,7 +66,7 @@
         trial = jsPsych.pluginAPI.evaluateFunctionParameters(trial);
         display_element.html(trial.text);
         if (trial.phase.length >= 1){
-          display_element.append('<div> <p> <span class="emp">Phase:</span> ' + trial.phase + ' of 6</p> <p><span class="emp">Progress:</span> '+trial.number +' of '+trial.total+'</p><br></div>');
+          display_element.append('<div> <p> <span class="emp">Phase:</span> ' + trial.phase + ' of '+trial.total_phase+' </p> <p><span class="emp">Progress:</span> '+trial.number +' of '+trial.total+'</p></div>');
         }
         display_element.append($('<img>', {
           src: trial.x_path,
@@ -153,7 +155,8 @@
           "rt": response_time,
           "stimulus": JSON.stringify([trial.x_path, trial.a_path, trial.b_path]),
           "type": trial.trial_num,
-          "set": trial.set_num
+          "set": trial.set_num,
+          "pay": trial.pay
         }, trial.data));
         // goto next trial in block
         if (trial.timing_post_trial > 0) {

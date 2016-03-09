@@ -47,7 +47,7 @@
     var adServerLoc = "{{ adServerLoc }}"; // the location of your ad (so you can send user back at end of experiment)
     var mode = "{{ mode }}"; // is this running live, sandbox, or in debug mode?
     htmlobj = $.ajax({
-      url: "http://52.24.142.90/update_counter.php",
+      url: "http://52.24.142.90/update_counterDebug.php",
       async: false,
       method: "POST",
       data: { assignmentID: assignmentId, workerID: workerId, hitID: '3'}
@@ -56,7 +56,7 @@
 
 
     htmlobj = $.ajax({
-      url: "http://52.24.142.90/give_counter.php",
+      url: "http://52.24.142.90/give_counterDebug.php",
       async: false,
       method: "POST",
       data: { assignmentID: assignmentId, workerID: workerId, hitID: '3'}
@@ -254,14 +254,14 @@
 
     var test_ready_block = {
       type: "text",
-      text: "<div class='well'><br><p style='text-align: center; font-weight: bold; color: #3f6479; font-size: 24px;'> Great Job! :) </p><br><p>Now you are ready for the actual trials!</p><p> You will be presented with around 300 trials separated into 4 parts, each part consists of 4 phases. It'll be the same task as what you just practiced, except that there is no instruction between trials. There will be a short break at the half way point of each part.</p> <p>You will be paid <strong style='color: #3f6479;'><em>differently</em></strong> for each part, and the amount of money you will earn per trial will be given at the beginning of each part.</p> <p>Remember the most important rule: <strong style='color: #3f6479;'><em> Go with your gut and respond consistently!</em></strong></p> <p>When you're ready, press the <b>Start Experiment</b> button below to begin the test. </p><br></div>",
+      text: "<div class='well'><br><p style='text-align: center; font-weight: bold; color: #3f6479; font-size: 24px;'> Great Job! :) </p><br><p>Now you are ready for the actual trials!</p><p> You will be presented with around 200 trials separated in four phases. It'll be the same task as what you just practiced, except that there are instructions between trials. There will be a short break in the half way point.</p>  <p>Remember the most important rule: <strong style='color: #3f6479;'><em> Go with your gut and respond consistently!</em></strong></p> <p>When you're ready, press the <b>Start Experiment</b> button below to begin the test. </p><br></div>",
       cont: 'Start Experiment',
       timing_post_trial: post_trial_gap
     };
 
     var break2_block = {
       type: "text",
-      text: '<div class="well"><p class="emp">Well done!</p> <p>You have finished 1/2 of this part of the experiment. Take a short break!</p> <p>Click <span class="emp">Continue</span> when you are ready to proceed. </p> <br></div>',
+      text: '<div class="well"><p class="emp">Well done!</p> <p>You have finished 1/2 of the experiment. Take a short break!</p> <p>Click <span class="emp">Continue</span> when you are ready to proceed. </p> <br></div>',
       timing_post_trial: post_trial_gap
     };
 
@@ -273,10 +273,10 @@
 
 
     /* define test block */
-    var setNumber = 888;//Math.ceil(counter/5);
+    var setNumber = 999;//Math.ceil(counter/5);
     // var repNumber = counter%5+1;
-    var doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/august/pair5Face.txt");
-    var triplet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/august/triplet5Face.txt");
+    var doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/august/doubletPilot.txt");
+    var triplet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/august/tripletPilot.txt");
     var prac_doublet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/sampleMethod1/sampleMethod1_set10rep1.txt");
     var prac_triplet_stim_f = readTextFile("https://raw.githubusercontent.com/amandasongmm/filesPublic/master/august/tripletPractice.txt");
     function getAllImages() {
@@ -299,42 +299,38 @@
     }
 
     //catchy question
+    max = prac_triplet_stim_f.length;
+    var catchy_index = getRandomInt (1, max);
+    var doublet_catchy = []
+    var triplet_catchy = []
+    var doublet_stim = []
+    var triplet_stim = []
+    var temp = prac_triplet_stim_f[catchy_index];
+    temp.push(prac_triplet_stim_f[catchy_index+1][0]);
+    max = prac_doublet_stim_f.length;
 
-    var triplet_stim = [];
-    var doublet_stim = [];
-
-    var test_doublet1_stim = [];
-    var test_doublet2_stim = [];
-    var test_triplet1_stim = [];
-    var test_triplet2_stim = [];
-    for (var j = 0; j< 4; j++){
-      max = prac_triplet_stim_f.length;
-      var catchy_index = getRandomInt (1, max);
-      var temp = prac_triplet_stim_f[catchy_index];
-      temp = temp.concat([prac_triplet_stim_f[catchy_index+1][0]]);
-      console.log(temp);
-        for ( var i = 0; i< 4; i++){
-          doublet_stim[i] = [].concat(doublet_stim_f);
-          triplet_stim[i] = [].concat(triplet_stim_f);
-          doublet_stim[i].push([temp[i],temp[i]]);
-          max = prac_doublet_stim_f.length;
-          catchyTriplet_index = getRandomInt (0, max);
-          triplet_stim[i].push(prac_doublet_stim_f[catchyTriplet_index]);
-          doublet_stim[i] = jsPsych.randomization.shuffle(doublet_stim[i]);
-          triplet_stim[i] = jsPsych.randomization.shuffle(triplet_stim[i]);
-        }
-      test_doublet1_stim[j] = doublet_stim[0].concat(doublet_stim[3]);
-      test_doublet2_stim[j] = doublet_stim[1].concat(doublet_stim[2]);
-      test_triplet1_stim[j] = triplet_stim[0].concat(triplet_stim[3]);
-      test_triplet2_stim[j] = triplet_stim[1].concat(triplet_stim[2]);
-      // test_doublet1_stim[j] = test_doublet1_stim[j].slice(0,1);
-      // test_doublet2_stim[j] = test_doublet2_stim[j].slice(0,1);
-      // test_triplet2_stim[j] = test_triplet2_stim[j].slice(0,1);
-      // test_triplet1_stim[j] = test_triplet1_stim[j].slice(0,1);
+    for ( var i = 0; i< 4; i++){
+      catchy_index = getRandomInt (0, max);
+      doublet_stim[i] = [].concat(doublet_stim_f);
+      triplet_stim[i] = [].concat(triplet_stim_f);
+      doublet_stim[i].push([temp[i],temp[i]]);
+      triplet_stim[i].push(prac_doublet_stim_f[catchy_index]);
+      doublet_stim[i] = jsPsych.randomization.repeat(doublet_stim[i],1);
+      triplet_stim[i] = jsPsych.randomization.repeat(triplet_stim[i],1);
     }
-    
-    var rewardVar = ['0.003125','0.00625','0.0125','0.01875']
-    
+    var test_doublet1_stim = doublet_stim[0].concat(doublet_stim[3]);
+    var test_doublet2_stim = doublet_stim[1].concat(doublet_stim[2]);
+    var test_triplet1_stim = triplet_stim[0];
+    var test_triplet2_stim = triplet_stim[1];
+    var test_triplet3_stim = triplet_stim[2];
+    var test_triplet4_stim = triplet_stim[3];
+
+    /*test_doublet1_stim = test_doublet1_stim.slice(0,2);
+    test_doublet2_stim = test_doublet2_stim.slice(0,2);
+    test_triplet2_stim = test_triplet2_stim.slice(0,2);
+    test_triplet3_stim = test_triplet3_stim.slice(0,2);
+    test_triplet4_stim = test_triplet4_stim.slice(0,2);
+    test_triplet1_stim = test_triplet1_stim.slice(0,2);*/
 
     //practice with instruction blocks
     var trial_num = 0;
@@ -400,70 +396,69 @@
       trial_num: trial_num,
       set_num: 1
     };
+    trial_num +=1;
+    phase_num  = 1;
+    //test blocks
+    var test_triplet1_block = {
+      type: 'custom_triplet',
+      stimuli: test_triplet1_stim,
+      timing_post_trial: post_trial_gap,
+      trial_num: trial_num,
+      phase: phase_num,
+      set_num:setNumber
+    };  
+    phase_num +=1;
+    var test_doublet1_block = {
+      type: 'similarity_custom',
+      stimuli: test_doublet1_stim,
+      timing_post_trial: post_trial_gap,
+      trial_num: trial_num,
+      phase: phase_num,
+      set_num:setNumber
+    };
+    phase_num +=1;
+    var test_triplet2_block = {
+      type: 'custom_triplet',
+      stimuli: test_triplet2_stim,
+      timing_post_trial: post_trial_gap,
+      trial_num: trial_num,
+      phase: phase_num,
+      set_num:setNumber
+    };
+    phase_num +=1;
+    var test_doublet2_block = {
+      type: 'similarity_custom',
+      stimuli: test_doublet2_stim,
+      timing_post_trial: post_trial_gap,
+      trial_num: trial_num,
+      phase: phase_num,
+      set_num:setNumber
+    };
+    phase_num +=1;
 
-    var trial_chunk = [];
-    rewardVar = jsPsych.randomization.shuffle(rewardVar);
-    console.log(rewardVar);
-    total_phase_num = 4;
-    for (var j = 0; j< 4; j++){ 
-      total_phase_num = 4;
-      var reward_level_block = {
-        type: "text",
-        text: '<div class="well"> <br><p style="text-align: center; font-weight: bold; color: #3f6479; font-size: 24px;"> Part '.concat((j+1).toString()).concat(' </p><br><p> In this part of the experiment, you will be paid  <span class="emp"> $'.concat(rewardVar[j]).concat('/trial </span>.</p><br></div>')),
-        cont: 'Start',
-        timing_post_trial: post_trial_gap
-      };
-      trial_num +=1;
-      phase_num  = 1;
-      //test blocks
-      var test_triplet1_block = {
-        type: 'custom_triplet',
-        stimuli: test_triplet1_stim[j],
-        timing_post_trial: post_trial_gap,
-        trial_num: trial_num,
-        phase: phase_num,
-        total_phase: total_phase_num,
-        set_num:setNumber,
-        pay:rewardVar[j] 
-      };  
-      phase_num +=1;
-      var test_doublet1_block = {
-        type: 'similarity_custom',
-        stimuli: test_doublet1_stim[j],
-        timing_post_trial: post_trial_gap,
-        trial_num: trial_num,
-        phase: phase_num,
-        total_phase: total_phase_num,
-        set_num:setNumber,
-        pay:rewardVar[j] 
-      };
-      phase_num +=1;
-      var test_triplet2_block = {
-        type: 'custom_triplet',
-        stimuli: test_triplet2_stim[j],
-        timing_post_trial: post_trial_gap,
-        trial_num: trial_num,
-        phase: phase_num,
-        total_phase: total_phase_num,
-        set_num:setNumber,
-        pay:rewardVar[j] 
-      };
-      phase_num +=1;
-      var test_doublet2_block = {
-        type: 'similarity_custom',
-        stimuli: test_doublet2_stim[j],
-        timing_post_trial: post_trial_gap,
-        trial_num: trial_num,
-        phase: phase_num,
-        total_phase: total_phase_num,
-        set_num:setNumber,
-        pay:rewardVar[j] 
-      };
-      trial_chunk[j] = {
-      chunk_type: 'linear',
-      timeline: [reward_level_block,test_triplet1_block, test_doublet1_block,break2_block,test_triplet2_block,test_doublet2_block]
-      }
+    var test_triplet3_block = {
+      type: 'custom_triplet',
+      stimuli: test_triplet3_stim,
+      timing_post_trial: post_trial_gap,
+      trial_num: trial_num,
+      phase: phase_num,
+      set_num:setNumber
+    };
+    phase_num +=1;
+    var test_triplet4_block = {
+      type: 'custom_triplet',
+      stimuli: test_triplet4_stim,
+      timing_post_trial: post_trial_gap,
+      trial_num: trial_num,
+      phase: phase_num,
+      set_num:setNumber
+    };
+
+    var trial_chunk = {
+    chunk_type: 'linear',
+    timeline: [test_triplet1_block, test_doublet1_block,test_triplet2_block,break2_block,test_doublet2_block,test_triplet3_block,test_triplet4_block]
     }
+
     /* create experiment definition array */
 
     var experiment = [];
@@ -476,10 +471,7 @@
     experiment.push(prac_no_inst_doublet_block);
     experiment.push(prac_no_inst_triplet_block);
     experiment.push(test_ready_block);
-    experiment.push(trial_chunk[0]);
-    experiment.push(trial_chunk[1]);
-    experiment.push(trial_chunk[2]);
-    experiment.push(trial_chunk[3]);
+    experiment.push(trial_chunk);
     experiment.push(welcome_survey_new_block);
     experiment.push(complete_block);
 
