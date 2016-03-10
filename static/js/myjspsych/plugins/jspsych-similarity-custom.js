@@ -24,7 +24,7 @@
         trials[i].total = trials.length.toString();
         trials[i].text = (typeof params.text === 'undefined') ? "" : params.text;
         trials[i].phase = (typeof params.phase === 'undefined') ? "" : params.phase.toString();
-        trials[i].total_phase = (typeof params.total_phase === 'undefined') ? "" : params.total_phase.toString();
+        trials[i].total_phase = (typeof params.total_phase === 'undefined') ? "6" : params.total_phase.toString();
         trials[i].trial_num = (typeof params.trial_num === 'undefined') ? "" : params.trial_num.toString();
         trials[i].set_num = (typeof params.set_num === 'undefined') ? "" : params.set_num.toString();
         trials[i].pay = (typeof params.pay === 'undefined') ? "" : params.pay;
