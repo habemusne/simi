@@ -24,10 +24,8 @@
         trials[i].total = trials.length.toString();
         trials[i].text = (typeof params.text === 'undefined') ? "" : params.text;
         trials[i].phase = (typeof params.phase === 'undefined') ? "" : params.phase.toString();
-        trials[i].total_phase = (typeof params.total_phase === 'undefined') ? "6" : params.total_phase.toString();
         trials[i].trial_num = (typeof params.trial_num === 'undefined') ? "" : params.trial_num.toString();
         trials[i].set_num = (typeof params.set_num === 'undefined') ? "" : params.set_num.toString();
-        trials[i].pay = (typeof params.pay === 'undefined') ? "" : params.pay;
         trials[i].a_path = params.stimuli[i][0];
         trials[i].b_path = params.stimuli[i][1];
         trials[i].show_ticks = (typeof params.show_ticks === 'undefined') ? false : params.show_ticks;
@@ -55,7 +53,7 @@
         trial = jsPsych.pluginAPI.evaluateFunctionParameters(trial);
         display_element.html(trial.text);
         if (trial.phase.length >= 1){
-          display_element.append('<div> <p> <span class="emp">Phase:</span> ' + trial.phase + ' of '+trial.total_phase+' </p> <p><span class="emp">Progress:</span> '+trial.number +' of '+trial.total+'</p></div>');
+          display_element.append('<div> <p> <span class="emp">Phase:</span> ' + trial.phase + ' of 4 </p> <p><span class="emp">Progress:</span> '+trial.number +' of '+trial.total+'</p></div>');
         }
         
         // show the images
@@ -125,7 +123,7 @@
       function show_response_slider(display_element, trial) {
 
         var startTime = (new Date()).getTime();
-        display_element.append('<table id="likert_scale"> <tbody> <tr> <td style="text-align: center; width: 75px;">Maximally <br>Dissimilar</td> <td class="radio_scale" > <form action="" style="text-align: center;"> <input id="scale_value" type="radio" name="scale_value" value="1"> <input id="scale_value" type="radio" name="scale_value" value="2"> <input id="scale_value" type="radio" name="scale_value" value="3"> <input id="scale_value" type="radio" name="scale_value" value="4"> <input id="scale_value" type="radio" name="scale_value" value="5"> <input id="scale_value" type="radio" name="scale_value" value="6"> <input id="scale_value" type="radio" name="scale_value" value="7"> <input id="scale_value" type="radio" name="scale_value" value="8"> <input id="scale_value" type="radio" name="scale_value" value="9"> </form> </td> <td style="text-align: center; width: 75px;">Maximally <br>Similar</td> </tr> <tr> <td style="text-align: center; width: 75px;"> </td> <td class="radio_scale"> <form action="" style="text-align: center; margin-left: 5.6%;"> <li id="scalelabels"> 1 </li> <li id="scalelabels"> 2 </li> <li id="scalelabels"> 3 </li> <li id="scalelabels"> 4 </li> <li id="scalelabels"> 5 </li> <li id="scalelabels"> 6 </li> <li id="scalelabels"> 7 </li> <li id="scalelabels"> 8 </li> <li id="scalelabels"> 9 </li> </form> </td> <td style="text-align: center; width: 75px;"> </td> </tr> <tr><td></td><td><form action="" style="text-align: center; margin-top:3%;"> <input id="scale_value" type="radio" name="Identical" value="Identical"> <label for="Identical" style="font-weight: normal;"> Identical</label> </form></td></tr></tbody> </table>');
+        display_element.append('<table id="likert_scale" style="font-size:25px"> <tbody> <tr> <td style="text-align: center; width: 50px;font-size:25px">Maximally <br>Dissimilar</td> <td class="radio_scale" > <form action="" style="text-align: center;"> <input id="scale_value" type="radio" name="scale_value" value="1"> <input id="scale_value" type="radio" name="scale_value" value="2"> <input id="scale_value" type="radio" name="scale_value" value="3"> <input id="scale_value" type="radio" name="scale_value" value="4"> <input id="scale_value" type="radio" name="scale_value" value="5"> <input id="scale_value" type="radio" name="scale_value" value="6"> <input id="scale_value" type="radio" name="scale_value" value="7"> <input id="scale_value" type="radio" name="scale_value" value="8"> <input id="scale_value" type="radio" name="scale_value" value="9"> </form> </td> <td style="text-align: center; width: 50px;font-size:25px">Maximally <br>Similar</td> </tr> <tr> <td style="text-align: center; width: 75px;font-size:25px"> </td> <td class="radio_scale"> <form action="" style="text-align: center; margin-left: 5.6%;"> <li id="scalelabels"> 1 </li> <li id="scalelabels"> 2 </li> <li id="scalelabels"> 3 </li> <li id="scalelabels"> 4 </li> <li id="scalelabels"> 5 </li> <li id="scalelabels"> 6 </li> <li id="scalelabels"> 7 </li> <li id="scalelabels"> 8 </li> <li id="scalelabels"> 9 </li> </form> </td> <td style="text-align: center; width: 75px;font-size:25px"> </td> </tr> <tr><td></td><td><form action="" style="text-align: center; margin-top:3%;"> <input id="scale_value" type="radio" name="Identical" value="Identical"> <label for="Identical" style="font-weight: normal;"> Identical</label> </form></td></tr></tbody> </table>');
         
         $("input[name='scale_value']").change(function(){
           // Do something interesting here
@@ -183,8 +181,7 @@
             "rt": response_time,
             "stimulus": JSON.stringify([trial.a_path, trial.b_path]),
             "type": trial.trial_num,
-            "set": trial.set_num,
-            "pay": trial.pay
+            "set": trial.set_num
           }, trial.data));
           // goto next trial in block
           display_element.html('');
